@@ -32,7 +32,7 @@ class _TrackUserOrderState extends State<TrackUserOrder> {
   @override
   void initState() {
     super.initState();
-    currentStep = widget.order.status;
+    currentStep = widget.order.status.clamp(0, 3);
   }
 
   Orderservices orderservices = Orderservices();

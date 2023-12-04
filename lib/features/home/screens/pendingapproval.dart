@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/constant/Theme_constant.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/Product.dart';
@@ -89,6 +90,7 @@ class _PendingRequestState extends State<PendingRequest> {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: PendingReqCard(
+                    category: request.category,
                     image: request.images[0],
                     name: request.businessName,
                     description: request.generalDetail,
@@ -109,12 +111,14 @@ class PendingReqCard extends StatelessWidget {
   final String name;
   final String description;
   final double price;
+  final String category;
 
   PendingReqCard({
     required this.image,
     required this.name,
     required this.description,
     required this.price,
+    required this.category,
   });
 
   @override
@@ -199,6 +203,15 @@ class PendingReqCard extends StatelessWidget {
                       description,
                       style: TextStyle(
                         overflow: TextOverflow.ellipsis,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      category,
+                      style: TextStyle(
+                        color: Colors.orange,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),

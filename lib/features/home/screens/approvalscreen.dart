@@ -1,4 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eventify/common/widgets/customDialogBox.dart';
+import 'package:eventify/common/widgets/customSnackbar.dart';
+import 'package:eventify/common/widgets/custombutton.dart';
 import 'package:eventify/features/home/screens/edit.dart';
 import 'package:eventify/features/home/services/userServices.dart';
 import 'package:flutter/material.dart';
@@ -201,6 +204,15 @@ class ApprovedReqCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    Text(
+                      product.category,
+                      style: TextStyle(
+                        color: Colors.orange,
+                        overflow: TextOverflow.ellipsis,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     SizedBox(height: 5),
                     Text(
                       product.generalDetail,
@@ -233,7 +245,27 @@ class ApprovedReqCard extends StatelessWidget {
                       IconButton(
                         color: COLOR_ACCENT,
                         onPressed: () {
-                          ondeleted();
+                          showDialog(
+                            context: context,
+                            builder: (context) => CustomDialog(
+                              title: "Are you sure you want to Delete?",
+                              icon: Icons
+                                  .delete, // Replace with your desired icon
+                              buttons: [
+                                CustomButton(
+                                    text: "Yes",
+                                    onTap: () {
+                                      ondeleted();
+                                      Navigator.of(context).pop();
+                                    }),
+                                CustomButton(
+                                    text: "Cancel",
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    }),
+                              ],
+                            ),
+                          );
                         },
                         icon: Icon(Icons.delete),
                       ),

@@ -1,6 +1,8 @@
 import 'package:eventify/Notification/Notification.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/Vendor/Vendor_Page.dart';
+import 'package:eventify/features/Vendor/bokinghistoryvendor.dart';
+import 'package:eventify/features/Vendor/declinebooking.dart';
 import 'package:eventify/features/Vendor/newbooking.dart';
 import 'package:eventify/features/Vendor/trackmybooking.dart';
 import 'package:eventify/features/admin/screens/Add-Vendor-Form.dart';
@@ -193,12 +195,17 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => NotificationScreen(),
       );
+    case DeclineBooking.id:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => DeclineBooking(),
+      );
 
-    // case PendingProducts.id:
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder: (_) => PendingProducts(),
-    //   );
+    case bokinghistoryvendor.id:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => bokinghistoryvendor(),
+      );
     case ApprovedProducts.id:
       var products = routeSettings.arguments as List<Product>;
       return MaterialPageRoute(

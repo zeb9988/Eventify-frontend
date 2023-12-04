@@ -393,7 +393,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                         ),
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
-                                            return '* Please enter your Street number';
+                                            return '* Please enter your City ';
                                           }
                                           return null;
                                         },
@@ -422,7 +422,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                         style: const TextStyle(
                                           color: Colors.black,
                                         ),
-                                        controller: city,
+                                        controller: country,
                                         decoration: const InputDecoration(
                                           hintText: 'Country',
                                           icon: Icon(
@@ -432,7 +432,7 @@ class _AddressScreenState extends State<AddressScreen> {
                                         ),
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
-                                            return '* Please enter your Street number';
+                                            return '* Please enter your country';
                                           }
                                           return null;
                                         },

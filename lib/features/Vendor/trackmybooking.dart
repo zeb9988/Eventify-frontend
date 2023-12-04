@@ -32,7 +32,8 @@ class _TrackMyOrderState extends State<TrackMyOrder> {
   @override
   void initState() {
     super.initState();
-    currentStep = widget.order.status;
+    currentStep =
+        widget.order.status.clamp(0, 3); // Assuming you have 4 steps (0 to 3)
   }
 
   Orderservices orderservices = Orderservices();
@@ -221,12 +222,13 @@ class _TrackMyOrderState extends State<TrackMyOrder> {
                 child: Stepper(
                   currentStep: currentStep,
                   controlsBuilder: (context, details) {
-                    {
+                    if (currentStep < 3) {
                       return CustomButton(
                         text: 'Done',
                         onTap: () => changeOrderStatus(details.currentStep),
                       );
                     }
+                    return const SizedBox();
                   },
                   steps: [
                     Step(
@@ -270,101 +272,99 @@ class _TrackMyOrderState extends State<TrackMyOrder> {
                 ),
               ),
             ),
-            if (Provider.of<UserProvider>(context).user.type == 'admin' &&
-                currentStep >= 3)
-              const Text('User rating is pending'),
-            if (Provider.of<UserProvider>(context).user.type == 'user' &&
-                currentStep >= 3)
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(
-                      width: 0.5,
-                      color: Colors.grey,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Text(
-                          'Rate Your Experience',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Row(
-                          children: [
-                            // Display the star rating
-                            SmoothStarRating(
-                              rating: _rating,
-                              size: 30,
-                              borderColor: COLOR_ACCENT,
-                              color: Colors
-                                  .yellow, // Change the color to orange or any color you prefer
-                              filledIconData: Icons.star,
-                              halfFilledIconData: Icons.star_half,
-                              defaultIconData: Icons.star_border,
-                              starCount: 5,
-                              allowHalfRating: true,
-                              spacing: 2.0,
-                              onRatingChanged: (value) {
-                                setState(() {
-                                  _rating = value;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Feedback',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      // Feedback text field
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: _feedbackController,
-                          maxLines: 4,
-                          decoration: const InputDecoration(
-                            hintText: 'Write your feedback here...',
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Center(
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: COLOR_ACCENT,
-                          ),
-                          onPressed: () {
-                            submitFeedback();
-                            ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  const Color(
-                                      0xffD6A95C)), // Change the button color
-                            );
-                          },
-                          child: const Text('Submit'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+            if (currentStep >= 3) const Text('User rating is pending'),
+            // if (Provider.of<UserProvider>(context).user.type == 'user' &&
+            //     currentStep >= 3)
+            //   Padding(
+            //     padding: const EdgeInsets.all(15.0),
+            //     child: Container(
+            //       decoration: BoxDecoration(
+            //         color: Colors.white,
+            //         border: Border.all(
+            //           width: 0.5,
+            //           color: Colors.grey,
+            //         ),
+            //         borderRadius: BorderRadius.circular(8.0),
+            //       ),
+            //       child: Column(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: [
+            //           const Padding(
+            //             padding: EdgeInsets.all(5.0),
+            //             child: Text(
+            //               'Rate Your Experience',
+            //               style: TextStyle(
+            //                   fontSize: 18, fontWeight: FontWeight.bold),
+            //             ),
+            //           ),
+            //           Padding(
+            //             padding: const EdgeInsets.all(5.0),
+            //             child: Row(
+            //               children: [
+            //                 // Display the star rating
+            //                 SmoothStarRating(
+            //                   rating: _rating,
+            //                   size: 30,
+            //                   borderColor: COLOR_ACCENT,
+            //                   color: Colors
+            //                       .yellow, // Change the color to orange or any color you prefer
+            //                   filledIconData: Icons.star,
+            //                   halfFilledIconData: Icons.star_half,
+            //                   defaultIconData: Icons.star_border,
+            //                   starCount: 5,
+            //                   allowHalfRating: true,
+            //                   spacing: 2.0,
+            //                   onRatingChanged: (value) {
+            //                     setState(() {
+            //                       _rating = value;
+            //                     });
+            //                   },
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //           const SizedBox(height: 16),
+            //           const Padding(
+            //             padding: EdgeInsets.all(8.0),
+            //             child: Text(
+            //               'Feedback',
+            //               style: TextStyle(
+            //                   fontSize: 18, fontWeight: FontWeight.bold),
+            //             ),
+            //           ),
+            //           // Feedback text field
+            //           Padding(
+            //             padding: const EdgeInsets.all(8.0),
+            //             child: TextField(
+            //               controller: _feedbackController,
+            //               maxLines: 4,
+            //               decoration: const InputDecoration(
+            //                 hintText: 'Write your feedback here...',
+            //                 border: OutlineInputBorder(),
+            //               ),
+            //             ),
+            //           ),
+            //           const SizedBox(height: 10),
+            //           Center(
+            //             child: ElevatedButton(
+            //               style: ElevatedButton.styleFrom(
+            //                 backgroundColor: COLOR_ACCENT,
+            //               ),
+            //               onPressed: () {
+            //                 submitFeedback();
+            //                 ButtonStyle(
+            //                   backgroundColor: MaterialStateProperty.all<Color>(
+            //                       const Color(
+            //                           0xffD6A95C)), // Change the button color
+            //                 );
+            //               },
+            //               child: const Text('Submit'),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Container(

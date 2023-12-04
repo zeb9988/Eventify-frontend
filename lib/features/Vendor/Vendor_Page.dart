@@ -1,4 +1,6 @@
 import 'package:eventify/constant/Theme_constant.dart';
+import 'package:eventify/features/Vendor/bokinghistoryvendor.dart';
+import 'package:eventify/features/Vendor/declinebooking.dart';
 import 'package:eventify/features/Vendor/newbooking.dart';
 import 'package:eventify/features/admin/Widgets/dashCard.dart';
 import 'package:eventify/features/home/screens/approvalscreen.dart';
@@ -92,7 +94,9 @@ class _VendorPageState extends State<VendorPage> {
                         image: 'assets/images/pending.png'),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, bokinghistoryvendor.id);
+                    },
                     child: const dashCard(
                         text: 'Completed bookings',
                         image: 'assets/images/completeorder.png'),
@@ -118,7 +122,9 @@ class _VendorPageState extends State<VendorPage> {
                         image: 'assets/images/processingorder.png'),
                   ),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, DeclineBooking.id);
+                      },
                       child: const dashCard(
                           text: 'Decline bookings',
                           image: 'assets/images/cancelorder.png')),

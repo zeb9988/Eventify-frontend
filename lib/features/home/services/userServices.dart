@@ -2,6 +2,7 @@ import 'dart:convert';
 // import 'dart:html';
 import 'dart:io';
 import 'package:cloudinary_public/cloudinary_public.dart';
+import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/features/home/screens/edit.dart';
 import 'package:eventify/models/producted.dart';
 import 'package:flutter/material.dart';
@@ -139,12 +140,7 @@ class UserServices {
 
       // ignore: use_build_context_synchronously
       httpErrorHandle(
-          response: response,
-          context: context,
-          onSuccess: () {
-            onsuccess();
-            showSnackBar(context, 'Deleted');
-          });
+          response: response, context: context, onSuccess: onsuccess);
     } catch (e) {
       showSnackBar(context, e.toString());
     }

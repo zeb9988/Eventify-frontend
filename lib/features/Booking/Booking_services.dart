@@ -84,6 +84,76 @@ class Orderservices {
     return orderList;
   }
 
+  Future<List<Order>> fetchVendorOrderHistory({
+    required BuildContext context,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    List<Order> orderList = [];
+    try {
+      http.Response res = await http
+          .get(Uri.parse('$uri/api/orders-by-uservendor-history'), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'x-auth-token': userProvider.user.token,
+      });
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < jsonDecode(res.body).length; i++) {
+            print('asdas');
+            orderList.add(
+              Order.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+              ),
+            );
+            print(orderList);
+          }
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return orderList;
+  }
+
+  Future<List<Order>> fetchDeclineOrder({
+    required BuildContext context,
+  }) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    List<Order> orderList = [];
+    try {
+      http.Response res = await http
+          .get(Uri.parse('$uri/api/orders-by-uservendor-decline'), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'x-auth-token': userProvider.user.token,
+      });
+
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < jsonDecode(res.body).length; i++) {
+            print('asdas');
+            orderList.add(
+              Order.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+              ),
+            );
+            print(orderList);
+          }
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return orderList;
+  }
+
   Future<List<Order>> fetchOrderHistory({
     required BuildContext context,
   }) async {
@@ -179,7 +249,13 @@ class Orderservices {
           User user = userProvider.user
               .copyWith(wallet: jsonDecode(res.body)['wallet']);
           userProvider.setUserFromModel(user);
-          Navigator.pushReplacementNamed(context, Homepage.id);
+          Navigator.pushNamedAndRemoveUntil(
+              context, Homepage.id, (route) => false);
+          showCustomSnackBar(
+              context: context,
+              text: 'Feedback given successfully',
+              label: 'Ok',
+              onPressed: () {});
         },
       );
     } catch (e) {

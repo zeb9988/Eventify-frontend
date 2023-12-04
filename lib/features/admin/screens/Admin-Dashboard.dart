@@ -147,7 +147,7 @@ class _Admin_DashboardState extends State<Admin_Dashboard> {
                             arguments: pendingVendors);
                       },
                       child: dashCard(
-                          text: 'Pending orders: ${pendingVendors.length}',
+                          text: 'Pending products: ${pendingVendors.length}',
                           image: 'assets/images/pending.png')),
                   GestureDetector(
                       onTap: () {
@@ -161,8 +161,8 @@ class _Admin_DashboardState extends State<Admin_Dashboard> {
                         Navigator.pushNamed(context, GetFeedbackScreen.id);
                       },
                       child: const dashCard(
-                          text: 'Sent Notification',
-                          image: 'assets/images/notification.png')),
+                          text: 'Users Feedback',
+                          image: 'assets/images/feedbacklogo.png')),
                 ],
               ),
             ),
