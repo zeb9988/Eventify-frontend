@@ -107,12 +107,12 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
             )
           : ListView.builder(
-              itemCount: orders!.length,
+              itemCount: orders.length,
               itemBuilder: (context, orderIndex) {
-                final order = orders![orderIndex];
+                final order = orders[orderIndex];
                 return GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, TrackOrder.id,
+                      Navigator.pushNamed(context, TrackUserOrder.id,
                           arguments: order);
                     },
                     child: Padding(

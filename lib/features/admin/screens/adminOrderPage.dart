@@ -72,7 +72,7 @@ class _AdminOrderScreenState extends State<AdminOrderScreen> {
                 final order = orders![orderIndex];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, TrackOrder.id,
+                    Navigator.pushNamed(context, TrackUserOrder.id,
                         arguments: order);
                   },
                   child: Container(

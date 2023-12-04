@@ -93,7 +93,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                 final order = orderHistory[orderIndex];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, TrackOrder.id,
+                    Navigator.pushNamed(context, TrackUserOrder.id,
                         arguments: order);
                   },
                   child: Padding(

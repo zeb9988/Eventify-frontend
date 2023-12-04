@@ -265,7 +265,6 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ],
           ),
-
           const SizedBox(height: 15),
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, VendorPage.id),
@@ -292,60 +291,6 @@ class _MenuScreenState extends State<MenuScreen> {
           const SizedBox(
             height: 10,
           ),
-          // SizedBox(
-          //   height: 180,
-          //   child: ListView.separated(
-          //     physics: const BouncingScrollPhysics(),
-          //     scrollDirection: Axis.horizontal,
-          //     itemBuilder: (context, index) {
-          //       final card = profileCompletionCards[index];
-          //       return SizedBox(
-          //         width: 160,
-          //         child: Card(
-          //           color: Colors.white,
-          //           child: Padding(
-          //             padding: const EdgeInsets.all(15),
-          //             child: Column(
-          //               children: [
-          //                 Icon(
-          //                   card.icon,
-          //                   size: 30,
-          //                   color: COLOR_ACCENT,
-          //                 ),
-          //                 const SizedBox(height: 10),
-          //                 Text(
-          //                   card.title,
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //                 const Spacer(),
-          //                 ElevatedButton(
-          //                   onPressed: () {
-          //                     if (card.onPress != null) {
-          //                       card.onPress!(context,
-          //                           card.title); // Pass context and card title
-          //                     }
-          //                   },
-          //                   style: ElevatedButton.styleFrom(
-          //                     backgroundColor: COLOR_ACCENT,
-          //                     foregroundColor: Colors.white,
-          //                     elevation: 0,
-          //                     shape: RoundedRectangleBorder(
-          //                       borderRadius: BorderRadius.circular(10),
-          //                     ),
-          //                   ),
-          //                   child: Text(card.buttonText),
-          //                 )
-          //               ],
-          //             ),
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //     separatorBuilder: (context, index) =>
-          //         const Padding(padding: EdgeInsets.only(right: 5)),
-          //     itemCount: profileCompletionCards.length,
-          //   ),
-          // ),
           const SizedBox(height: 10),
           ...List.generate(
             tiles.length,

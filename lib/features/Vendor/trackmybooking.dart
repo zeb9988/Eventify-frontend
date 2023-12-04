@@ -36,7 +36,6 @@ class _TrackMyOrderState extends State<TrackMyOrder> {
   }
 
   Orderservices orderservices = Orderservices();
-
   void submitFeedback() {
     orderservices.rateProduct(
         context: context,

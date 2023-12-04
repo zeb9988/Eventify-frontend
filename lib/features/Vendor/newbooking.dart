@@ -60,7 +60,7 @@ class _NewBookingState extends State<NewBooking> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: const Text(
-          'New Booking',
+          'New Bookings',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,

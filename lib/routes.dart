@@ -278,11 +278,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => TrackMyOrder(order: order),
       );
-    case TrackOrder.id:
+    case TrackUserOrder.id:
       var order = routeSettings.arguments as Order;
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => TrackOrder(order: order),
+        builder: (_) => TrackUserOrder(order: order),
       );
     case AdminOrderScreen.id:
       return MaterialPageRoute(
