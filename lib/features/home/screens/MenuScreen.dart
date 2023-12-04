@@ -58,10 +58,12 @@ class _MenuScreenState extends State<MenuScreen> {
           address: addressController.text);
     }
 
+    List<CustomListTile> tiles = customListTiles(context);
+
     return Scaffold(
       backgroundColor: COLOR_PRIMARY,
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 90,
         elevation: 0,
         // backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
@@ -70,7 +72,7 @@ class _MenuScreenState extends State<MenuScreen> {
           Column(children: [
             Padding(
               padding: const EdgeInsets.only(top: 10),
-              child: Text('Language',
+              child: Text(translation(context).languagesupport,
                   style: TextStyle(fontWeight: FontWeight.bold)),
             ),
             Padding(
@@ -89,7 +91,7 @@ class _MenuScreenState extends State<MenuScreen> {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: 220,
+                height: 240,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -122,7 +124,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     )),
                     const SizedBox(height: 10),
                     Text(
-                      'Name: ${user.name}',
+                      user.name,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -130,7 +132,7 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'Email: ${user.email}',
+                      user.email,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -346,9 +348,9 @@ class _MenuScreenState extends State<MenuScreen> {
           // ),
           const SizedBox(height: 10),
           ...List.generate(
-            customListTiles.length,
+            tiles.length,
             (index) {
-              final tile = customListTiles[index];
+              final tile = tiles[index];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 5),
                 child: Card(
@@ -428,91 +430,103 @@ List<ProfileCompletionCard> initializeProfileCompletionCards(
 class CustomListTile {
   final IconData icon;
   final String title;
-  // final VoidCallback? onPress; // Callback function
   final Function(BuildContext context)? onPress;
+  final BuildContext context; // Add a field to store the BuildContext
+
   CustomListTile({
     required this.icon,
     required this.title,
-    this.onPress, // Optional callback function
+    this.onPress,
+    required this.context, // Pass and store the BuildContext
   });
 }
 
-List<CustomListTile> customListTiles = [
-  CustomListTile(
-    icon: Icons.list,
-    title: "My Bookings",
-    onPress: (context) {
-      Navigator.pushNamed(context, OrderScreen.id);
-    },
-  ),
-  CustomListTile(
-    icon: Icons.shopping_cart,
-    title: "My Booking Details",
-    onPress: (context) {
-      Navigator.pushNamed(context, OrderHistory.id);
-    },
-  ),
-  CustomListTile(
-    icon: Icons.shopping_cart,
-    title: "My Cart",
-    onPress: (context) {
-      Navigator.pushNamed(context, CartScreen.id);
-    },
-  ),
-  CustomListTile(
-    icon: Icons.favorite,
-    title: "Favourite",
-    onPress: (context) {
-      Navigator.pushNamed(context, Favourite.id);
-      print("My fav pressed");
-    },
-  ),
-  CustomListTile(
-    icon: Icons.help_center,
-    title: "Help Center",
-    onPress: (context) {
-      print("help");
-    },
-  ),
-  CustomListTile(
-    icon: Icons.feedback,
-    title: "Feedback",
-    onPress: (context) {
-      Navigator.pushNamed(context, FeedbackScreen.id);
-    },
-  ),
-  CustomListTile(
-    title: "About",
-    icon: CupertinoIcons.info,
-    onPress: (context) {
-      Navigator.pushNamed(context, PolicyScreen.id);
-      print("about");
-    },
-  ),
-  CustomListTile(
-    title: "Logout",
-    icon: CupertinoIcons.arrow_right_arrow_left,
-    onPress: (context) {
-      showDialog(
-        context: context,
-        builder: (context) => CustomDialog(
-          title: "Are you sure you want to logout?",
-          icon: Icons.logout, // Replace with your desired icon
-          buttons: [
-            CustomButton(
-                text: "logout",
-                onTap: () {
-                  logOut(context);
-                  Navigator.of(context).pop();
-                }),
-            CustomButton(
-                text: "Cancel",
-                onTap: () {
-                  Navigator.of(context).pop();
-                }),
-          ],
-        ),
-      );
-    },
-  ),
-];
+List<CustomListTile> customListTiles(BuildContext context) {
+  return [
+    CustomListTile(
+      icon: Icons.list,
+      title: translation(context).booking,
+      context: context, // Pass the BuildContext
+      onPress: (context) {
+        Navigator.pushNamed(context, OrderScreen.id);
+      },
+    ),
+    CustomListTile(
+      icon: Icons.shopping_cart,
+      title: translation(context).bookinghistory,
+      context: context,
+      onPress: (context) {
+        Navigator.pushNamed(context, OrderHistory.id);
+      },
+    ),
+    CustomListTile(
+      icon: Icons.shopping_cart,
+      title: translation(context).cart,
+      context: context,
+      onPress: (context) {
+        Navigator.pushNamed(context, CartScreen.id);
+      },
+    ),
+    CustomListTile(
+      context: context,
+      icon: Icons.favorite,
+      title: translation(context).favorite,
+      onPress: (context) {
+        Navigator.pushNamed(context, Favourite.id);
+        print("My fav pressed");
+      },
+    ),
+    CustomListTile(
+      context: context,
+      icon: Icons.help_center,
+      title: translation(context).helpcenter,
+      onPress: (context) {
+        print("help");
+      },
+    ),
+    CustomListTile(
+      context: context,
+      icon: Icons.feedback,
+      title: translation(context).feedback,
+      onPress: (context) {
+        Navigator.pushNamed(context, FeedbackScreen.id);
+      },
+    ),
+    CustomListTile(
+      context: context,
+      title: translation(context).about,
+      icon: CupertinoIcons.info,
+      onPress: (context) {
+        Navigator.pushNamed(context, PolicyScreen.id);
+        print("about");
+      },
+    ),
+    CustomListTile(
+      context: context,
+      title: translation(context).logout,
+      icon: CupertinoIcons.arrow_right_arrow_left,
+      onPress: (context) {
+        showDialog(
+          context: context,
+          builder: (context) => CustomDialog(
+            title: "Are you sure you want to logout?",
+            icon: Icons.logout, // Replace with your desired icon
+            buttons: [
+              CustomButton(
+                  text: "logout",
+                  onTap: () {
+                    logOut(context);
+                    Navigator.of(context).pop();
+                  }),
+              CustomButton(
+                  text: "Cancel",
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  }),
+            ],
+          ),
+        );
+      },
+    ),
+  ];
+}
