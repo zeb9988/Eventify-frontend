@@ -217,7 +217,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               SliverList(
                 delegate: SliverChildListDelegate([
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.9 + 330,
+                    height: MediaQuery.of(context).size.height * 0.9 + 150,
                     color: COLOR_PRIMARY,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 15),
@@ -381,6 +381,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               const SizedBox(height: 2.0),
                               Text(
                                 widget.product.generalDetail,
+                                maxLines: 5,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   height: 1.5,
                                   color: Colors.grey.shade800,
@@ -554,35 +556,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 20.0),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "View All",
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 5),
-                                      Container(
-                                        height: 15,
-                                        width: 15,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: Colors.black45,
-                                          ),
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: const Icon(
-                                          Icons.arrow_forward_ios,
-                                          size: 8,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                )
                               ],
                             ),
                             const SizedBox(
@@ -602,6 +575,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 60,
+                      ),
                     ],
                   ),
                 ),
@@ -609,7 +585,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             ],
           ),
           Positioned(
-            bottom: 20,
+            bottom: 10,
             child: Container(
               padding: const EdgeInsets.all(10),
               width: MediaQuery.sizeOf(context).width,

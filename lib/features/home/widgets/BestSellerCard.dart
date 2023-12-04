@@ -1,4 +1,5 @@
 import 'package:eventify/common/widgets/star.dart';
+import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/home/services/favoriteServices.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:eventify/prooviders/provider.dart';
@@ -89,6 +90,13 @@ class _BestSellerCardState extends State<BestSellerCard> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(5, 10),
+                // blurRadius: 15,
+                color: COLOR_ACCENT,
+              ),
+            ],
           ),
           padding: const EdgeInsets.all(10),
           child: Column(

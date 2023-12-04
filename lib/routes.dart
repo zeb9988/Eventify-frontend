@@ -13,6 +13,7 @@ import 'package:eventify/features/admin/screens/analyticsScreen.dart';
 import 'package:eventify/features/admin/screens/sendNotfication.dart';
 import 'package:eventify/features/admin/screens/soldOrderscreen.dart';
 import 'package:eventify/features/authentication/screens/ForgetPass.dart';
+import 'package:eventify/features/checklist/Checklist.dart';
 import 'package:eventify/features/home/screens/About.dart';
 import 'package:eventify/features/home/screens/Favourite.dart';
 import 'package:eventify/features/home/screens/MenuScreen.dart';
@@ -264,6 +265,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => OrderScreen(),
+      );
+
+    case ChecklistScreen.id:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => ChecklistScreen(),
       );
     case TrackMyOrder.id:
       var order = routeSettings.arguments as Order;
