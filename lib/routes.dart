@@ -2,8 +2,11 @@ import 'package:eventify/Notification/Notification.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/Vendor/Vendor_Page.dart';
 import 'package:eventify/features/Vendor/bokinghistoryvendor.dart';
+import 'package:eventify/features/Vendor/bookingHistoryTest.dart';
+import 'package:eventify/features/Vendor/declineBookingTest.dart';
 import 'package:eventify/features/Vendor/declinebooking.dart';
 import 'package:eventify/features/Vendor/newbooking.dart';
+import 'package:eventify/features/Vendor/newbookingtest.dart';
 import 'package:eventify/features/Vendor/trackmybooking.dart';
 import 'package:eventify/features/admin/screens/Add-Vendor-Form.dart';
 import 'package:eventify/features/admin/screens/Approved-Products.dart';
@@ -84,10 +87,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => GetFeedbackScreen(),
       );
-    case NewBooking.id:
+    case NewBookingTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => NewBooking(),
+        builder: (_) => NewBookingTest(),
       );
     case SendNotifications.id:
       return MaterialPageRoute(
@@ -195,16 +198,16 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => NotificationScreen(),
       );
-    case DeclineBooking.id:
+    case DeclineBookingTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => DeclineBooking(),
+        builder: (_) => DeclineBookingTest(),
       );
 
-    case bokinghistoryvendor.id:
+    case BokinghistoryTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => bokinghistoryvendor(),
+        builder: (_) => BokinghistoryTest(),
       );
     case ApprovedProducts.id:
       var products = routeSettings.arguments as List<Product>;

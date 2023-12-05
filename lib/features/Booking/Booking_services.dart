@@ -100,8 +100,8 @@ class Orderservices {
         response: res,
         context: context,
         onSuccess: () {
+          print('asdsa');
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            print('asdas');
             orderList.add(
               Order.fromJson(
                 jsonEncode(

@@ -2,7 +2,11 @@
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/MainSearchBar.dart';
+import 'package:eventify/features/Feedback/Feedback.dart';
+import 'package:eventify/features/checklist/Checklist.dart';
+import 'package:eventify/features/home/screens/About.dart';
 import 'package:eventify/features/home/screens/Allcatagory.dart';
+import 'package:eventify/features/home/screens/Favourite.dart';
 import 'package:eventify/features/home/screens/mainEventscreen.dart';
 import 'package:eventify/features/home/widgets/AppbarClipper.dart';
 import 'package:eventify/features/home/widgets/BlogCard.dart';
@@ -371,7 +375,7 @@ class _DashPageState extends State<DashPage> {
                           children: [
                             SubCard(
                               onPressed: () {
-                                Navigator.pushNamed(context, Messages.id);
+                                // Navigator.pushNamed(context, Messages.id);
                               },
                               image: 'assets/images/message.png',
                               text: 'Messages',
@@ -384,7 +388,10 @@ class _DashPageState extends State<DashPage> {
                               text: 'Vendors',
                             ),
                             SubCard(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, ChecklistScreen.id);
+                              },
                               image: 'assets/images/checklist.png',
                               text: 'Checklist',
                             ),
@@ -394,17 +401,23 @@ class _DashPageState extends State<DashPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SubCard(
-                              onPressed: () {},
-                              image: 'assets/images/feedback.png',
-                              text: 'Feedback',
-                            ),
-                            SubCard(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, Favourite.id);
+                              },
                               image: 'assets/images/hearttt.png',
                               text: 'Favourite',
                             ),
                             SubCard(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, FeedbackScreen.id);
+                              },
+                              image: 'assets/images/feedback.png',
+                              text: 'Feedback',
+                            ),
+                            SubCard(
+                              onPressed: () {
+                                Navigator.pushNamed(context, PolicyScreen.id);
+                              },
                               image: 'assets/images/about.png',
                               text: 'About',
                             ),
