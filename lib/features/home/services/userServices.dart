@@ -33,26 +33,19 @@ class UserServices {
       required String benificiaryName,
       required double accountNumber,
       required double price,
+      required String priceDescription,
       required String category,
       required String insuredValue,
       required String licenseHolder,
       required VoidCallback onsuccess}) async {
     try {
-      // final cloudinary = CloudinaryPublic('deprueuwl', 'bnq90myj');
-
-      // List<String> imageUrls = [];
-      // for (int i = 0; i < images.length; i++) {
-      //   CloudinaryResponse res = await cloudinary.uploadFile(
-      //       CloudinaryFile.fromFile(images[i].path, folder: businessName));
-      //   imageUrls.add(res.secureUrl);
-      // }
-      // print(catagory);
       Product prod = Product(
           id: id,
           images: images,
           businessName: businessName,
           address: address,
           city: city,
+          priceDescription: priceDescription,
           state: state,
           zipcode: zipcode,
           country: country,
@@ -75,7 +68,6 @@ class UserServices {
         },
         body: prod.toJson(),
       );
-      print('2');
       httpErrorHandle(
           response: response,
           context: context,

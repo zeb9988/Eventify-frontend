@@ -344,6 +344,7 @@ class AdminServices {
       required double accountNumber,
       required double price,
       required String category,
+      required String priceDescription,
       required String insuredValue,
       required String licenseHolder}) async {
     try {
@@ -360,6 +361,7 @@ class AdminServices {
           images: imageUrls,
           businessName: businessName,
           address: address,
+          priceDescription: priceDescription,
           city: city,
           state: state,
           zipcode: zipcode,

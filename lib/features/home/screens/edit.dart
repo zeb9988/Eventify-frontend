@@ -40,6 +40,7 @@ class _EditProductState extends State<EditProduct> {
   final TextEditingController benificiaryName = TextEditingController();
   final TextEditingController accountNumber = TextEditingController();
   final TextEditingController price = TextEditingController();
+  final TextEditingController priceDescription = TextEditingController();
   // AdminServices adminServices = AdminServices();
   // VendorServices vendorServices = VendorServices();
 
@@ -58,6 +59,7 @@ class _EditProductState extends State<EditProduct> {
     benificiaryName.dispose();
     accountNumber.dispose();
     price.dispose();
+    priceDescription.dispose();
     super.dispose();
   }
 
@@ -73,6 +75,7 @@ class _EditProductState extends State<EditProduct> {
         context: context,
         businessName: businessName.text,
         id: widget.approvedVendors.id,
+        priceDescription: priceDescription.text,
         address: address.text,
         city: city.text,
         state: state.text,
@@ -154,6 +157,8 @@ class _EditProductState extends State<EditProduct> {
     accountNumber.text =
         widget.approvedVendors.accountNumber.toStringAsFixed(0);
     price.text = widget.approvedVendors.price.toStringAsFixed(0);
+    priceDescription.text = widget.approvedVendors.priceDescription;
+
     category = widget.approvedVendors.category;
     // images.add(widget.approvedVendors.images);
 
@@ -840,7 +845,7 @@ class _EditProductState extends State<EditProduct> {
                               keyboardType: TextInputType.number,
                               controller: price,
                               decoration: const InputDecoration(
-                                hintText: 'Price',
+                                hintText: 'Enter the numerical price',
                                 icon: Icon(
                                   Icons.attach_money,
                                   color: COLOR_ACCENT,
@@ -864,7 +869,45 @@ class _EditProductState extends State<EditProduct> {
                         ),
                       ),
                       const ElTooltip(
-                        content: Text('Set your product price'),
+                        content: Text('Set your service price'),
+                        child: Icon(
+                          Icons.info_outline,
+                          color: COLOR_ACCENT,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Basic package description *',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextFormField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: 3,
+                              controller: priceDescription,
+                              decoration: const InputDecoration(
+                                hintText: 'Enter basic package description',
+                                icon: Icon(
+                                  Icons.description,
+                                  color: COLOR_ACCENT,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const ElTooltip(
+                        content: Text('Enter basic package descriptione'),
                         child: Icon(
                           Icons.info_outline,
                           color: COLOR_ACCENT,

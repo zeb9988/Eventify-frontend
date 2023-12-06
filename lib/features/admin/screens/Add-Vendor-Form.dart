@@ -40,6 +40,7 @@ class _AddproductState extends State<Addproduct> {
   final TextEditingController benificiaryName = TextEditingController();
   final TextEditingController accountNumber = TextEditingController();
   final TextEditingController price = TextEditingController();
+  final TextEditingController priceDescription = TextEditingController();
 
   AdminServices adminServices = AdminServices();
   VendorServices vendorServices = VendorServices();
@@ -62,6 +63,7 @@ class _AddproductState extends State<Addproduct> {
           images: images,
           businessName: businessName.text,
           address: address.text,
+          priceDescription: priceDescription.text,
           city: city.text,
           state: state.text,
           zipcode: double.parse(zipcode.text),
@@ -100,6 +102,7 @@ class _AddproductState extends State<Addproduct> {
     benificiaryName.dispose();
     accountNumber.dispose();
     price.dispose();
+    priceDescription.dispose();
     super.dispose();
   }
 
@@ -884,7 +887,7 @@ class _AddproductState extends State<Addproduct> {
                               keyboardType: TextInputType.number,
                               controller: price,
                               decoration: const InputDecoration(
-                                hintText: 'Price',
+                                hintText: 'Enter the numerical price',
                                 icon: Icon(
                                   Icons.attach_money,
                                   color: COLOR_ACCENT,
@@ -908,7 +911,45 @@ class _AddproductState extends State<Addproduct> {
                         ),
                       ),
                       const ElTooltip(
-                        content: Text('Set your product price'),
+                        content: Text('Set your service price'),
+                        child: Icon(
+                          Icons.info_outline,
+                          color: COLOR_ACCENT,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Basic package description *',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextFormField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: 3,
+                              controller: priceDescription,
+                              decoration: const InputDecoration(
+                                hintText: 'Enter basic package description',
+                                icon: Icon(
+                                  Icons.description,
+                                  color: COLOR_ACCENT,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const ElTooltip(
+                        content: Text('Enter basic package description'),
                         child: Icon(
                           Icons.info_outline,
                           color: COLOR_ACCENT,

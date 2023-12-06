@@ -421,14 +421,6 @@ List<CustomListTile> customListTiles(BuildContext context) {
         print("My fav pressed");
       },
     ),
-    // CustomListTile(
-    //   context: context,
-    //   icon: Icons.help_center,
-    //   title: translation(context).helpcenter,
-    //   onPress: (context) {
-    //     print("help");
-    //   },
-    // ),
     CustomListTile(
       context: context,
       icon: Icons.feedback,

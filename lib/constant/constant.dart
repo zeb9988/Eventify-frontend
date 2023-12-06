@@ -29,6 +29,30 @@ List<String> productCategories = [
   // Add more categories as needed
 ];
 
+String getWeatherAnimation(String? mainCondition) {
+  if (mainCondition == null)
+    return 'assets/animation/sunny.json'; //default to sunny
+  switch (mainCondition.toLowerCase()) {
+    case 'clouds':
+    case 'mist':
+    case 'smoke':
+    case 'haze':
+    case 'dust':
+    case 'fog':
+      return 'assets/animation/cloud.json';
+    case 'rain':
+    case 'drizzle':
+    case 'shower rain':
+      return 'assets/animation/rain.json';
+    case 'thunderstorm':
+      return 'assets/animation/thunder.json';
+    case 'clear':
+      return 'assets/animation/sunny.json';
+    default:
+      return 'assets/animation/sunny.json';
+  }
+}
+
 //Top Event name list
 
 List<Map<String, dynamic>> TopEventList = [

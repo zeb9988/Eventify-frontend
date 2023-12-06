@@ -55,8 +55,8 @@ class Orderservices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Order> orderList = [];
     try {
-      http.Response res = await http
-          .get(Uri.parse('$uri/api/orders-by-uservendor-products'), headers: {
+      http.Response res =
+          await http.get(Uri.parse('$uri/api/vendor-newbookings'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -90,8 +90,8 @@ class Orderservices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Order> orderList = [];
     try {
-      http.Response res = await http
-          .get(Uri.parse('$uri/api/orders-by-uservendor-history'), headers: {
+      http.Response res =
+          await http.get(Uri.parse('$uri/api/vendor-bookinghistory'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -125,8 +125,8 @@ class Orderservices {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Order> orderList = [];
     try {
-      http.Response res = await http
-          .get(Uri.parse('$uri/api/orders-by-uservendor-decline'), headers: {
+      http.Response res =
+          await http.get(Uri.parse('$uri/api/vendor-declinebooking'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });

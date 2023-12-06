@@ -23,6 +23,7 @@ class Product {
   final String benificiaryName;
   final double accountNumber;
   final double price;
+  final String priceDescription;
   final String category;
   final String? id;
   final List<Rating>? rating;
@@ -44,6 +45,7 @@ class Product {
       required this.benificiaryName,
       required this.accountNumber,
       required this.price,
+      required this.priceDescription,
       required this.category,
       this.id,
       this.rating,
@@ -67,6 +69,7 @@ class Product {
       'benificiaryName': benificiaryName,
       'accountNumber': accountNumber,
       'price': price,
+      'priceDescription': priceDescription,
       'category': category,
       'id': id,
       'rating': rating,
@@ -91,6 +94,7 @@ class Product {
       benificiaryName: map['benificiaryName'] ?? '',
       accountNumber: map['accountNumber']?.toDouble() ?? 0.0,
       price: map['price']?.toDouble() ?? 0.0,
+      priceDescription: map['priceDescription'] ?? '',
       category: map['category'] ?? '',
       id: map['_id'],
       rating: map['rating'] != null
