@@ -52,8 +52,6 @@ Future<void> main() async {
     ),
     ChangeNotifierProvider(create: (_) => FavoritesProvider())
   ], child: MyApp()));
-  // final prefs = await SharedPreferences.getInstance();
-  // show = prefs.getBool('ON_BOARDING') ?? true;
 }
 
 class MyApp extends StatefulWidget {

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/home/screens/home_screen.dart';
+import 'package:eventify/msgservicee.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +22,11 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   final AuthService auth = AuthService();
+  MessagingService messagingService = MessagingService();
   @override
   void initState() {
     super.initState();
+    messagingService.init(context);
     auth.getUserData(context);
     Timer(const Duration(seconds: 5), () {
       Provider.of<UserProvider>(context, listen: false).user.token.isNotEmpty
