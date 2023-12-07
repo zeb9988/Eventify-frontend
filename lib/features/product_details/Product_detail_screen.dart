@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:eventify/common/widgets/custombutton.dart';
 import 'package:eventify/common/widgets/star.dart';
@@ -6,20 +8,13 @@ import 'package:eventify/features/cart/cartservices.dart';
 import 'package:eventify/features/home/services/HomeServices.dart';
 import 'package:eventify/features/home/widgets/BestSellerCard.dart';
 import 'package:eventify/models/Product.dart';
-import 'package:eventify/models/Producted.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../address/screens/adress_screen.dart';
 import '../home/services/favoriteServices.dart';
-
-// import 'package:flutter_rating_bar/flutter_rating_bar';
-// import 'package:google_fonts/google_fonts';
 
 class ProductDetailsScreen extends StatefulWidget {
   static const String id = '/DetailsScreen';
@@ -34,7 +29,9 @@ class ProductDetailsScreen extends StatefulWidget {
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
 
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+class _ProductDetailsScreenState extends State<ProductDetailsScreen>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
   List<Product> relatedproduct = [];
   HomeServices home = HomeServices();
 
@@ -46,17 +43,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   }
 
   double sum = 1000;
+  // ignore: non_constant_identifier_names
   List<Product> Productlist = [];
   int _selectedImageIndex = 0;
   CartServices cartServices = CartServices();
   double avgRating = 0;
   double myRating = 0;
   bool isFavorite = false;
-  FavoriteServices _favoriteServices = FavoriteServices();
+  final FavoriteServices _favoriteServices = FavoriteServices();
 
   @override
   void initState() {
     super.initState();
+    // Initialize the TabController with the number of tabs (2 in this case).
+    _tabController = TabController(length: 3, vsync: this);
     fetchcatagory();
     double totalRating = 0;
     for (int i = 0; i < widget.product.rating!.length; i++) {
@@ -128,7 +128,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 stretch: true,
                 backgroundColor: Colors.grey.shade50,
                 flexibleSpace: FlexibleSpaceBar(
-                  stretchModes: [StretchMode.zoomBackground],
+                  stretchModes: const [StretchMode.zoomBackground],
                   background: ListView(
                     shrinkWrap: true,
                     children: [
@@ -249,7 +249,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   fontSize: 15,
                                 ),
                               ),
-                              const SizedBox(height: 4),
+                              const SizedBox(height: 5),
                               Container(
                                 padding: const EdgeInsets.all(5),
                                 decoration: BoxDecoration(
@@ -266,38 +266,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 8),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  RichText(
-                                    text: TextSpan(
-                                      children: [
-                                        const TextSpan(
-                                          text: 'Rs. ',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: widget.product.price
-                                              .toStringAsFixed(0),
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -358,73 +327,174 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                         ),
                         const SizedBox(
-                          height: 15,
+                          height: 20,
                         ),
+                        // ignore: avoid_unnecessary_containers
                         Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          padding: const EdgeInsets.all(10.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Details',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              TabBar(
+                                controller: _tabController,
+                                tabs: const <Widget>[
+                                  Tab(
+                                    child: Text(
+                                      "DETAILS",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Tab(
+                                    child: Text(
+                                      "BASIC PACKAGE",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Tab(
+                                    child: Text(
+                                      "CUSTOM OFFER",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              const SizedBox(height: 2.0),
-                              Text(
-                                widget.product.generalDetail,
-                                maxLines: 5,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  height: 1.5,
-                                  color: Colors.grey.shade800,
-                                  fontSize: 15,
+                              Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(12.0),
+                                ),
+                                padding: const EdgeInsets.all(15.0),
+                                height: 180.0,
+                                child: TabBarView(
+                                  controller: _tabController,
+                                  children: <Widget>[
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          'Service Details',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 2.0),
+                                        Text(
+                                          widget.product.generalDetail,
+                                          maxLines: 5,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            RichText(
+                                              text: TextSpan(
+                                                children: [
+                                                  const TextSpan(
+                                                    text: 'Rs. ',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                  TextSpan(
+                                                    text: widget.product.price
+                                                        .toStringAsFixed(0),
+                                                    style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.black,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Text(
+                                          widget.product.generalDetail,
+                                          maxLines: 5,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          'Contact Information',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 2.0),
+                                        Text(
+                                          'Service Provider: ${user.name}',
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Phone Number: 0${widget.product.phonenumber.toDoubleStringAsFixed()}',
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Address: ${widget.product.address}',
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                'Mobile Number',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              const SizedBox(height: 2.0),
-                              Text(
-                                widget.product.phonenumber.toStringAsFixed(0),
-                                style: TextStyle(
-                                  height: 1.5,
-                                  color: Colors.grey.shade800,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+
                         const SizedBox(
                           height: 40,
                         ),
@@ -547,8 +617,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
+                              children: const [
+                                Text(
                                   'Related Project',
                                   style: TextStyle(
                                     color: Colors.black,
