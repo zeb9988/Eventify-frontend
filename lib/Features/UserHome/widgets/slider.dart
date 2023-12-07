@@ -12,9 +12,8 @@ class ProductSlider extends StatefulWidget {
 
 class _ProductSliderState extends State<ProductSlider> {
   final List<String> slidersList = [
-    'assets/images/deal1.jpg',
-    'assets/images/deal2.jpg',
-    'assets/images/deal3.jpg'
+    'assets/images/baner1.png',
+    'assets/images/baner2.png',
   ];
 
   @override

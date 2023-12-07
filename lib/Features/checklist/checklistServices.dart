@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:eventify/Models/todoList.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:eventify/utils/error.dart';
@@ -14,7 +15,8 @@ class TodoServices {
   void todolist(
       {required BuildContext context,
       required String title,
-      required String desc}) async {
+      required String desc,
+      required VoidCallback onsuccess}) async {
     final userProvider = Provider.of<UserProvider>(context,
         listen: false); // catch token from here
     try {
@@ -27,28 +29,41 @@ class TodoServices {
         body: jsonEncode({'title': title, 'desc': desc}),
       );
 
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            Homepage.id,
-            (route) => false,
-          );
-        },
-      );
+      httpErrorHandle(response: res, context: context, onSuccess: onsuccess);
     } catch (e) {
       showCustomSnackBar(
           context: context, text: e.toString(), label: 'Ok', onPressed: () {});
     }
   }
 
-  Future<List<Map<String, dynamic>>> fetchTodoList(BuildContext context) async {
-    final userProvider = Provider.of<UserProvider>(context, listen: false);
-
+  void deleteTodoList(
+      {required BuildContext context,
+      required TodoList todoitem,
+      required VoidCallback onsuccess}) async {
+    final userProvider = Provider.of<UserProvider>(context,
+        listen: false); // catch token from here
     try {
-      final response = await http.get(
+      http.Response res = await http.delete(
+        Uri.parse('$uri/api/delete-Todo'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': userProvider.user.token,
+        },
+        body: jsonEncode({'id': todoitem.id}),
+      );
+
+      httpErrorHandle(response: res, context: context, onSuccess: onsuccess);
+    } catch (e) {
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'Ok', onPressed: () {});
+    }
+  }
+
+  Future<List<TodoList>> fetchTodoList(BuildContext context) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    List<TodoList> todos = [];
+    try {
+      final res = await http.get(
         Uri.parse('$uri/api/todofetch'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -56,8 +71,22 @@ class TodoServices {
         },
       );
 
-      final responseBody = jsonDecode(response.body);
-      return List<Map<String, dynamic>>.from(responseBody);
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < jsonDecode(res.body).length; i++) {
+            todos.add(
+              TodoList.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+              ),
+            );
+          }
+        },
+      );
+      return todos;
     } catch (e) {
       print('Error fetching todo list: $e');
       throw e;

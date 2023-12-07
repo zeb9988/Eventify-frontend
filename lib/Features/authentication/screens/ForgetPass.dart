@@ -45,8 +45,8 @@ class _ForgetPassState extends State<ForgetPass> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/images/logo.png',
-                height: 70,
+                'assets/images/logo2.png',
+                height: 100,
                 width: double.infinity,
               ),
               const SizedBox(

@@ -68,6 +68,12 @@ class _RegisterState extends State<Register> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Center(
+                child: Image.asset(
+                  'assets/images/logo2.png',
+                  height: 100,
+                ),
+              ),
               Text(
                 'Create Account',
                 style: GoogleFonts.inter(

@@ -58,13 +58,10 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/logo.png',
-                  height: 70,
-                  width: double.infinity,
+                  'assets/images/logo2.png',
+                  height: 100,
                 ),
-                const SizedBox(
-                  height: 12,
-                ),
+
                 Text(
                   AppLocalizations.of(context)!.signin,
                   style: GoogleFonts.inter(

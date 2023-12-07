@@ -32,8 +32,10 @@ class _SplashScreenState extends State<SplashScreen> {
       Provider.of<UserProvider>(context, listen: false).user.token.isNotEmpty
           ? Provider.of<UserProvider>(context, listen: false).user.type ==
                   "admin"
-              ? Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const AdminHomeScreen()))
+              ? Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AdminHomeScreen()))
               : checkScreen()
           : Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => const LandingPage()));
@@ -70,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/images/logo.png',
+                'assets/images/logo2.png',
                 width: 150,
                 height: 150,
               ),

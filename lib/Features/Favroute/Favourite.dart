@@ -28,10 +28,10 @@ class _FavouriteState extends State<Favourite> {
       backgroundColor: COLOR_PRIMARY,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'My Favorites',
           style: TextStyle(
             fontFamily: 'Merriweather',
@@ -51,12 +51,12 @@ class _FavouriteState extends State<Favourite> {
                 child: Container(
                   height: 150,
                   width: 200,
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       Icon(
                         Icons.favorite,
@@ -108,15 +108,15 @@ class _FavouriteState extends State<Favourite> {
                                   arguments: product);
                             },
                             child: Container(
-                              margin: EdgeInsets.only(bottom: 20),
-                              padding: EdgeInsets.all(16),
+                              margin: const EdgeInsets.only(bottom: 20),
+                              padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.shade200,
-                                    offset: Offset(0, 2),
+                                    offset: const Offset(0, 2),
                                     blurRadius: 6,
                                   ),
                                 ],
@@ -124,7 +124,7 @@ class _FavouriteState extends State<Favourite> {
                               child: Row(
                                 children: <Widget>[
                                   Container(
-                                    margin: EdgeInsets.only(right: 10),
+                                    margin: const EdgeInsets.only(right: 10),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.network(
@@ -142,20 +142,20 @@ class _FavouriteState extends State<Favourite> {
                                       children: <Widget>[
                                         Text(
                                           product.businessName,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.black,
                                             fontSize: 18,
                                           ),
                                         ),
-                                        SizedBox(height: 5),
+                                        const SizedBox(height: 5),
                                         Text(
                                           product.category,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         Text(
                                           '\Rs ${product.price}',
                                           style: TextStyle(
@@ -163,25 +163,20 @@ class _FavouriteState extends State<Favourite> {
                                             color: Colors.grey.shade800,
                                           ),
                                         ),
-                                        SizedBox(height: 10),
+                                        const SizedBox(height: 10),
                                       ],
                                     ),
                                   ),
                                   GestureDetector(
-                                    //   onTap: () {
                                     onTap: () {
                                       FavoriteServices favoriteServices =
                                           FavoriteServices();
                                       favoriteServices.removeFav(
                                           context: context, product: product);
                                     },
-
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.favorite,
                                       color: Colors.red,
-                                      // color: isFavoriteList[index]
-                                      //     ? Colors.red
-                                      //     : Colors.black,
                                     ),
                                   ),
                                 ],

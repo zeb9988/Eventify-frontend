@@ -1,3 +1,4 @@
+import 'package:eventify/Models/todoList.dart';
 import 'package:eventify/common/widgets/custombutton.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/checklist/checklistServices.dart';
@@ -15,30 +16,39 @@ class ChecklistScreen extends StatefulWidget {
 class _DashboardState extends State<ChecklistScreen> {
   final TextEditingController _todoTitle = TextEditingController();
   final TextEditingController _todoDesc = TextEditingController();
-  List items = [];
-  final TodoServices todoservice = TodoServices();
+  List<TodoList> items = [];
+  TodoServices todoservice = TodoServices();
+
   @override
   void initState() {
     super.initState();
-
     fetchTodoList();
   }
 
   void fetchTodoList() async {
-    try {
-      List<Map<String, dynamic>> fetchedItems =
-          await TodoServices().fetchTodoList(context);
-      setState(() {
-        items = fetchedItems;
-      });
-    } catch (e) {
-      print('Error fetching todo list: $e');
-    }
+    items = await todoservice.fetchTodoList(context);
+    setState(() {});
   }
 
-  void addTodo() async {
+  void deleteTodoList(int index, TodoList todoitem) {
+    todoservice.deleteTodoList(
+        context: context,
+        todoitem: todoitem,
+        onsuccess: () {
+          items.removeAt(index);
+          setState(() {});
+        });
+  }
+
+  void addTodo() {
     todoservice.todolist(
-        context: context, title: _todoTitle.text, desc: _todoDesc.text);
+      context: context,
+      onsuccess: () {
+        fetchTodoList();
+      },
+      title: _todoTitle.text,
+      desc: _todoDesc.text,
+    );
   }
 
   @override
@@ -46,10 +56,10 @@ class _DashboardState extends State<ChecklistScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'My Checklist',
           style: TextStyle(
             fontFamily: 'Merriweather',
@@ -75,7 +85,7 @@ class _DashboardState extends State<ChecklistScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: items.isEmpty
                     ? Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -86,12 +96,12 @@ class _DashboardState extends State<ChecklistScreen> {
                               color: COLOR_ACCENT,
                               size: 50,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.checklist,
                               color: COLOR_ACCENT,
                               size: 50,
                             ),
-                            Center(
+                            const Center(
                               child: Text(
                                 "Checklist is empty",
                                 style: TextStyle(
@@ -107,35 +117,40 @@ class _DashboardState extends State<ChecklistScreen> {
                     : ListView.builder(
                         itemCount: items.length,
                         itemBuilder: (context, int index) {
+                          final todo = items[index];
                           return Slidable(
-                            key: const ValueKey(0),
+                            key: ValueKey(todo.id),
                             endActionPane: ActionPane(
                               motion: const ScrollMotion(),
-                              dismissible: DismissiblePane(onDismissed: () {}),
+                              dismissible: DismissiblePane(onDismissed: () {
+                                deleteTodoList(index, todo);
+                              }),
                               children: [
                                 SlidableAction(
                                   backgroundColor: const Color(0xFFFE4A49),
                                   foregroundColor: Colors.white,
                                   icon: Icons.delete,
                                   label: 'Delete',
-                                  onPressed: (BuildContext context) {},
+                                  onPressed: (BuildContext context) {
+                                    deleteTodoList(index, todo);
+                                  },
                                 ),
                               ],
                             ),
                             child: Card(
                               borderOnForeground: false,
                               child: ListTile(
-                                leading: Checkbox(
-                                  activeColor: COLOR_ACCENT,
-                                  value: items[index]['checked'] ?? false,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      items[index]['checked'] = value;
-                                    });
-                                  },
-                                ),
-                                title: Text('${items[index]['title']}'),
-                                subtitle: Text('${items[index]['desc']}'),
+                                // leading: Checkbox(
+                                //   activeColor: COLOR_ACCENT,
+                                //   value: todo.checked ?? false,
+                                //   onChanged: (bool? value) {
+                                //     setState(() {
+                                //       todo.checked = value;
+                                //     });
+                                //   },
+                                // ),
+                                title: Text('${todo.title}'),
+                                subtitle: Text('${todo.desc}'),
                                 trailing: const Icon(Icons.arrow_back),
                               ),
                             ),
@@ -164,7 +179,7 @@ class _DashboardState extends State<ChecklistScreen> {
         builder: (context) {
           return AlertDialog(
             backgroundColor: Colors.white,
-            title: Center(child: const Text('Add To-Do')),
+            title: const Center(child: Text('Add To-Do')),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -195,6 +210,7 @@ class _DashboardState extends State<ChecklistScreen> {
                 CustomButton(
                   onTap: () {
                     addTodo();
+                    Navigator.of(context).pop();
                   },
                   text: 'Add',
                 ),

@@ -7,9 +7,9 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import '../../../Models/todoList.dart';
 import '../../../constant/constant.dart';
 import '../../../models/Product.dart';
 import '../../../models/WeatherModel.dart';
@@ -104,8 +104,9 @@ class _DashPageState extends State<DashPage> {
   }
 
   TextEditingController searchController = TextEditingController();
-  List items = [];
+
   final TodoServices todoservice = TodoServices();
+  List<TodoList> items = [];
   @override
   void dispose() {
     searchController.dispose();
@@ -113,15 +114,18 @@ class _DashPageState extends State<DashPage> {
   }
 
   void fetchTodoList() async {
-    try {
-      List<Map<String, dynamic>> fetchedItems =
-          await TodoServices().fetchTodoList(context);
-      setState(() {
-        items = fetchedItems;
-      });
-    } catch (e) {
-      print('Error fetching todo list: $e');
-    }
+    items = await todoservice.fetchTodoList(context);
+    setState(() {});
+  }
+
+  void deleteTodoList(int index, TodoList todoitem) {
+    todoservice.deleteTodoList(
+        context: context,
+        todoitem: todoitem,
+        onsuccess: () {
+          items.removeAt(index);
+          setState(() {});
+        });
   }
 
   @override
@@ -171,7 +175,7 @@ class _DashPageState extends State<DashPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Container(
                   height: 230,
                   decoration: BoxDecoration(
@@ -419,36 +423,31 @@ class _DashPageState extends State<DashPage> {
                         child: ListView.builder(
                           itemCount: items.length,
                           itemBuilder: (context, int index) {
+                            final todo = items[index];
                             return Slidable(
                               key: const ValueKey(0),
                               endActionPane: ActionPane(
                                 motion: const ScrollMotion(),
-                                dismissible:
-                                    DismissiblePane(onDismissed: () {}),
+                                dismissible: DismissiblePane(onDismissed: () {
+                                  deleteTodoList(index, todo);
+                                }),
                                 children: [
                                   SlidableAction(
                                     backgroundColor: const Color(0xFFFE4A49),
                                     foregroundColor: Colors.white,
                                     icon: Icons.delete,
                                     label: 'Delete',
-                                    onPressed: (BuildContext context) {},
+                                    onPressed: (BuildContext context) {
+                                      deleteTodoList(index, todo);
+                                    },
                                   ),
                                 ],
                               ),
                               child: Card(
                                 borderOnForeground: false,
                                 child: ListTile(
-                                  leading: Checkbox(
-                                    activeColor: COLOR_ACCENT,
-                                    value: items[index]['checked'] ?? false,
-                                    onChanged: (bool? value) {
-                                      setState(() {
-                                        items[index]['checked'] = value;
-                                      });
-                                    },
-                                  ),
-                                  title: Text('${items[index]['title']}'),
-                                  subtitle: Text('${items[index]['desc']}'),
+                                  title: Text('${todo.desc}'),
+                                  subtitle: Text('${todo.desc}'),
                                   trailing: const Icon(Icons.arrow_back),
                                 ),
                               ),

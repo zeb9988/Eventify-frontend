@@ -20,7 +20,7 @@ class LandingPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(
-                left: 20.0, right: 20, top: 40, bottom: 50),
+                left: 20.0, right: 20, top: 30, bottom: 50),
             child: Column(
               children: [
                 Row(
@@ -43,11 +43,9 @@ class LandingPage extends StatelessWidget {
                     LanguageMenu(),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+
                 Image.asset(
-                  'assets/images/logos.png',
+                  'assets/images/logo1.png',
                   // width: double.maxFinite,
                   width: 300,
                 ),
