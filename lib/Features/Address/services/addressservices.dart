@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
-import 'package:eventify/features/home/screens/home_screen.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:eventify/utils/ip_adress.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,8 @@ import 'package:http/http.dart' as http;
 import '../../../common/widgets/customSnackbar.dart';
 import '../../../models/user.dart';
 import '../../../utils/error.dart';
-import '../../../utils/snackbar.dart';
+import '../../UserHome/screens/home_screen.dart';
+
 
 class AddressServices {
   void saveUserAddress({
@@ -46,7 +46,7 @@ class AddressServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -91,7 +91,7 @@ class AddressServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:eventify/common/widgets/customSnackbar.dart';
-import 'package:eventify/utils/snackbar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -89,6 +89,6 @@ void httpErrorHandle({
           onPressed: () {});
       break;
     default:
-      showSnackBar(context, 'Unexpected Error: ${response.statusCode}');
+      showCustomSnackBar(text: 'Unexpected Error: ${response.statusCode}', label: "ok",onPressed: (){}, context: context);
   }
 }

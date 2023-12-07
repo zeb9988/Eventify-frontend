@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
-import 'package:eventify/features/home/screens/edit.dart';
-import 'package:eventify/models/producted.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;

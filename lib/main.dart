@@ -1,9 +1,9 @@
 // import 'dart:async';
 import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/common/widgets/splash.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:eventify/prooviders/provider.dart';
-import 'package:eventify/routes.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:eventify/Routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';

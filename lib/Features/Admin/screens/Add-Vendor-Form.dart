@@ -8,24 +8,22 @@ import 'package:eventify/features/admin/services/admin_services.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:eventify/utils/snackbar.dart';
 import 'package:provider/provider.dart';
-
 import '../../../common/widgets/custombutton.dart';
 import '../../../constant/Theme_constant.dart';
 import '../../../constant/constant.dart';
-import '../../home/services/vendor_services.dart';
+import '../../Vendor/Services/vendor_services.dart';
 
-class Addproduct extends StatefulWidget {
+class AddVendorForm extends StatefulWidget {
   static const String id = '/addproduct';
 
-  const Addproduct({Key? key}) : super(key: key);
+  const AddVendorForm({Key? key}) : super(key: key);
 
   @override
-  State<Addproduct> createState() => _AddproductState();
+  State<AddVendorForm> createState() => _AddVendorFormState();
 }
 
-class _AddproductState extends State<Addproduct> {
+class _AddVendorFormState extends State<AddVendorForm> {
   final _addproductform = GlobalKey<FormState>();
   final TextEditingController businessName = TextEditingController();
   final TextEditingController address = TextEditingController();

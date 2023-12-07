@@ -43,6 +43,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Feedback'),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),

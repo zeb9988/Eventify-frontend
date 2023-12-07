@@ -1,15 +1,14 @@
 // ignore_for_file: camel_case_types, non_constant_identifier_names, file_names
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/home/services/HomeServices.dart';
-import 'package:eventify/features/home/services/favoriteServices.dart';
-import 'package:eventify/features/home/widgets/productcard2.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/widgets/SearchBar.dart';
 import '../../constant/constant.dart';
 import '../../prooviders/provider.dart';
+import '../UserHome/services/HomeServices.dart';
+import '../UserHome/widgets/productcard2.dart';
 
 class Vendor_Screen extends StatefulWidget {
   final String product;

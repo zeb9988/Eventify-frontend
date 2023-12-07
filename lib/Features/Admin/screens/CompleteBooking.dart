@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 
 import '../../../models/order.dart';
 
-class SoldBookings extends StatefulWidget {
+class AdminCompleteBookings extends StatefulWidget {
   static const String id = '/SoldBooking';
   final List<Order> orderHistory;
-  SoldBookings({Key? key, required this.orderHistory}) : super(key: key);
+  AdminCompleteBookings({Key? key, required this.orderHistory})
+      : super(key: key);
   @override
-  State<SoldBookings> createState() => _SoldBookingsState();
+  State<AdminCompleteBookings> createState() => _AdminCompleteBookingsState();
 }
 
-class _SoldBookingsState extends State<SoldBookings> {
+class _AdminCompleteBookingsState extends State<AdminCompleteBookings> {
   // List<Order> orderHistory = [];
   // final Orderservices orderservices = Orderservices();
   @override
@@ -37,7 +38,7 @@ class _SoldBookingsState extends State<SoldBookings> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: const Text(
-          'Sold Order',
+          'Complete Bookings',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,

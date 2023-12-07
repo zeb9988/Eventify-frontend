@@ -1,12 +1,12 @@
 import 'package:eventify/common/widgets/star.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/home/services/favoriteServices.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../product_details/Product_detail_screen.dart';
+import '../../Favroute/Services/favoriteServices.dart';
 
 class BestSellerCard extends StatefulWidget {
   final Product Data;

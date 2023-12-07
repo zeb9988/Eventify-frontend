@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:eventify/constant/constant.dart';
 import 'package:eventify/features/address/services/addressservices.dart';
 import 'package:eventify/prooviders/provider.dart';
-import 'package:eventify/utils/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +58,7 @@ class _AddressScreenState extends State<AddressScreen> {
     } else if (addressFromProvider.isNotEmpty) {
       addressToBeUsed = addressFromProvider;
     } else {
-      return showSnackBar(context, 'ERROR');
+      return showCustomSnackBar(context: context, text: 'ERROR', label: 'OK', onPressed: (){});
     }
     saveAdress();
   }

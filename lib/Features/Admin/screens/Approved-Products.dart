@@ -2,7 +2,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/Theme_constant.dart';
 import '../../../models/Product.dart';
-import '../../home/services/vendor_services.dart';
 
 class ApprovedProducts extends StatefulWidget {
   static const String id = '/allapprovedproducts';

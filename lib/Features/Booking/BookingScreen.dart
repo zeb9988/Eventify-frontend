@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/order.dart';
 import '../cart/cartlist.dart';
-import 'Booking_services.dart';
+import 'Services/Booking_services.dart';
 
 class OrderScreen extends StatefulWidget {
   static const String id = '/OrderScreen';
@@ -20,7 +20,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   List<Order> orders = [];
-  final Orderservices orderservices = Orderservices();
+  final BookingServices orderservices = BookingServices();
 
   @override
   void initState() {

@@ -1,10 +1,8 @@
-import 'package:eventify/common/widgets/customDialogBox.dart';
 import 'package:eventify/features/admin/Widgets/totalEarningcard.dart';
-import 'package:eventify/utils/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:eventify/features/admin/model/sales.dart';
 import 'package:eventify/features/admin/services/admin_services.dart';
+import '../../../Models/sales.dart';
 import '../../../common/widgets/Loader.dart';
 import 'dart:math';
 

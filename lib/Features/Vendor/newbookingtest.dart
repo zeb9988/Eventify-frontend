@@ -1,8 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eventify/Features/Booking/Services/Booking_services.dart';
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/Booking/Booking_services.dart';
 import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:eventify/features/Vendor/trackmybooking.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class NewBookingTest extends StatefulWidget {
 
 class _NewBookingTestState extends State<NewBookingTest> {
   List<Order> orders = [];
-  final Orderservices orderservices = Orderservices();
+  final BookingServices orderservices = BookingServices();
 
   @override
   void initState() {

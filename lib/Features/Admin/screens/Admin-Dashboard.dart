@@ -1,15 +1,13 @@
+import 'package:eventify/Features/Admin/screens/BookingScreen.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/admin/Widgets/dashCard.dart';
-import 'package:eventify/features/admin/screens/Add-Vendor-Form.dart';
 import 'package:eventify/features/admin/screens/Approved-Products.dart';
 import 'package:eventify/features/admin/screens/Manage-Products.dart';
 import 'package:eventify/features/admin/screens/Users.dart';
-import 'package:eventify/features/admin/screens/Vendor-Requests.dart';
-import 'package:eventify/features/admin/screens/allFeedback.dart';
+import 'package:eventify/features/admin/screens/PendingProduct.dart';
+import 'package:eventify/features/admin/screens/AppFeedBack.dart';
 import 'package:eventify/features/admin/screens/analyticsScreen.dart';
-import 'package:eventify/features/admin/screens/sendNotfication.dart';
-import 'package:eventify/features/admin/screens/soldOrderscreen.dart';
+import 'package:eventify/features/admin/screens/SendNotfication.dart';
 import 'package:eventify/features/admin/services/admin_services.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:eventify/prooviders/provider.dart';
@@ -17,6 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../models/order.dart';
 import '../../../models/user.dart';
+import 'Add-Vendor-Form.dart';
+import 'CompleteBooking.dart';
 
 class Admin_Dashboard extends StatefulWidget {
   static const String id = '/AllServices';
@@ -107,7 +107,7 @@ class _Admin_DashboardState extends State<Admin_Dashboard> {
                         Navigator.pushNamed(context, Manage_Product.id);
                       },
                       child: const dashCard(
-                          text: 'Products',
+                          text: 'All Products',
                           image: 'assets/images/product.png')),
                   GestureDetector(
                       onTap: () => Navigator.pushNamed(context, Users.id),
@@ -121,17 +121,18 @@ class _Admin_DashboardState extends State<Admin_Dashboard> {
                           text: 'Analytics',
                           image: 'assets/images/analytics.png')),
                   GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, Addproduct.id),
+                      onTap: () =>
+                          Navigator.pushNamed(context, AddVendorForm.id),
                       child: const dashCard(
                           text: 'Add Product',
                           image: 'assets/images/addproduct.png')),
                   GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, AdminOrderHistory.id,
+                        Navigator.pushNamed(context, AdminCompleteBookings.id,
                             arguments: soldOrders);
                       },
                       child: dashCard(
-                          text: 'Orders: ${soldOrders.length}',
+                          text: 'Completed Booking: ${soldOrders.length}',
                           image: 'assets/images/order.png')),
                   GestureDetector(
                       onTap: () {
@@ -143,7 +144,7 @@ class _Admin_DashboardState extends State<Admin_Dashboard> {
                           image: 'assets/images/approve.png')),
                   GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, PendingProducts.id,
+                        Navigator.pushNamed(context, VendorProductRequest.id,
                             arguments: pendingVendors);
                       },
                       child: dashCard(
@@ -158,11 +159,18 @@ class _Admin_DashboardState extends State<Admin_Dashboard> {
                           image: 'assets/images/notification.png')),
                   GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, GetFeedbackScreen.id);
+                        Navigator.pushNamed(context, AppFeedbackScreen.id);
                       },
                       child: const dashCard(
                           text: 'Users Feedback',
                           image: 'assets/images/feedbacklogo.png')),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, AdminBookingScreen.id);
+                      },
+                      child: const dashCard(
+                          text: 'Current Bookings',
+                          image: 'assets/images/adminorderdetail.png')),
                 ],
               ),
             ),

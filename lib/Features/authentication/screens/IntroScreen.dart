@@ -1,8 +1,9 @@
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../UserHome/screens/home_screen.dart';
 
 class IntroScreen extends StatelessWidget {
   IntroScreen({Key? key}) : super(key: key);

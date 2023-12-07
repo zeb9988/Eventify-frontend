@@ -1,13 +1,15 @@
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/checklist/Checklist.dart';
-import 'package:eventify/features/home/screens/About.dart';
-import 'package:eventify/features/home/screens/Allcatagory.dart';
-import 'package:eventify/features/home/screens/Favourite.dart';
-import 'package:eventify/features/home/widgets/DashboardSubcard.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../screens/About.dart';
+import '../screens/Allcatagory.dart';
+import '../../Favroute/Favourite.dart';
+import 'DashboardSubcard.dart';
 
 class dashcard extends StatelessWidget {
   const dashcard({

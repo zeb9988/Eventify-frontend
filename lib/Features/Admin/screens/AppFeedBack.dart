@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 import '../../../Models/feedback.dart';
 
-class GetFeedbackScreen extends StatefulWidget {
+class AppFeedbackScreen extends StatefulWidget {
   static const String id = '/getfeedbacks';
 
   @override
-  _GetFeedbackScreenState createState() => _GetFeedbackScreenState();
+  _AppFeedbackScreenState createState() => _AppFeedbackScreenState();
 }
 
-class _GetFeedbackScreenState extends State<GetFeedbackScreen> {
+class _AppFeedbackScreenState extends State<AppFeedbackScreen> {
   List<Feedbacks> feedbackList = [];
   AdminServices adminservices = AdminServices();
   bool isLoading = true;

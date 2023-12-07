@@ -1,17 +1,15 @@
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/Vendor/bokinghistoryvendor.dart';
 import 'package:eventify/features/Vendor/bookingHistoryTest.dart';
 import 'package:eventify/features/Vendor/declineBookingTest.dart';
-import 'package:eventify/features/Vendor/declinebooking.dart';
-import 'package:eventify/features/Vendor/newbooking.dart';
 import 'package:eventify/features/Vendor/newbookingtest.dart';
 import 'package:eventify/features/admin/Widgets/dashCard.dart';
-import 'package:eventify/features/home/screens/approvalscreen.dart';
-import 'package:eventify/features/home/screens/pendingapproval.dart';
-import 'package:eventify/features/home/screens/vendor_register.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../UserHome/screens/approvalscreen.dart';
+import '../UserHome/screens/pendingapproval.dart';
+import '../UserHome/screens/vendor_register.dart';
 
 class VendorPage extends StatefulWidget {
   static const String id = '/Vendorpage';
@@ -111,18 +109,6 @@ class _VendorPageState extends State<VendorPage> {
                     child: const dashCard(
                         text: 'New bookings ',
                         image: 'assets/images/pendingorder.png'),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const dashCard(
-                        text: 'Analytics',
-                        image: 'assets/images/analytics.png'),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: const dashCard(
-                        text: 'Processing booking',
-                        image: 'assets/images/processingorder.png'),
                   ),
                   GestureDetector(
                       onTap: () {

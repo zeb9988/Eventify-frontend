@@ -6,12 +6,12 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:el_tooltip/el_tooltip.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/common/widgets/custombutton.dart';
-import 'package:eventify/features/home/screens/home_screen.dart';
-import 'package:eventify/features/home/services/userServices.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/Theme_constant.dart';
 import '../../../constant/constant.dart';
+import '../services/userServices.dart';
+import 'home_screen.dart';
 
 class EditProduct extends StatefulWidget {
   static const String id = '/editproduct';

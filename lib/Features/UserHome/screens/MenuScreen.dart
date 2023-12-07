@@ -1,17 +1,12 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eventify/Features/UserHome/screens/pendingapproval.dart';
+import 'package:eventify/Features/UserHome/screens/vendor_register.dart';
 import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/customtextfeild.dart';
 import 'package:eventify/features/Vendor/Vendor_Page.dart';
 import 'package:eventify/features/cart/cart_screen.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
-import 'package:eventify/features/home/screens/About.dart';
-import 'package:eventify/features/home/screens/Favourite.dart';
-import 'package:eventify/features/home/screens/approvalscreen.dart';
-import 'package:eventify/features/home/screens/pendingapproval.dart';
-import 'package:eventify/features/home/screens/vendor_register.dart';
-import 'package:eventify/features/home/services/userServices.dart';
-import 'package:eventify/features/home/widgets/language_menu.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +16,11 @@ import '../../../common/widgets/custombutton.dart';
 import '../../Booking/BookingHistory.dart';
 import '../../Booking/BookingScreen.dart';
 import '../../authentication/services/accountservices.dart';
+import '../services/userServices.dart';
+import '../widgets/language_menu.dart';
+import 'About.dart';
+import '../../Favroute/Favourite.dart';
+import 'approvalscreen.dart';
 
 class MenuScreen extends StatefulWidget {
   static const String id = '/MenuScreen';

@@ -1,7 +1,8 @@
 import 'package:eventify/features/admin/services/admin_services.dart';
-import 'package:eventify/features/home/widgets/card.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
+
+import '../../UserHome/widgets/card.dart';
 
 class Transport extends StatefulWidget {
   @override

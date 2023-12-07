@@ -1,9 +1,10 @@
+import 'package:eventify/Features/UserHome/screens/mainEventscreen.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/constant/constant.dart';
-import 'package:eventify/features/home/screens/mainEventscreen.dart';
-import 'package:eventify/features/home/widgets/TopEventCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'TopEventCard.dart';
 
 class topeventcards extends StatelessWidget {
   const topeventcards({

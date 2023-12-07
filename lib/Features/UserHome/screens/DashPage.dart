@@ -2,13 +2,10 @@
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/MainSearchBar.dart';
-import 'package:eventify/features/home/widgets/AppbarClipper.dart';
-import 'package:eventify/features/home/widgets/dashcards.dart';
-import 'package:eventify/features/home/widgets/topeventwidget.dart';
 import 'package:eventify/features/search/Search.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:eventify/features/home/widgets/slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -18,8 +15,13 @@ import '../../../models/Product.dart';
 import '../../../models/WeatherModel.dart';
 import '../../../prooviders/provider.dart';
 import '../../Weather/Services/weatherServices.dart';
+import '../../checklist/checklistServices.dart';
 import '../services/HomeServices.dart';
+import '../widgets/AppbarClipper.dart';
 import '../widgets/BestSellerCard.dart';
+import '../widgets/dashcards.dart';
+import '../widgets/slider.dart';
+import '../widgets/topeventwidget.dart';
 
 class DashPage extends StatefulWidget {
   static const String id = '/DashPage';
@@ -84,6 +86,7 @@ class _DashPageState extends State<DashPage> {
   void initState() {
     super.initState();
     fetchDealOfDay();
+    fetchTodoList();
     _fetchWeather();
   }
 
@@ -101,11 +104,24 @@ class _DashPageState extends State<DashPage> {
   }
 
   TextEditingController searchController = TextEditingController();
-
+  List items = [];
+  final TodoServices todoservice = TodoServices();
   @override
   void dispose() {
     searchController.dispose();
     super.dispose();
+  }
+
+  void fetchTodoList() async {
+    try {
+      List<Map<String, dynamic>> fetchedItems =
+          await TodoServices().fetchTodoList(context);
+      setState(() {
+        items = fetchedItems;
+      });
+    } catch (e) {
+      print('Error fetching todo list: $e');
+    }
   }
 
   @override
@@ -302,17 +318,6 @@ class _DashPageState extends State<DashPage> {
                 height: 220,
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Hot Deals',
-                          style: GoogleFonts.poppins(
-                              color: Colors.black,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
                     const SizedBox(
                       height: 15,
                     ),
@@ -361,6 +366,101 @@ class _DashPageState extends State<DashPage> {
                           ),
                   ],
                 ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Quick Checklist',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    if (items.isEmpty)
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 200,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Loader(),
+                        ),
+                      )
+                    else
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        height: 200,
+                        width: 400,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.0),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                        child: ListView.builder(
+                          itemCount: items.length,
+                          itemBuilder: (context, int index) {
+                            return Slidable(
+                              key: const ValueKey(0),
+                              endActionPane: ActionPane(
+                                motion: const ScrollMotion(),
+                                dismissible:
+                                    DismissiblePane(onDismissed: () {}),
+                                children: [
+                                  SlidableAction(
+                                    backgroundColor: const Color(0xFFFE4A49),
+                                    foregroundColor: Colors.white,
+                                    icon: Icons.delete,
+                                    label: 'Delete',
+                                    onPressed: (BuildContext context) {},
+                                  ),
+                                ],
+                              ),
+                              child: Card(
+                                borderOnForeground: false,
+                                child: ListTile(
+                                  leading: Checkbox(
+                                    activeColor: COLOR_ACCENT,
+                                    value: items[index]['checked'] ?? false,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        items[index]['checked'] = value;
+                                      });
+                                    },
+                                  ),
+                                  title: Text('${items[index]['title']}'),
+                                  subtitle: Text('${items[index]['desc']}'),
+                                  trailing: const Icon(Icons.arrow_back),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 30,
               ),
             ],
           ),

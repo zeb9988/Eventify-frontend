@@ -1,5 +1,5 @@
+import 'package:eventify/Features/Booking/Services/Booking_services.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/Booking/Booking_services.dart';
 import 'package:eventify/features/admin/services/admin_services.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +36,7 @@ class _TrackMyOrderState extends State<TrackMyOrder> {
         widget.order.status.clamp(0, 3); // Assuming you have 4 steps (0 to 3)
   }
 
-  Orderservices orderservices = Orderservices();
+  BookingServices orderservices = BookingServices();
   void submitFeedback() {
     orderservices.rateProduct(
         context: context,

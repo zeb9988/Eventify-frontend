@@ -1,20 +1,17 @@
+// ignore_for_file: use_build_context_synchronously, duplicate_ignore
+
 import 'dart:convert';
 import 'dart:io';
-
-// import 'package:amazon/provider/userprovider.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
-import 'package:eventify/features/admin/model/feedback.dart';
-import 'package:eventify/features/admin/model/sales.dart';
-import 'package:eventify/features/admin/screens/Admin-Dashboard.dart';
-import 'package:eventify/features/admin/screens/Users.dart';
 import 'package:eventify/models/order.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:eventify/utils/error.dart';
-import 'package:eventify/utils/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import '../../../Models/feedback.dart';
+import '../../../Models/sales.dart';
 import '../../../models/Product.dart';
 import '../../../models/user.dart';
 import '../../../utils/ip_adress.dart';
@@ -23,7 +20,6 @@ class AdminServices {
   Future<List<Product>> fetchcatagory(
       {required BuildContext context, required String catagory}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
-    print(userprovider.user.token);
     List<Product>? product = [];
     try {
       http.Response res = await http
@@ -48,16 +44,15 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
-    print(product);
     return product;
   }
 
   Future<List<Product>> fetchApprovedVendors(
       {required BuildContext context}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
-    print(userprovider.user.token);
+
     List<Product>? product = [];
     try {
       http.Response res =
@@ -82,16 +77,16 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
-    print(product);
+
     return product;
   }
 
   Future<List<Product>> fetchPendingVendors(
       {required BuildContext context}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
-    print(userprovider.user.token);
+
     List<Product>? product = [];
     try {
       http.Response res =
@@ -116,15 +111,15 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
-    print(product);
+
     return product;
   }
 
   Future<List<User>> fetchUsers({required BuildContext context}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
-    print(userprovider.user.token);
+
     List<User> users = [];
     try {
       http.Response res =
@@ -149,15 +144,14 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
-    print(users);
+
     return users;
   }
 
   Future<List<Order>> fetchSoldOrders({required BuildContext context}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
-    print(userprovider.user.token);
     List<Order> soldOrders = [];
     try {
       http.Response res =
@@ -182,9 +176,8 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
-    print(soldOrders);
     return soldOrders;
   }
 
@@ -193,7 +186,6 @@ class AdminServices {
       required User user,
       required VoidCallback onsuccess}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
-    print(userprovider.user.token);
     // List<User> users = [];
     try {
       http.Response res = await http.delete(
@@ -215,7 +207,7 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
     // print(users);
     // return users;
@@ -252,14 +244,11 @@ class AdminServices {
         response: res,
         context: context,
         onSuccess: () {
-          showSnackBar(
-            context,
-            'Account created!!',
-          );
+          showCustomSnackBar(context: context, text: "Account created successfully", label: 'ok', onPressed: (){});
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -288,7 +277,7 @@ class AdminServices {
             onsuccess();
           });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -309,7 +298,6 @@ class AdminServices {
         context: context,
         onSuccess: () {
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            print('asdas');
             orderList.add(
               Order.fromJson(
                 jsonEncode(
@@ -317,12 +305,11 @@ class AdminServices {
                 ),
               ),
             );
-            print(orderList);
           }
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
     return orderList;
   }
@@ -391,10 +378,10 @@ class AdminServices {
           response: response,
           context: context,
           onSuccess: () {
-            showSnackBar(context, " product added success");
+            showCustomSnackBar(context: context, text: "Product added successfully!", label: 'ok', onPressed: (){});
           });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -425,7 +412,7 @@ class AdminServices {
         onSuccess: onSuccess,
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -459,7 +446,7 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -515,7 +502,7 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
     return {
       'sales': sales,
@@ -550,9 +537,8 @@ class AdminServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
-    print(feedback);
     return feedback;
   }
 }

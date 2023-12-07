@@ -1,8 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
+import '../common/widgets/custombutton.dart';
 import '../features/cart/cart_screen.dart';
+import 'Theme_constant.dart';
 
 List<String> productCategories = [
   'Photographer',
@@ -52,7 +57,22 @@ String getWeatherAnimation(String? mainCondition) {
       return 'assets/animation/sunny.json';
   }
 }
+Future<List<File>> pickImages() async {
+  List<File> images = [];
 
+  try {
+    var file = await FilePicker.platform
+        .pickFiles(type: FileType.image, allowMultiple: true);
+    if (file != null && file.files.isNotEmpty) {
+      for (int i = 0; i < file.files.length; i++) {
+        images.add(File(file.files[i].path!));
+      }
+    }
+  } catch (e) {
+    debugPrint(e.toString());
+  }
+  return images;
+}
 //Top Event name list
 
 List<Map<String, dynamic>> TopEventList = [
@@ -673,3 +693,204 @@ IconButton CartButton(BuildContext context, int cartItemCount, Color color) {
     ),
   );
 }
+
+void showCustomDialog(BuildContext context, String text, IconData icon) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return Dialog(
+        elevation: 1,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: Container(
+          width: MediaQuery.of(context).size.width / 1.4,
+          height: MediaQuery.of(context).size.height / 3.5,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15.0),
+            boxShadow: [
+              BoxShadow(
+                offset: const Offset(12, 26),
+                blurRadius: 50,
+                spreadRadius: 0,
+                color: Colors.grey.withOpacity(.1),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundColor: COLOR_ACCENT,
+                radius: 25,
+                child: Icon(icon, color: Colors.white),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CustomButton(
+                    text: "Ok",
+                    onTap: ()=>    Navigator.of(context).pop(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+// ignore: non_constant_identifier_names
+List AllCategoryList = [
+  {
+    'image': 'assets/images/photo.jpg',
+    'name': 'Photographer',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Videographer',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/cat.jpg',
+    'name': 'Catering',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/light.jpg',
+    'name': 'Florists',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/entertainment.jpg',
+    'name': 'Entertainer',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/car.jpg',
+    'name': 'Transportation Service',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/light.jpg',
+    'name': 'Sound & Lighting',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/light.jpg',
+    'name': 'Security Service',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/photo.jpg',
+    'name': 'Event Invitations and Printing',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Ticketing and Promotion',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Branding & Marketing',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/img1.jpg',
+    'name': 'Party Planner',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/eve.jpg',
+    'name': 'Event Planner',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Venues',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Wedding Planner',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Makeup Artist & Salon',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Mehndi Artist',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/photo.jpg',
+    'name': 'Decorator',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/photo.jpg',
+    'name': 'Jewelry Store',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Wedding Car Decorators',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/photo.jpg',
+    'name': 'Wedding Dress Boutique',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+  {
+    'image': 'assets/images/Video.jpg',
+    'name': 'Concert',
+    'description':
+    'Experience luxury redefined with our exquisite collection of products.'
+  },
+
+
+];

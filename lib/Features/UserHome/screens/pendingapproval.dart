@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/Product.dart';
-import '../services/vendor_services.dart';
+import '../../Vendor/Services/vendor_services.dart';
 
 class PendingRequest extends StatefulWidget {
   static const String id = '/pendingapproval';

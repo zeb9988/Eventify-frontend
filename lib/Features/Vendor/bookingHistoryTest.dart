@@ -1,6 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eventify/Features/Booking/Services/Booking_services.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/Booking/Booking_services.dart';
 import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class BokinghistoryTest extends StatefulWidget {
 
 class _BokinghistoryTestState extends State<BokinghistoryTest> {
   List<Order> orderHistory = [];
-  final Orderservices orderservices = Orderservices();
+  final BookingServices orderservices = BookingServices();
 
   @override
   void initState() {

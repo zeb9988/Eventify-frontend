@@ -4,7 +4,7 @@ import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../authentication/screens/Login.dart';
+import '../screens/Login.dart';
 
 void logOut(BuildContext context) async {
   try {

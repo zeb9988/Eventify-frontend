@@ -1,53 +1,49 @@
-
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/Vendor/Vendor_Page.dart';
-import 'package:eventify/features/Vendor/bokinghistoryvendor.dart';
 import 'package:eventify/features/Vendor/bookingHistoryTest.dart';
 import 'package:eventify/features/Vendor/declineBookingTest.dart';
-import 'package:eventify/features/Vendor/declinebooking.dart';
-import 'package:eventify/features/Vendor/newbooking.dart';
 import 'package:eventify/features/Vendor/newbookingtest.dart';
 import 'package:eventify/features/Vendor/trackmybooking.dart';
 import 'package:eventify/features/admin/screens/Add-Vendor-Form.dart';
 import 'package:eventify/features/admin/screens/Approved-Products.dart';
 import 'package:eventify/features/admin/screens/Detail_Screen.dart';
 import 'package:eventify/features/admin/screens/Users.dart';
-import 'package:eventify/features/admin/screens/Vendor-Requests.dart';
-import 'package:eventify/features/admin/screens/allFeedback.dart';
+import 'package:eventify/features/admin/screens/PendingProduct.dart';
+import 'package:eventify/features/admin/screens/AppFeedBack.dart';
 import 'package:eventify/features/admin/screens/analyticsScreen.dart';
-import 'package:eventify/features/admin/screens/sendNotfication.dart';
-import 'package:eventify/features/admin/screens/soldOrderscreen.dart';
+import 'package:eventify/features/admin/screens/SendNotfication.dart';
+import 'package:eventify/features/admin/screens/CompleteBooking.dart';
 import 'package:eventify/features/authentication/screens/ForgetPass.dart';
 import 'package:eventify/features/checklist/Checklist.dart';
-import 'package:eventify/features/home/screens/About.dart';
-import 'package:eventify/features/home/screens/Favourite.dart';
-import 'package:eventify/features/home/screens/MenuScreen.dart';
-import 'package:eventify/features/admin/screens/adminOrderPage.dart';
-import 'package:eventify/features/home/screens/edit.dart';
-import 'package:eventify/features/home/screens/pendingapproval.dart';
+import 'package:eventify/features/admin/screens/BookingScreen.dart';
 import 'package:eventify/features/cart/cart_screen.dart';
-import 'package:eventify/features/home/screens/Allcatagory.dart';
-import 'package:eventify/features/home/screens/home_screen.dart';
 import 'package:eventify/features/authentication/screens/Login.dart';
 import 'package:eventify/features/authentication/screens/regisster.dart';
-import 'package:eventify/features/home/screens/vendor_register.dart';
 import 'package:eventify/features/product_details/Product_detail_screen.dart';
 import 'package:eventify/features/product_details/Vendor_Screen.dart';
 import 'package:eventify/models/approvedVendor.dart';
 import 'package:eventify/models/order.dart';
 import 'package:eventify/common/widgets/splash.dart';
 import 'package:flutter/material.dart';
-import 'features/Booking/BookingHistory.dart';
-import 'features/Booking/BookingScreen.dart';
-import 'features/Booking/TrackBooking.dart';
-import 'features/admin/screens/Home-Screen.dart';
-import 'features/admin/screens/Manage-Products.dart';
-import 'features/home/screens/DashPage.dart';
-import 'features/Chat/Messages.dart';
-import 'features/home/screens/approvalscreen.dart';
-import 'features/home/screens/mainEventscreen.dart';
-import 'features/search/Search.dart';
-import 'models/Product.dart';
+import '../Features/UserHome/screens/About.dart';
+import '../Features/UserHome/screens/Allcatagory.dart';
+import '../Features/UserHome/screens/DashPage.dart';
+import '../Features/Favroute/Favourite.dart';
+import '../Features/UserHome/screens/MenuScreen.dart';
+import '../Features/UserHome/screens/approvalscreen.dart';
+import '../Features/UserHome/screens/edit.dart';
+import '../Features/UserHome/screens/home_screen.dart';
+import '../Features/UserHome/screens/mainEventscreen.dart';
+import '../Features/UserHome/screens/pendingapproval.dart';
+import '../Features/UserHome/screens/vendor_register.dart';
+import '../features/Booking/BookingHistory.dart';
+import '../features/Booking/BookingScreen.dart';
+import '../features/Booking/TrackBooking.dart';
+import '../features/admin/screens/Home-Screen.dart';
+import '../features/admin/screens/Manage-Products.dart';
+
+import '../features/search/Search.dart';
+import '../models/Product.dart';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
@@ -82,10 +78,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => Favourite(),
       );
-    case GetFeedbackScreen.id:
+
+    case AppFeedbackScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => GetFeedbackScreen(),
+        builder: (_) => AppFeedbackScreen(),
       );
     case NewBookingTest.id:
       return MaterialPageRoute(
@@ -143,12 +140,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
           approvedVendors: approvedProducts,
         ),
       );
-    case AdminOrderHistory.id:
-      var soldOrders = routeSettings.arguments as List<Order>;
+    case EditProduct.id:
+      var approvedProducts = routeSettings.arguments as Product;
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AdminOrderHistory(
-          orderHistory: soldOrders,
+        builder: (_) => EditProduct(
+          approvedVendors: approvedProducts,
         ),
       );
     case MainEvent.id:
@@ -163,12 +160,6 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => DetailScreen(product: productss),
-      );
-
-    case Messages.id:
-      return MaterialPageRoute(
-        settings: routeSettings,
-        builder: (_) => Messages(),
       );
 
     case FeedbackScreen.id:
@@ -192,7 +183,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => Users(),
       );
-      
+
     case DeclineBookingTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
@@ -229,16 +220,22 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => Vendor_Screen(product: products),
       );
+    case AdminCompleteBookings.id:
+      var products = routeSettings.arguments as List<Order>;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => AdminCompleteBookings(orderHistory: products),
+      );
     case ProductDetailsScreen.id:
       var products = routeSettings.arguments as Product;
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => ProductDetailsScreen(product: products),
       );
-    case Addproduct.id:
+    case AddVendorForm.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => Addproduct(),
+        builder: (_) => AddVendorForm(),
       );
     case Search.id:
       var search = routeSettings.arguments as String;
@@ -250,10 +247,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         builder: (_) => Register(),
       );
 
-    case Adminscreen.id:
+    case AdminHomeScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => Adminscreen(),
+        builder: (_) => AdminHomeScreen(),
       );
 
     // case Dashboard.id:
@@ -289,15 +286,15 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => TrackUserOrder(order: order),
       );
-    case AdminOrderScreen.id:
+    case AdminBookingScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AdminOrderScreen(),
+        builder: (_) => AdminBookingScreen(),
       );
-    case PendingProducts.id:
+    case VendorProductRequest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => PendingProducts(),
+        builder: (_) => VendorProductRequest(),
       );
     case AddVendors.id:
       return MaterialPageRoute(

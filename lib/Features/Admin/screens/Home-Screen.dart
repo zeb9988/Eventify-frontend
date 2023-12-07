@@ -1,23 +1,23 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:eventify/features/account/services/accountservices.dart';
 import 'package:eventify/features/admin/screens/Admin-Dashboard.dart';
 import 'package:eventify/features/admin/screens/analyticsScreen.dart';
-import 'package:eventify/features/admin/screens/sendNotfication.dart';
-import 'package:eventify/msgservicee.dart';
+import 'package:eventify/features/admin/screens/SendNotfication.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/Theme_constant.dart';
-import 'adminOrderPage.dart';
+import '../../Notification/msgservicee.dart';
+import '../../authentication/services/accountservices.dart';
+import 'BookingScreen.dart';
 
-class Adminscreen extends StatefulWidget {
+class AdminHomeScreen extends StatefulWidget {
   static const String id = '/Admin';
 
-  const Adminscreen({Key? key}) : super(key: key);
+  const AdminHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<Adminscreen> createState() => _AdminscreenState();
+  State<AdminHomeScreen> createState() => _AdminHomeScreenState();
 }
 
-class _AdminscreenState extends State<Adminscreen> {
+class _AdminHomeScreenState extends State<AdminHomeScreen> {
   MessagingService messagingService = MessagingService();
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _AdminscreenState extends State<Adminscreen> {
   final List pages = [
     // SafeArea(child: DashPage()),
     const Admin_Dashboard(),
-    const AdminOrderScreen(),
+    const AdminBookingScreen(),
     const AnalyticsScreen(),
     const SendNotifications(),
   ];

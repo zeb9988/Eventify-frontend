@@ -7,7 +7,7 @@ import '../../../models/order.dart';
 import '../../Booking/TrackBooking.dart';
 
 class AdminBookingScreen extends StatefulWidget {
-  static const String id = '/OrderScreen';
+  static const String id = '/AdminOrderScreen';
   const AdminBookingScreen({Key? key}) : super(key: key);
 
   @override
@@ -39,7 +39,7 @@ class _AdminBookingScreenState extends State<AdminBookingScreen> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: Text(
-          'Order Details',
+          ' Current Bookings ',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,

@@ -5,13 +5,11 @@ import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
-
 import '../../common/widgets/customSnackbar.dart';
 import '../../models/Product.dart';
 import '../../models/user.dart';
 import '../../utils/error.dart';
 import '../../utils/ip_adress.dart';
-import '../../utils/snackbar.dart';
 import 'cart_screen.dart';
 
 class CartServices {
@@ -53,7 +51,7 @@ class CartServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -82,7 +80,7 @@ class CartServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 }

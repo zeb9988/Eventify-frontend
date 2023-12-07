@@ -4,7 +4,7 @@ import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/admin/screens/Detail_Screen.dart';
 import 'package:flutter/material.dart';
 import '../../../models/approvedVendor.dart';
-import '../../home/services/vendor_services.dart';
+import '../../Vendor/Services/vendor_services.dart';
 
 class VendorProductRequest extends StatefulWidget {
   static const String id = '/UserPending';

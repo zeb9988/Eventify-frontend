@@ -2,12 +2,12 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/common/widgets/customDialogBox.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/common/widgets/custombutton.dart';
-import 'package:eventify/features/home/screens/edit.dart';
-import 'package:eventify/features/home/services/userServices.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/Theme_constant.dart';
 import '../../../models/Product.dart';
-import '../services/vendor_services.dart';
+import '../services/userServices.dart';
+import '../../Vendor/Services/vendor_services.dart';
+import 'edit.dart';
 
 class ApprovedRequest extends StatefulWidget {
   static const String id = '/approvedapproval';

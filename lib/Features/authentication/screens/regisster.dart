@@ -2,10 +2,10 @@ import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/authentication/services/authservices.dart';
 import 'package:eventify/common/widgets/customtextfeild.dart';
 import 'package:eventify/features/authentication/widget/check_box.dart';
-import 'package:eventify/features/home/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../UserHome/widgets/button.dart';
 import 'Login.dart';
 //import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

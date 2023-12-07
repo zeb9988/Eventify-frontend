@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../common/widgets/Loader.dart';
 import '../../common/widgets/MainSearchBar.dart';
 import '../../models/Product.dart';
-import '../home/widgets/AppbarClipper.dart';
+import '../UserHome/widgets/AppbarClipper.dart';
 import 'SearchedProduct.dart';
 
 class Search extends StatefulWidget {

@@ -2,7 +2,8 @@ import 'package:eventify/features/admin/services/admin_services.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
 
-import '../../home/widgets/card.dart';
+import '../../UserHome/widgets/card.dart';
+
 
 class EventPlanner extends StatefulWidget {
   const EventPlanner({Key? key}) : super(key: key);

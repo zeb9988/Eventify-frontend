@@ -5,16 +5,16 @@ import 'package:eventify/common/widgets/custombutton.dart';
 import 'package:eventify/common/widgets/star.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/cart/cartservices.dart';
-import 'package:eventify/features/home/services/HomeServices.dart';
-import 'package:eventify/features/home/widgets/BestSellerCard.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../UserHome/services/HomeServices.dart';
+import '../Favroute/Services/favoriteServices.dart';
+import '../UserHome/widgets/BestSellerCard.dart';
 import '../address/screens/adress_screen.dart';
-import '../home/services/favoriteServices.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   static const String id = '/DetailsScreen';
@@ -217,7 +217,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
               SliverList(
                 delegate: SliverChildListDelegate([
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.9 + 150,
+                    height: MediaQuery.of(context).size.height * 0.9 + 230,
                     color: COLOR_PRIMARY,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 15),

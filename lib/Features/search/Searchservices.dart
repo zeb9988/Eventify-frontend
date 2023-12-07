@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:eventify/utils/error.dart';
 import 'package:eventify/utils/ip_adress.dart';
-import 'package:eventify/utils/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
+import '../../common/widgets/customSnackbar.dart';
 import '../../models/Product.dart';
 
 class Searchservices {
@@ -39,7 +39,7 @@ class Searchservices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
     print(product);
     return product;

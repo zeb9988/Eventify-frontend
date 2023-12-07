@@ -1,19 +1,17 @@
+// ignore_for_file: use_build_context_synchronously, duplicate_ignore, non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/prooviders/provider.dart';
-import 'package:eventify/features/home/screens/home_screen.dart';
-// import 'package:eventify/screens/Login.dart';
-// import 'package:eventify/screens/admin.dart';
-// import 'package:eventify/screens/Dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../../utils/ip_adress.dart';
 import '../../../utils/error.dart';
-import '../../../utils/snackbar.dart';
 import 'package:provider/provider.dart';
 import '../../../models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../UserHome/screens/home_screen.dart';
 import '../../admin/screens/Home-Screen.dart';
 
 class AuthService {
@@ -67,10 +65,7 @@ class AuthService {
 
   void Forgetpassword(
       {required BuildContext context, required String email}) async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // String? updatedfcm = prefs.getString('fcmToken');
-    // print('fcm value is ');
-    // print(prefs.getString('fcmToken'));
+
     try {
       http.Response res = await http.post(
         Uri.parse('$uri/api/reset'),
@@ -83,15 +78,12 @@ class AuthService {
           response: res,
           context: context,
           onSuccess: () async {
-            showSnackBar(
-              context,
-              'Password is sent to email successfully!',
-            );
+            showCustomSnackBar(context: context, text: "Password is sent to email successfully!", label: 'ok', onPressed: (){});
           });
 
-      // print('asdas');
+
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -132,15 +124,15 @@ class AuthService {
             } else {
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                Adminscreen.id,
+                AdminHomeScreen.id,
                 (route) => false,
               );
             }
           });
 
-      // print('asdas');
+
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
 
@@ -164,7 +156,6 @@ class AuthService {
 
       var response = jsonDecode(tokenRes.body);
 
-      print(response);
       if (response == true) {
         http.Response userRes = await http.get(
           Uri.parse('$uri/'),
@@ -176,7 +167,6 @@ class AuthService {
 
         var userProvider = Provider.of<UserProvider>(context, listen: false);
         userProvider.setUser(userRes.body);
-        print('asdas');
       }
     } catch (e) {
       // showSnackBar(context, e.toString());

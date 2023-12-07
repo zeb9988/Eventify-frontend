@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:eventify/features/admin/screens/Home-Screen.dart';
-import 'package:eventify/features/home/screens/home_screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import '../UserHome/screens/home_screen.dart';
 
 class MessagingService {
   static String? fcmToken;

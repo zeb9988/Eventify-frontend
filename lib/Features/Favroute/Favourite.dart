@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../../../models/Product.dart';
-import '../services/favoriteServices.dart';
+import '../../models/Product.dart';
+import 'Services/favoriteServices.dart';
 
 class Favourite extends StatefulWidget {
   static const String id = '/FavoriteScreen';

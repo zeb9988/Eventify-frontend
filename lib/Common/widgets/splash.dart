@@ -2,17 +2,17 @@ import 'dart:async';
 
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/home/screens/home_screen.dart';
-import 'package:eventify/msgservicee.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Features/authentication/screens/Landing_page.dart';
+import '../../Features/UserHome/screens/home_screen.dart';
+import '../../features/Notification/msgservicee.dart';
 import '../../features/admin/screens/Home-Screen.dart';
 import '../../features/authentication/screens/IntroScreen.dart';
 import '../../features/authentication/services/authservices.dart';
-import '../../features/home/screens/Landing_page.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = '/splash';
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
           ? Provider.of<UserProvider>(context, listen: false).user.type ==
                   "admin"
               ? Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const Adminscreen()))
+                  MaterialPageRoute(builder: (context) => const AdminHomeScreen()))
               : checkScreen()
           : Navigator.pushReplacement(context,
               MaterialPageRoute(builder: (context) => const LandingPage()));

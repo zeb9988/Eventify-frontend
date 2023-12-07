@@ -2,7 +2,9 @@ import 'package:eventify/features/admin/services/admin_services.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
 
-import '../../home/widgets/card.dart';
+import '../../UserHome/widgets/card.dart';
+
+
 
 class PartyPlanner extends StatefulWidget {
   const PartyPlanner({Key? key}) : super(key: key);

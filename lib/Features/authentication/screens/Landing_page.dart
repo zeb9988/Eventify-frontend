@@ -4,9 +4,9 @@ import 'package:eventify/features/authentication/screens/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../authentication/screens/regisster.dart';
-import '../widgets/globle_widgets.dart';
-import '../widgets/language_menu.dart';
+import 'regisster.dart';
+import '../../UserHome/widgets/globle_widgets.dart';
+import '../../UserHome/widgets/language_menu.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);

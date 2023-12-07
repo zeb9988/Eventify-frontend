@@ -1,19 +1,20 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:eventify/common/widgets/customSnackbar.dart';
-import 'package:eventify/features/home/screens/home_screen.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:eventify/utils/ip_adress.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
-import '../../../utils/error.dart';
-import '../../../utils/snackbar.dart';
-import '../../models/Product.dart';
-import '../../models/order.dart';
-import '../../models/user.dart';
+import '../../../../utils/error.dart';
+import '../../../models/Product.dart';
+import '../../../models/order.dart';
+import '../../../models/user.dart';
+import '../../UserHome/screens/home_screen.dart';
 
-class Orderservices {
+class BookingServices {
   Future<List<Order>> fetchMyOrders({
     required BuildContext context,
   }) async {
@@ -31,7 +32,6 @@ class Orderservices {
         context: context,
         onSuccess: () {
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            print('asdas');
             orderList.add(
               Order.fromJson(
                 jsonEncode(
@@ -39,12 +39,12 @@ class Orderservices {
                 ),
               ),
             );
-            print(orderList);
           }
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
     return orderList;
   }
@@ -66,7 +66,6 @@ class Orderservices {
         context: context,
         onSuccess: () {
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            print('asdas');
             orderList.add(
               Order.fromJson(
                 jsonEncode(
@@ -74,12 +73,12 @@ class Orderservices {
                 ),
               ),
             );
-            print(orderList);
           }
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
     return orderList;
   }
@@ -100,7 +99,6 @@ class Orderservices {
         response: res,
         context: context,
         onSuccess: () {
-          print('asdsa');
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
             orderList.add(
               Order.fromJson(
@@ -109,12 +107,12 @@ class Orderservices {
                 ),
               ),
             );
-            print(orderList);
           }
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
     return orderList;
   }
@@ -136,7 +134,6 @@ class Orderservices {
         context: context,
         onSuccess: () {
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            print('asdas');
             orderList.add(
               Order.fromJson(
                 jsonEncode(
@@ -144,12 +141,12 @@ class Orderservices {
                 ),
               ),
             );
-            print(orderList);
           }
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
     return orderList;
   }
@@ -171,7 +168,6 @@ class Orderservices {
         context: context,
         onSuccess: () {
           for (int i = 0; i < jsonDecode(res.body).length; i++) {
-            print('asdas');
             orderList.add(
               Order.fromJson(
                 jsonEncode(
@@ -179,12 +175,12 @@ class Orderservices {
                 ),
               ),
             );
-            print(orderList);
           }
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
     return orderList;
   }
@@ -213,7 +209,8 @@ class Orderservices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
   }
 
@@ -245,7 +242,6 @@ class Orderservices {
         response: res,
         context: context,
         onSuccess: () {
-          print(res.body);
           User user = userProvider.user
               .copyWith(wallet: jsonDecode(res.body)['wallet']);
           userProvider.setUserFromModel(user);
@@ -259,7 +255,8 @@ class Orderservices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
   }
 }

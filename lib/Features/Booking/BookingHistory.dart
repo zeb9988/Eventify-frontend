@@ -4,7 +4,7 @@ import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/order.dart';
-import 'Booking_services.dart';
+import 'Services/Booking_services.dart';
 
 class OrderHistory extends StatefulWidget {
   static const String id = '/OrderHistory';
@@ -17,7 +17,7 @@ class OrderHistory extends StatefulWidget {
 
 class _OrderHistoryState extends State<OrderHistory> {
   List<Order> orderHistory = [];
-  final Orderservices orderservices = Orderservices();
+  final BookingServices orderservices = BookingServices();
 
   @override
   void initState() {

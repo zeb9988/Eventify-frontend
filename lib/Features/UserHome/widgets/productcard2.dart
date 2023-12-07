@@ -1,4 +1,4 @@
-import 'package:eventify/features/home/services/favoriteServices.dart';
+
 import 'package:eventify/features/product_details/Product_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -8,6 +8,7 @@ import '../../../common/widgets/star.dart';
 import '../../../constant/Theme_constant.dart';
 import '../../../models/Product.dart';
 import '../../../prooviders/provider.dart';
+import '../../Favroute/Services/favoriteServices.dart';
 
 class productCard2 extends StatefulWidget {
   final Product product;
