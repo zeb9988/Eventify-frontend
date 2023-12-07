@@ -2,23 +2,23 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/constant/Theme_constant.dart';
+import 'package:eventify/features/Booking/Booking_services.dart';
 import 'package:eventify/features/Booking/TrackBooking.dart';
+import 'package:eventify/features/Vendor/trackmybooking.dart';
 import 'package:flutter/material.dart';
-
 import '../../models/order.dart';
 import '../cart/cartlist.dart';
-import 'Booking_services.dart';
 
-class OrderScreen extends StatefulWidget {
-  static const String id = '/OrderScreen';
+class NewBookingTest extends StatefulWidget {
+  static const String id = '/NewBooking';
 
-  const OrderScreen({Key? key}) : super(key: key);
+  const NewBookingTest({Key? key}) : super(key: key);
 
   @override
-  State<OrderScreen> createState() => _OrderScreenState();
+  State<NewBookingTest> createState() => _NewBookingTestState();
 }
 
-class _OrderScreenState extends State<OrderScreen> {
+class _NewBookingTestState extends State<NewBookingTest> {
   List<Order> orders = [];
   final Orderservices orderservices = Orderservices();
 
@@ -29,26 +29,26 @@ class _OrderScreenState extends State<OrderScreen> {
   }
 
   void fetchOrders() async {
-    orders = await orderservices.fetchMyOrders(context: context);
+    orders = await orderservices.fetchMyVendorOrders(context: context);
     setState(() {});
   }
 
-  void deleteOrder(Order order, int index) {
-    orderservices.deleteOrder(
-      context: context,
-      order: order,
-      onsuccess: () {
-        orders.removeAt(index);
-        showCustomSnackBar(
-            context: context,
-            text: 'Order has beed deleted successfully',
-            label: 'ok',
-            onPressed: () {});
+  // void deleteOrder(Order order, int index) {
+  //   orderservices.deleteOrder(
+  //     context: context,
+  //     order: order,
+  //     onsuccess: () {
+  //       orders.removeAt(index);
+  //       showCustomSnackBar(
+  //           context: context,
+  //           text: 'Order has beed deleted successfully',
+  //           label: 'ok',
+  //           onPressed: () {});
 
-        setState(() {});
-      },
-    );
-  }
+  //       setState(() {});
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class _OrderScreenState extends State<OrderScreen> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: const Text(
-          'Booking Details',
+          'New Bookings',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,
@@ -112,7 +112,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 final order = orders[orderIndex];
                 return GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, TrackUserOrder.id,
+                      Navigator.pushNamed(context, TrackMyOrder.id,
                           arguments: order);
                     },
                     child: Padding(
@@ -173,18 +173,18 @@ class _OrderScreenState extends State<OrderScreen> {
                                           ],
                                         ),
                                       ),
-                                      Expanded(child: Container()),
-                                      if (order.status == 0)
-                                        Column(
-                                          children: [
-                                            IconButton(
-                                                onPressed: () {
-                                                  deleteOrder(
-                                                      order, orderIndex);
-                                                },
-                                                icon: const Icon(Icons.delete)),
-                                          ],
-                                        )
+                                      // Expanded(child: Container()),
+                                      // if (order.status == 0)
+                                      //   Column(
+                                      //     children: [
+                                      //       IconButton(
+                                      //           onPressed: () {
+                                      //             deleteOrder(
+                                      //                 order, orderIndex);
+                                      //           },
+                                      //           icon: const Icon(Icons.delete)),
+                                      //     ],
+                                      //   )
                                     ],
                                   ),
                                   ListView.builder(

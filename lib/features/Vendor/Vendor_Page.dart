@@ -1,5 +1,10 @@
 import 'package:eventify/constant/Theme_constant.dart';
+import 'package:eventify/features/Vendor/bokinghistoryvendor.dart';
+import 'package:eventify/features/Vendor/bookingHistoryTest.dart';
+import 'package:eventify/features/Vendor/declineBookingTest.dart';
+import 'package:eventify/features/Vendor/declinebooking.dart';
 import 'package:eventify/features/Vendor/newbooking.dart';
+import 'package:eventify/features/Vendor/newbookingtest.dart';
 import 'package:eventify/features/admin/Widgets/dashCard.dart';
 import 'package:eventify/features/home/screens/approvalscreen.dart';
 import 'package:eventify/features/home/screens/pendingapproval.dart';
@@ -92,14 +97,16 @@ class _VendorPageState extends State<VendorPage> {
                         image: 'assets/images/pending.png'),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, BokinghistoryTest.id);
+                    },
                     child: const dashCard(
                         text: 'Completed bookings',
                         image: 'assets/images/completeorder.png'),
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, NewBooking.id);
+                      Navigator.pushNamed(context, NewBookingTest.id);
                     },
                     child: const dashCard(
                         text: 'New bookings ',
@@ -118,7 +125,9 @@ class _VendorPageState extends State<VendorPage> {
                         image: 'assets/images/processingorder.png'),
                   ),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, DeclineBookingTest.id);
+                      },
                       child: const dashCard(
                           text: 'Decline bookings',
                           image: 'assets/images/cancelorder.png')),

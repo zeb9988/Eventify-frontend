@@ -2,6 +2,7 @@
 // import 'dart:developer';
 // import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 // import 'package:eventify/features/home/screens/registratinverndor.dart';
+import 'package:eventify/features/checklist/Checklist.dart';
 import 'package:eventify/features/home/screens/Favourite.dart';
 import 'package:eventify/features/Booking/BookingHistory.dart';
 
@@ -34,7 +35,7 @@ class _HomepageState extends State<Homepage> {
   final List pages = [
     // SafeArea(child: DashPage()),
     DashPage(),
-    OrderHistory(),
+    ChecklistScreen(),
     Favourite(),
     MenuScreen(),
   ];

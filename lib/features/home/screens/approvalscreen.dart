@@ -1,4 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eventify/common/widgets/customDialogBox.dart';
+import 'package:eventify/common/widgets/customSnackbar.dart';
+import 'package:eventify/common/widgets/custombutton.dart';
 import 'package:eventify/features/home/screens/edit.dart';
 import 'package:eventify/features/home/services/userServices.dart';
 import 'package:flutter/material.dart';
@@ -125,140 +128,165 @@ class ApprovedReqCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-        onTap: () {},
-        child: Container(
-          margin: EdgeInsets.only(bottom: 20),
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade300,
-                offset: Offset(0, 2),
-                blurRadius: 6,
-              ),
-            ],
+    return Container(
+      margin: EdgeInsets.only(bottom: 20),
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade300,
+            offset: Offset(0, 2),
+            blurRadius: 6,
           ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(right: 10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    color: Colors.grey.shade200,
-                    child: Image.network(
-                      product.images[0],
-                      fit: BoxFit.cover,
-                      height: 100,
-                      width: 100,
-                    ),
-                  ),
+        ],
+      ),
+      child: Row(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(right: 10),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Container(
+                color: Colors.grey.shade200,
+                child: Image.network(
+                  product.images[0],
+                  fit: BoxFit.cover,
+                  height: 100,
+                  width: 100,
                 ),
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Status",
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+            ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Status",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons
-                              .check_circle, // Use an approved icon of your choice
-                          color: Colors.green, // Set the icon color
-                          size: 15,
-                        ),
-                        Text(
-                          "Approved",
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 13,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.check_circle, // Use an approved icon of your choice
+                      color: Colors.green, // Set the icon color
+                      size: 15,
                     ),
                     Text(
-                      product.businessName,
+                      "Approved",
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
+                        color: Colors.green,
+                        fontSize: 13,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      product.generalDetail,
-                      style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(height: 15),
-                    Text(
-                      '\Rs${product.price.toStringAsFixed(0)}',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.grey.shade800,
-                      ),
-                    ),
-                    SizedBox(height: 10),
                   ],
                 ),
-              ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        'Delete',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                        color: COLOR_ACCENT,
-                        onPressed: () {
-                          ondeleted();
-                        },
-                        icon: Icon(Icons.delete),
-                      ),
-                    ],
+                Text(
+                  product.businessName,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        'Edit',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                        color: COLOR_ACCENT,
-                        onPressed: () {
-                          Navigator.pushNamed(context, EditProduct.id,
-                              arguments: product);
-                        },
-                        icon: Icon(Icons.edit),
-                      ),
-                    ],
+                ),
+                Text(
+                  product.category,
+                  style: TextStyle(
+                    color: Colors.orange,
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  product.generalDetail,
+                  style: TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 15),
+                Text(
+                  '\Rs${product.price.toStringAsFixed(0)}',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey.shade800,
+                  ),
+                ),
+                SizedBox(height: 10),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'Delete',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    color: COLOR_ACCENT,
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => CustomDialog(
+                          title: "Are you sure you want to Delete?",
+                          icon: Icons.delete, // Replace with your desired icon
+                          buttons: [
+                            CustomButton(
+                                text: "Yes",
+                                onTap: () {
+                                  ondeleted();
+                                  Navigator.of(context).pop();
+                                }),
+                            CustomButton(
+                                text: "Cancel",
+                                onTap: () {
+                                  Navigator.of(context).pop();
+                                }),
+                          ],
+                        ),
+                      );
+                    },
+                    icon: Icon(Icons.delete),
                   ),
                 ],
-              )
+              ),
+              Column(
+                children: [
+                  Text(
+                    'Edit',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                    color: COLOR_ACCENT,
+                    onPressed: () {
+                      Navigator.pushNamed(context, EditProduct.id,
+                          arguments: product);
+                    },
+                    icon: Icon(Icons.edit),
+                  ),
+                ],
+              ),
             ],
-          ),
-        ));
+          )
+        ],
+      ),
+    );
   }
 }

@@ -54,7 +54,7 @@ class VendorServices {
   Future<List<Product>> fetchpendingVendors(
       {required BuildContext context}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
-    List<Product>? pendingVendor = [];
+    List<Product> pendingVendor = [];
     try {
       http.Response res =
           await http.get(Uri.parse("$uri/api/fetchPendingVendors"), headers: {
@@ -133,6 +133,7 @@ class VendorServices {
       required String benificiaryName,
       required double accountNumber,
       required double price,
+      required String priceDescription,
       required String category,
       required String insuredValue,
       required String licenseHolder}) async {
@@ -164,6 +165,7 @@ class VendorServices {
           benificiaryName: benificiaryName,
           accountNumber: accountNumber,
           price: price,
+          priceDescription: priceDescription,
           category: category);
 
       http.Response response = await http.post(
@@ -210,6 +212,7 @@ class VendorServices {
       required String benificiaryName,
       required double accountNumber,
       required double price,
+      required String priceDescription,
       required String insuredValue,
       required String userId,
       required String licenseHolder}) async {
@@ -224,6 +227,7 @@ class VendorServices {
       // }
 
       ApprovedVendors prod = ApprovedVendors(
+          priceDescription: priceDescription,
           images: imageUrls,
           businessName: businessName,
           address: address,
@@ -267,56 +271,6 @@ class VendorServices {
       showSnackBar(context, e.toString());
     }
   }
-
-  // void acceptApproval({
-
-  //   required BuildContext context,
-  //   required String name,
-  //   required String description,
-  //   required double price,
-  //   required double quantity,
-  //   required String catagory,
-  //   required List<File> images,
-
-  // }) async {
-  //   try {
-  //     // final cloudinary = CloudinaryPublic('deprueuwl', 'bnq90myj');
-
-  //     List<String> imageUrls = [];
-  //     // for (int i = 0; i < images.length; i++) {
-  //     //   CloudinaryResponse res = await cloudinary
-  //     //       .uploadFile(CloudinaryFile.fromFile(images[i].path, folder: name));
-  //     //   imageUrls.add(res.secureUrl);
-  //     // }
-
-  //     Product prod = Product(
-  //         name: name,
-  //         description: description,
-  //         quantity: quantity,
-  //         images: imageUrls,
-  //         catagory: catagory,
-  //         price: price);
-
-  //     http.Response response = await http.post(
-  //       Uri.parse('$uri/admin/addproduct'),
-  //       headers: <String, String>{
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //         'x-auth-token':
-  //             Provider.of<UserProvider>(context, listen: false).user.token
-  //       },
-  //       body: prod.toJson(),
-  //     );
-
-  //     httpErrorHandle(
-  //         response: response,
-  //         context: context,
-  //         onSuccess: () {
-  //           showSnackBar(context, " product added success");
-  //         });
-  //   } catch (e) {
-  //     showSnackBar(context, e.toString());
-  //   }
-  // }
 
   void removeApproval(
       {required BuildContext context,

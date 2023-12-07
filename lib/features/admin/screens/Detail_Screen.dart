@@ -77,12 +77,6 @@ class DetailScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 24.0, fontWeight: FontWeight.bold, color: Colors.black),
         ),
-        SizedBox(height: 8.0),
-        Text(
-          'Rs. ${product.price.toString()}',
-          style: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
         SizedBox(height: 12.0),
         Text(
           'Category: ${product.category}',
@@ -126,6 +120,29 @@ class DetailScreen extends StatelessWidget {
         SizedBox(height: 8.0),
         Text(
           product.generalDetail ?? 'Details unavailable',
+          style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
+        ),
+        SizedBox(height: 16.0),
+        Divider(),
+        Divider(),
+        Text(
+          "BASIC PRICE",
+          style: TextStyle(
+              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        SizedBox(height: 8.0),
+        Text(
+          'Rs. ${product.price.toString()}',
+          style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
+        ),
+        SizedBox(height: 8.0),
+        Text(
+          "BASIC PACKAGE DETAILS",
+          style: TextStyle(
+              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        Text(
+          product.priceDescription ?? 'Details unavailable',
           style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
         ),
         SizedBox(height: 16.0),

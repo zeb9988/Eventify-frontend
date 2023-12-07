@@ -21,26 +21,26 @@ class _PendingProductsState extends State<PendingProducts> {
 
   void acceptApprovals(ApprovedVendors product, int index) async {
     vendorServices.acceptApproval(
-      context: context,
-      images: product.images,
-      userId: product.userId,
-      businessName: product.businessName,
-      address: product.address,
-      city: product.city,
-      state: product.state,
-      zipcode: product.zipcode,
-      country: product.country,
-      phonenumber: product.phonenumber,
-      email: product.email,
-      generalDetail: product.generalDetail,
-      insuredValue: product.insureValue,
-      licenseHolder: product.licensedValue,
-      bankName: product.bankName,
-      category: product.category,
-      benificiaryName: product.benificiaryName,
-      accountNumber: product.accountNumber,
-      price: product.price,
-    );
+        context: context,
+        images: product.images,
+        userId: product.userId,
+        businessName: product.businessName,
+        address: product.address,
+        city: product.city,
+        state: product.state,
+        zipcode: product.zipcode,
+        country: product.country,
+        phonenumber: product.phonenumber,
+        email: product.email,
+        generalDetail: product.generalDetail,
+        insuredValue: product.insureValue,
+        licenseHolder: product.licensedValue,
+        bankName: product.bankName,
+        category: product.category,
+        benificiaryName: product.benificiaryName,
+        accountNumber: product.accountNumber,
+        price: product.price,
+        priceDescription: product.priceDescription);
 
     vendorServices.removeApproval(
         context: context,
@@ -252,7 +252,7 @@ class PendingReqCard extends StatelessWidget {
               ),
             ),
             Text(
-              product.businessName,
+              product.priceDescription,
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 18,

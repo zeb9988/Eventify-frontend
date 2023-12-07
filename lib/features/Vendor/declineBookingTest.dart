@@ -1,21 +1,21 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/constant/Theme_constant.dart';
+import 'package:eventify/features/Booking/Booking_services.dart';
 import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/order.dart';
-import 'Booking_services.dart';
 
-class OrderHistory extends StatefulWidget {
-  static const String id = '/OrderHistory';
+class DeclineBookingTest extends StatefulWidget {
+  static const String id = '/declinebooking';
 
-  const OrderHistory({Key? key}) : super(key: key);
+  const DeclineBookingTest({Key? key}) : super(key: key);
 
   @override
-  State<OrderHistory> createState() => _OrderHistoryState();
+  State<DeclineBookingTest> createState() => _DeclineBookingTestState();
 }
 
-class _OrderHistoryState extends State<OrderHistory> {
+class _DeclineBookingTestState extends State<DeclineBookingTest> {
   List<Order> orderHistory = [];
   final Orderservices orderservices = Orderservices();
 
@@ -26,7 +26,7 @@ class _OrderHistoryState extends State<OrderHistory> {
   }
 
   void fetchOrders() async {
-    orderHistory = await orderservices.fetchOrderHistory(context: context);
+    orderHistory = await orderservices.fetchDeclineOrder(context: context);
     setState(() {});
     print(orderHistory.length);
   }

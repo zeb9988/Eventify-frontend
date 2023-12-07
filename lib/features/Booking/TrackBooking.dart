@@ -9,17 +9,17 @@ import '../../common/widgets/custombutton.dart';
 import '../../models/order.dart';
 import 'Booking_services.dart';
 
-class TrackOrder extends StatefulWidget {
-  static const String id = '/TrackOrder';
+class TrackUserOrder extends StatefulWidget {
+  static const String id = '/TrackUserOrder';
   final Order order;
-  const TrackOrder({Key? key, required this.order}) : super(key: key);
+  const TrackUserOrder({Key? key, required this.order}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _TrackOrderState createState() => _TrackOrderState();
+  _TrackUserOrderState createState() => _TrackUserOrderState();
 }
 
-class _TrackOrderState extends State<TrackOrder> {
+class _TrackUserOrderState extends State<TrackUserOrder> {
   int currentStep = 0;
   double _rating = 0.0;
   final TextEditingController _feedbackController = TextEditingController();
@@ -32,7 +32,7 @@ class _TrackOrderState extends State<TrackOrder> {
   @override
   void initState() {
     super.initState();
-    currentStep = widget.order.status;
+    currentStep = widget.order.status.clamp(0, 3);
   }
 
   Orderservices orderservices = Orderservices();
@@ -72,12 +72,12 @@ class _TrackOrderState extends State<TrackOrder> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: const Text(
-          'Track Your Booking',
+          'Track Booking',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Color.fromARGB(255, 131, 36, 36),
           ),
         ),
       ),

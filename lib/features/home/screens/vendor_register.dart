@@ -48,7 +48,8 @@ class _AddVendorsState extends State<AddVendors> {
           category: category,
           benificiaryName: benificiaryName.text,
           accountNumber: double.parse(accountNumber.text),
-          price: double.parse(price.text));
+          price: double.parse(price.text),
+          priceDescription: priceDescription.text);
     } else {
       showCustomSnackBar(
           context: context,
@@ -77,6 +78,7 @@ class _AddVendorsState extends State<AddVendors> {
   final TextEditingController benificiaryName = TextEditingController();
   final TextEditingController accountNumber = TextEditingController();
   final TextEditingController price = TextEditingController();
+  final TextEditingController priceDescription = TextEditingController();
 
   @override
   void dispose() {
@@ -940,7 +942,7 @@ class _AddVendorsState extends State<AddVendors> {
                               keyboardType: TextInputType.number,
                               controller: price,
                               decoration: const InputDecoration(
-                                hintText: 'Price',
+                                hintText: 'Enter the numerical price',
                                 icon: Icon(
                                   Icons.attach_money,
                                   color: COLOR_ACCENT,
@@ -964,7 +966,45 @@ class _AddVendorsState extends State<AddVendors> {
                         ),
                       ),
                       const ElTooltip(
-                        content: Text('Set your product price'),
+                        content: Text('Set your service price'),
+                        child: Icon(
+                          Icons.info_outline,
+                          color: COLOR_ACCENT,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Basic package description *',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            TextFormField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: 3,
+                              controller: priceDescription,
+                              decoration: const InputDecoration(
+                                hintText: 'Enter basic package description',
+                                icon: Icon(
+                                  Icons.description,
+                                  color: COLOR_ACCENT,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const ElTooltip(
+                        content: Text('Enter basic package descriptione'),
                         child: Icon(
                           Icons.info_outline,
                           color: COLOR_ACCENT,
@@ -1008,6 +1048,14 @@ class _AddVendorsState extends State<AddVendors> {
                                     color: COLOR_ACCENT,
                                   ),
                                   overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              const ElTooltip(
+                                content: Text(
+                                    'Enter your basic package description'),
+                                child: Icon(
+                                  Icons.info_outline,
+                                  color: COLOR_ACCENT,
                                 ),
                               ),
                             ],

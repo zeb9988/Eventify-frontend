@@ -39,7 +39,7 @@ class _Manage_ProductState extends State<Manage_Product>
   @override
   void initState() {
     super.initState();
-    msgservice.init(context);
+    // msgservice.init(context);
     _tabController = TabController(length: 21, vsync: this);
   }
 
@@ -56,20 +56,20 @@ class _Manage_ProductState extends State<Manage_Product>
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
-          title: Text(
+          title: const Text(
             'All Services',
             style: TextStyle(
                 fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: const IconThemeData(color: Colors.black),
           backgroundColor: Colors.white,
           elevation: 0,
         ),
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Row(
@@ -79,14 +79,13 @@ class _Manage_ProductState extends State<Manage_Product>
                 // Adjust left padding
                 child: FilterTab(
                   iconData: Icons.filter_list,
-                  // Use the desired filter icon
                   onTap: () {
                     // Add your filter logic here
                   },
                 ),
               ),
               Expanded(
-                child: Container(
+                child: SizedBox(
                   height: 50,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -221,10 +220,10 @@ class _Manage_ProductState extends State<Manage_Product>
                   InvitationPrint(),
                   Ticket(),
                   Branding(),
-                  PartyPlanner(),
-                  EventPlanner(),
-                  Venues(),
-                  WeddingPlanner(),
+                  const PartyPlanner(),
+                  const EventPlanner(),
+                  const Venues(),
+                  const WeddingPlanner(),
                   Makeup(),
                   Mehndi(),
                   Decorator(),
@@ -245,10 +244,11 @@ class FilterTab extends StatelessWidget {
   final IconData iconData;
   final VoidCallback onTap;
 
-  FilterTab({
+  const FilterTab({
+    Key? key,
     required this.iconData, // Pass the icon data
     required this.onTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +261,7 @@ class FilterTab extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5), // Customize the shadow color
             spreadRadius: 2, // Customize the shadow spread radius
             blurRadius: 4, // Customize the shadow blur radius
-            offset: Offset(0, 2), // Customize the shadow offset
+            offset: const Offset(0, 2), // Customize the shadow offset
           ),
         ],
       ),
@@ -269,7 +269,7 @@ class FilterTab extends StatelessWidget {
         onTap: onTap,
         splashColor: Colors.transparent,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Center(
             child: Icon(
               iconData, // Use the provided icon data
@@ -288,13 +288,15 @@ class CustomTab extends StatefulWidget {
   final int index;
   final TabController tabController;
 
-  CustomTab({
+  const CustomTab({
+    Key? key,
     required this.text,
     required this.index,
     required this.tabController,
-  });
+  }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CustomTabState createState() => _CustomTabState();
 }
 
@@ -336,13 +338,14 @@ class _CustomTabState extends State<CustomTab> {
       },
       splashColor: Colors.transparent,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Center(
           child: Stack(
             alignment: Alignment.center,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
                   color: _backgroundColor,
                   borderRadius: BorderRadius.circular(30),
@@ -363,7 +366,7 @@ class _CustomTabState extends State<CustomTab> {
                 right: 16,
                 child: AnimatedContainer(
                   height: 2,
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   color: _backgroundColor,
                 ),
               ),
@@ -374,159 +377,3 @@ class _CustomTabState extends State<CustomTab> {
     );
   }
 }
-
-// body: SingleChildScrollView(
-//   child: Padding(
-//     padding: const EdgeInsets.all(8.0),
-//     child: Column(
-//       children: [
-//         Align(
-//           alignment: Alignment.topLeft,
-//           child: Text(
-//             'Event Planning',
-//             style: TextStyle(
-//               fontSize: 24,
-//               fontWeight: FontWeight.bold,
-//               color: Colors.deepPurple,
-//               // Adjust the color as needed
-//               letterSpacing: 1.2,
-//               shadows: [
-//                 Shadow(
-//                   color: Colors.grey.withOpacity(0.5),
-//                   blurRadius: 2,
-//                   offset: Offset(2, 2),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//         Divider(
-//           color: Colors.purple,
-//           thickness: 2,
-//           indent: 3,
-//           endIndent: 3,
-//         ),
-//         SizedBox(
-//           height: 10,
-//         ),
-//         Wedding_Planner(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Event_Planner(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Party_Planner(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Corpevent_planner(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//
-//         //Event Designing & Decor
-//
-//         Align(
-//           alignment: Alignment.topLeft,
-//           child: Text(
-//             'Event Designing & Decor',
-//             style: TextStyle(
-//               fontSize: 24,
-//               fontWeight: FontWeight.bold,
-//               color: Colors.deepPurple,
-//               // Adjust the color as needed
-//               letterSpacing: 1.2,
-//               shadows: [
-//                 Shadow(
-//                   color: Colors.grey.withOpacity(0.5),
-//                   blurRadius: 2,
-//                   offset: Offset(2, 2),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//
-//         Divider(
-//           color: Colors.purple,
-//           thickness: 2,
-//           indent: 3,
-//           endIndent: 3,
-//         ),
-//
-//         SizedBox(
-//           height: 10,
-//         ),
-//
-//         Interior_Designer(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Wedd_Houselight(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Wedd_Cards(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Wedd_Car_Decor(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         // Others Services
-//
-//         Align(
-//           alignment: Alignment.topLeft,
-//           child: Text(
-//             'Others',
-//             style: TextStyle(
-//               fontSize: 24,
-//               fontWeight: FontWeight.bold,
-//               color: Colors.deepPurple,
-//               // Adjust the color as needed
-//               letterSpacing: 1.2,
-//               shadows: [
-//                 Shadow(
-//                   color: Colors.grey.withOpacity(0.5),
-//                   blurRadius: 2,
-//                   offset: Offset(2, 2),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//
-//         Divider(
-//           color: Colors.purple,
-//           thickness: 2,
-//           indent: 3,
-//           endIndent: 3,
-//         ),
-//         SizedBox(
-//           height: 10,
-//         ),
-//         Photographers(Productlist: Photographerlist),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Car_rent(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Cataring(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//         Multi_Media(),
-//         SizedBox(
-//           height: 20,
-//         ),
-//
-//         Venues(),
-//       ],
-//     ),
-//   ),
-// ));

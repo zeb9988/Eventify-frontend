@@ -3,12 +3,10 @@ import 'package:eventify/features/account/services/accountservices.dart';
 import 'package:eventify/features/admin/screens/Admin-Dashboard.dart';
 import 'package:eventify/features/admin/screens/analyticsScreen.dart';
 import 'package:eventify/features/admin/screens/sendNotfication.dart';
-import 'package:eventify/prooviders/provider.dart';
+import 'package:eventify/msgservicee.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../../constant/Theme_constant.dart';
 import 'adminOrderPage.dart';
-// import '../../home/screens/DashPage.dart';
 
 class Adminscreen extends StatefulWidget {
   static const String id = '/Admin';
@@ -20,8 +18,10 @@ class Adminscreen extends StatefulWidget {
 }
 
 class _AdminscreenState extends State<Adminscreen> {
+  MessagingService messagingService = MessagingService();
   @override
   void initState() {
+    // messagingService.init(context);
     super.initState();
   }
 
@@ -44,7 +44,6 @@ class _AdminscreenState extends State<Adminscreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
         backgroundColor: COLOR_ACCENT,
         appBar: PreferredSize(

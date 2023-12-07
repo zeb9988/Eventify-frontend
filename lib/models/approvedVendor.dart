@@ -21,6 +21,7 @@ class ApprovedVendors {
   final String benificiaryName;
   final double accountNumber;
   final double price;
+  final String priceDescription;
   final String category;
   final String userId;
   final String? id;
@@ -44,6 +45,7 @@ class ApprovedVendors {
     required this.benificiaryName,
     required this.accountNumber,
     required this.price,
+    required this.priceDescription,
     required this.category,
     this.id,
     // this.rating,
@@ -68,6 +70,7 @@ class ApprovedVendors {
       'benificiaryName': benificiaryName,
       'accountNumber': accountNumber,
       'price': price,
+      'priceDescription': priceDescription,
       'category': category,
       'id': id,
       // 'rating': rating,
@@ -93,6 +96,7 @@ class ApprovedVendors {
       benificiaryName: map['benificiaryName'] ?? '',
       accountNumber: map['accountNumber']?.toDouble() ?? 0.0,
       price: map['price']?.toDouble() ?? 0.0,
+      priceDescription: map['priceDescription'] ?? '',
       category: map['category'] ?? '',
       id: map['_id'],
       // rating: map['rating'] != null

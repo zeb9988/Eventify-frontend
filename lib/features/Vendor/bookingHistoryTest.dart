@@ -1,21 +1,21 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/constant/Theme_constant.dart';
+import 'package:eventify/features/Booking/Booking_services.dart';
 import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/order.dart';
-import 'Booking_services.dart';
 
-class OrderHistory extends StatefulWidget {
-  static const String id = '/OrderHistory';
+class BokinghistoryTest extends StatefulWidget {
+  static const String id = '/VendorbookingHistory';
 
-  const OrderHistory({Key? key}) : super(key: key);
+  const BokinghistoryTest({Key? key}) : super(key: key);
 
   @override
-  State<OrderHistory> createState() => _OrderHistoryState();
+  State<BokinghistoryTest> createState() => _BokinghistoryTestState();
 }
 
-class _OrderHistoryState extends State<OrderHistory> {
+class _BokinghistoryTestState extends State<BokinghistoryTest> {
   List<Order> orderHistory = [];
   final Orderservices orderservices = Orderservices();
 
@@ -26,9 +26,10 @@ class _OrderHistoryState extends State<OrderHistory> {
   }
 
   void fetchOrders() async {
-    orderHistory = await orderservices.fetchOrderHistory(context: context);
-    setState(() {});
+    orderHistory =
+        await orderservices.fetchVendorOrderHistory(context: context);
     print(orderHistory.length);
+    setState(() {});
   }
 
   @override
@@ -41,7 +42,7 @@ class _OrderHistoryState extends State<OrderHistory> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: const Text(
-          'Booking History',
+          'Booking Completed',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,

@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/constant/Theme_constant.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/Product.dart';
@@ -34,10 +35,10 @@ class _PendingRequestState extends State<PendingRequest> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Pending Products',
           style: TextStyle(
             fontFamily: 'Merriweather',
@@ -51,7 +52,7 @@ class _PendingRequestState extends State<PendingRequest> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           if (pending_request.isEmpty)
             Padding(
               padding: const EdgeInsets.all(50.0),
@@ -61,12 +62,12 @@ class _PendingRequestState extends State<PendingRequest> {
                 borderType: BorderType.RRect,
                 strokeCap: StrokeCap.round,
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "No Pending Requests",
                       style: TextStyle(
@@ -89,6 +90,7 @@ class _PendingRequestState extends State<PendingRequest> {
                 return Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: PendingReqCard(
+                    category: request.category,
                     image: request.images[0],
                     name: request.businessName,
                     description: request.generalDetail,
@@ -109,12 +111,14 @@ class PendingReqCard extends StatelessWidget {
   final String name;
   final String description;
   final double price;
+  final String category;
 
   PendingReqCard({
     required this.image,
     required this.name,
     required this.description,
     required this.price,
+    required this.category,
   });
 
   @override
@@ -122,15 +126,15 @@ class PendingReqCard extends StatelessWidget {
     return GestureDetector(
         onTap: () {},
         child: Container(
-          margin: EdgeInsets.only(bottom: 20),
-          padding: EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.shade300,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
                 blurRadius: 6,
               ),
             ],
@@ -138,7 +142,7 @@ class PendingReqCard extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(right: 10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
@@ -156,7 +160,7 @@ class PendingReqCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -168,7 +172,7 @@ class PendingReqCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
@@ -188,22 +192,31 @@ class PendingReqCard extends StatelessWidget {
                     ),
                     Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       description,
-                      style: TextStyle(
+                      style: const TextStyle(
                         overflow: TextOverflow.ellipsis,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 5),
+                    Text(
+                      category,
+                      style: const TextStyle(
+                        color: Colors.orange,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
                     Text(
                       '\Rs$price',
                       style: TextStyle(
@@ -211,7 +224,7 @@ class PendingReqCard extends StatelessWidget {
                         color: Colors.grey.shade800,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),

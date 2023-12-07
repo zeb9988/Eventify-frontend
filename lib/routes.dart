@@ -1,7 +1,12 @@
 import 'package:eventify/Notification/Notification.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/Vendor/Vendor_Page.dart';
+import 'package:eventify/features/Vendor/bokinghistoryvendor.dart';
+import 'package:eventify/features/Vendor/bookingHistoryTest.dart';
+import 'package:eventify/features/Vendor/declineBookingTest.dart';
+import 'package:eventify/features/Vendor/declinebooking.dart';
 import 'package:eventify/features/Vendor/newbooking.dart';
+import 'package:eventify/features/Vendor/newbookingtest.dart';
 import 'package:eventify/features/Vendor/trackmybooking.dart';
 import 'package:eventify/features/admin/screens/Add-Vendor-Form.dart';
 import 'package:eventify/features/admin/screens/Approved-Products.dart';
@@ -82,10 +87,10 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => GetFeedbackScreen(),
       );
-    case NewBooking.id:
+    case NewBookingTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => NewBooking(),
+        builder: (_) => NewBookingTest(),
       );
     case SendNotifications.id:
       return MaterialPageRoute(
@@ -193,12 +198,17 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => NotificationScreen(),
       );
+    case DeclineBookingTest.id:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => DeclineBookingTest(),
+      );
 
-    // case PendingProducts.id:
-    //   return MaterialPageRoute(
-    //     settings: routeSettings,
-    //     builder: (_) => PendingProducts(),
-    //   );
+    case BokinghistoryTest.id:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => BokinghistoryTest(),
+      );
     case ApprovedProducts.id:
       var products = routeSettings.arguments as List<Product>;
       return MaterialPageRoute(
@@ -278,11 +288,11 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
         settings: routeSettings,
         builder: (_) => TrackMyOrder(order: order),
       );
-    case TrackOrder.id:
+    case TrackUserOrder.id:
       var order = routeSettings.arguments as Order;
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => TrackOrder(order: order),
+        builder: (_) => TrackUserOrder(order: order),
       );
     case AdminOrderScreen.id:
       return MaterialPageRoute(
