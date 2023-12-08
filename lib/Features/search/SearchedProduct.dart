@@ -1,29 +1,40 @@
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/star.dart';
+import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/Product.dart';
 
-class searchedproduct extends StatelessWidget {
+class searchedproduct extends StatefulWidget {
   final Product product;
   const searchedproduct({required this.product});
 
   @override
+  State<searchedproduct> createState() => _searchedproductState();
+}
+
+class _searchedproductState extends State<searchedproduct> {
+  double avgrating = 0;
+  double totalrating = 0;
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < widget.product.rating!.length; i++) {
+      print(widget.product.rating![i].rating);
+      totalrating += widget.product.rating![i].rating;
+    }
+
+    if (totalrating != 0) {
+      avgrating = totalrating / widget.product.rating!.length;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    double avgrating = 0;
-    double totalrating = 0;
-    // for (int i = 0; i < product.rating!.length; i++) {
-    //   totalrating += product.rating![i].rating;
-    // }
-
-    // if (totalrating != 0) {
-    //   avgrating = totalrating / product.rating!.length;
-    // }
-
     // ignore: unnecessary_null_comparison
-    return product == null
+    return widget.product == null
         ? Text('no')
         : Column(
             children: [
@@ -48,7 +59,7 @@ class searchedproduct extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.network(
-                          product.images[0],
+                          widget.product.images[0],
                           fit: BoxFit.cover,
                           height: 100,
                           width: 100,
@@ -60,7 +71,7 @@ class searchedproduct extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            product.businessName,
+                            widget.product.businessName,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -70,7 +81,7 @@ class searchedproduct extends StatelessWidget {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            product.category,
+                            widget.product.category,
                             style: TextStyle(
                               fontSize: 9,
                               fontWeight: FontWeight.w600,
@@ -78,7 +89,7 @@ class searchedproduct extends StatelessWidget {
                           ),
                           SizedBox(height: 10),
                           Text(
-                            '\$${product.price}',
+                            '\$${widget.product.price}',
                             style: TextStyle(
                                 fontSize: 13, color: Colors.grey.shade800),
                           ),
@@ -88,25 +99,7 @@ class searchedproduct extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        RatingBar.builder(
-                          itemSize: 18,
-                          // Increased text size
-                          initialRating: 4,
-                          minRating: 1,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                          itemBuilder: (context, _) => Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          onRatingUpdate: (rating) {
-                            // Handle rating updates
-                          },
-                        ),
-                      ],
+                      children: [Star(rating: avgrating)],
                     ),
                   ],
                 ),

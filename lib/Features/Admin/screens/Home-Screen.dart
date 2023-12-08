@@ -65,7 +65,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             ],
             title: Padding(
               padding: EdgeInsets.only(top: 20),
-              child: Image.asset('assets/images/logo.png', height: 100),
+              child: Image.asset('assets/images/logo2.png', height: 100),
             )
             // width: 70, // Adjust the width as needed
             // height: 70, // Adjust the height as needed

@@ -107,17 +107,20 @@ class _MenuScreenState extends State<MenuScreen> {
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.black, width: 4),
                       ),
-                      child: CircleAvatar(
-                        maxRadius: 40,
-                        backgroundColor: COLOR_ACCENT,
-                        child: Text(
-                          user.name.isNotEmpty
-                              ? user.name[0].toUpperCase()
-                              : 'Empty',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 40,
+                      child: Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: CircleAvatar(
+                          maxRadius: 40,
+                          backgroundColor: COLOR_ACCENT,
+                          child: Text(
+                            user.name.isNotEmpty
+                                ? user.name[0].toUpperCase()
+                                : 'Empty',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                            ),
                           ),
                         ),
                       ),
@@ -140,9 +143,10 @@ class _MenuScreenState extends State<MenuScreen> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'wallet: Rs ${user.wallet.toStringAsFixed(0)}',
+                      'Personal Balance: Rs ${user.wallet.toStringAsFixed(0)}',
                       style: const TextStyle(
                         fontSize: 18,
+                        color: COLOR_ACCENT,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -170,92 +174,76 @@ class _MenuScreenState extends State<MenuScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Container(
-                              padding: const EdgeInsets.all(20),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  const Text(
-                                    "Edit Profile",
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
+                            child: SingleChildScrollView(
+                              child: Container(
+                                padding: const EdgeInsets.all(20),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    const Text(
+                                      "Edit Profile",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  GestureDetector(
-                                    onTap: () {
-                                      // Handle changing the profile picture here
-                                    },
-                                    child: Container(
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: Colors.black,
-                                          width: 3,
+                                    const SizedBox(height: 20),
+                                    GestureDetector(
+                                      child: Container(
+                                        width: 100,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 3,
+                                          ),
+                                        ),
+                                        child: const CircleAvatar(
+                                          backgroundColor: Colors.transparent,
+                                          radius: 48,
+                                          backgroundImage: AssetImage(
+                                              "assets/images/vendor1.png"),
                                         ),
                                       ),
-                                      child: const CircleAvatar(
-                                        backgroundColor: Colors.transparent,
-                                        radius: 48,
-                                        backgroundImage: AssetImage(
-                                            "assets/images/vendor1.png"),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'Name',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    'Name',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                    CustomTextField(
+                                      icon: const Icon(
+                                        Icons.edit,
+                                        color: COLOR_ACCENT,
+                                      ),
+                                      hintText: 'Change your name',
+                                      is_pass: false,
+                                      controller: nameController,
                                     ),
-                                  ),
-                                  CustomTextField(
-                                    icon: const Icon(
-                                      Icons.edit,
-                                      color: COLOR_ACCENT,
+                                    SizedBox(
+                                      height: 10,
                                     ),
-                                    hintText: 'Change your name',
-                                    is_pass: false,
-                                    controller: nameController,
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    'Address',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
+                                    const SizedBox(height: 20),
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        editUser();
+                                        Navigator.pop(
+                                            context); // Close the dialog
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            COLOR_ACCENT, // Change the color to the desired color
+                                      ),
+                                      child: const Text("Save",
+                                          style:
+                                              TextStyle(color: Colors.white)),
                                     ),
-                                  ),
-                                  CustomTextField(
-                                    icon: const Icon(
-                                      Icons.location_city,
-                                      color: COLOR_ACCENT,
-                                    ),
-                                    hintText: 'Address',
-                                    is_pass: false,
-                                    controller: addressController,
-                                  ),
-                                  const SizedBox(height: 20),
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      editUser();
-                                      Navigator.pop(
-                                          context); // Close the dialog
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          COLOR_ACCENT, // Change the color to the desired color
-                                    ),
-                                    child: const Text("Save",
-                                        style: TextStyle(color: Colors.white)),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           );
@@ -266,7 +254,8 @@ class _MenuScreenState extends State<MenuScreen> {
             ],
           ),
           const SizedBox(height: 15),
-          GestureDetector(
+          InkWell(
+            splashColor: COLOR_ACCENT,
             onTap: () => Navigator.pushNamed(context, VendorPage.id),
             child: DottedBorder(
               color: COLOR_ACCENT,
@@ -278,6 +267,13 @@ class _MenuScreenState extends State<MenuScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black54, // Color of the shadow
+                      blurRadius: 10, // Spread of the shadow
+                      offset: Offset(0, 1), // Offset of the shadow
+                    ),
+                  ],
                 ),
                 child: Center(
                   child: Text(

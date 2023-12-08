@@ -362,7 +362,10 @@ class _TrackUserOrderState extends State<TrackUserOrder> {
                                       0xffD6A95C)), // Change the button color
                             );
                           },
-                          child: const Text('Submit'),
+                          child: const Text(
+                            'Submit',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ],

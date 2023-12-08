@@ -56,7 +56,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
   void initState() {
     super.initState();
     // Initialize the TabController with the number of tabs (2 in this case).
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     fetchcatagory();
     double totalRating = 0;
     for (int i = 0; i < widget.product.rating!.length; i++) {
@@ -217,7 +217,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
               SliverList(
                 delegate: SliverChildListDelegate([
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.9 + 230,
+                    height: MediaQuery.of(context).size.height * 0.9 + 370,
                     color: COLOR_PRIMARY,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 15),
@@ -323,6 +323,25 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   ),
                                 ],
                               ),
+                              const Text(
+                                'Service Details',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const SizedBox(height: 2.0),
+                              Text(
+                                widget.product.generalDetail,
+                                maxLines: 5,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  height: 1.5,
+                                  color: Colors.grey.shade800,
+                                  fontSize: 15,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -338,14 +357,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                               TabBar(
                                 controller: _tabController,
                                 tabs: const <Widget>[
-                                  Tab(
-                                    child: Text(
-                                      "DETAILS",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
                                   Tab(
                                     child: Text(
                                       "BASIC PACKAGE",
@@ -375,31 +386,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                 child: TabBarView(
                                   controller: _tabController,
                                   children: <Widget>[
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const Text(
-                                          'Service Details',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 2.0),
-                                        Text(
-                                          widget.product.generalDetail,
-                                          maxLines: 5,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            height: 1.5,
-                                            color: Colors.grey.shade800,
-                                            fontSize: 15,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -438,7 +424,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                           ],
                                         ),
                                         Text(
-                                          widget.product.generalDetail,
+                                          widget.product.priceDescription,
                                           maxLines: 5,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
@@ -479,7 +465,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                           ),
                                         ),
                                         Text(
-                                          'Address: ${widget.product.address}',
+                                          'Address: ${widget.product.address}, ${widget.product.city}, ${widget.product.country}',
                                           style: TextStyle(
                                             height: 1.5,
                                             color: Colors.grey.shade800,

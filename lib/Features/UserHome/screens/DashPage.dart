@@ -1,4 +1,5 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sized_box_for_whitespace, non_constant_identifier_names, library_private_types_in_public_api
+import 'package:eventify/Features/UserHome/screens/MenuScreen.dart';
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/MainSearchBar.dart';
@@ -145,16 +146,36 @@ class _DashPageState extends State<DashPage> {
           child: AppBar(
             backgroundColor: COLOR_ACCENT,
             elevation: 5,
-            leading: Padding(
-                padding: const EdgeInsets.only(top: 10.0, left: 20),
-                child: IconButton(
-                  iconSize: 40,
-                  icon: Icon(
-                    Icons.search,
+            leading: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, MenuScreen.id);
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(top: 13.0, left: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
                     color: Colors.black,
                   ),
-                  onPressed: () {},
-                )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(3.0),
+                    child: CircleAvatar(
+                      backgroundColor: COLOR_ACCENT,
+                      child: Text(
+                        user.name.isNotEmpty
+                            ? user.name[0].toUpperCase()
+                            : 'Empty',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             // centerTitle: true, // Center the title and widgets
             title: Padding(
               padding: const EdgeInsets.only(top: 25, left: 15),

@@ -59,7 +59,8 @@ class _VendorProductRequestState extends State<VendorProductRequest> {
         product: product,
         onsuccess: () {
           vendorRequests.removeAt(index);
-          showCustomSnackBar(context: context, text: 'Done', label: 'ok', onPressed: (){});
+          showCustomSnackBar(
+              context: context, text: 'Done', label: 'ok', onPressed: () {});
           setState(() {});
         });
   }
@@ -159,7 +160,8 @@ class PendingReqCard extends StatelessWidget {
   final VoidCallback onAccept;
   final VoidCallback onDecline;
 
-  PendingReqCard({Key? key,
+  PendingReqCard({
+    Key? key,
     required this.product,
     required this.onAccept,
     required this.onDecline,
@@ -242,7 +244,9 @@ class PendingReqCard extends StatelessWidget {
                         children: [
                           Text(
                             'Details',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Icon(Icons.arrow_forward_ios),
                         ],
@@ -253,7 +257,7 @@ class PendingReqCard extends StatelessWidget {
               ),
             ),
             Text(
-              product.priceDescription,
+              product.businessName,
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 18,

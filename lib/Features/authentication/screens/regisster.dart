@@ -112,7 +112,7 @@ class _RegisterState extends State<Register> {
                       height: 12,
                     ),
                     CustomTextField(
-                      hintText: 'Email',
+                      hintText: 'Enter Your Valid Email',
                       controller: email,
                       icon: Icon(
                         Icons.email,

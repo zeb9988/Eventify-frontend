@@ -1,4 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eventify/Features/Vendor/trackmybooking.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +94,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                 final order = orderHistory[orderIndex];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, TrackUserOrder.id,
+                    Navigator.pushNamed(context, TrackMyOrder.id,
                         arguments: order);
                   },
                   child: Padding(
@@ -113,7 +114,14 @@ class _OrderHistoryState extends State<OrderHistory> {
                       ),
                       child: Column(
                         children: [
-                          Text('Order ${order.totalPrice}'),
+                          Text('Order ${orderIndex + 1}'),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text('Order Id: ${order.id}'),
+                          SizedBox(
+                            height: 5,
+                          ),
                           ListView.builder(
                             itemCount: order.products.length,
                             shrinkWrap: true,
@@ -159,7 +167,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                                         ),
                                         const SizedBox(height: 15),
                                         Text(
-                                          '\$${product.price}',
+                                          '\PKR: ${product.price}',
                                           // Replace with your product price
                                           style: TextStyle(
                                             fontSize: 20,

@@ -85,6 +85,10 @@ class _AddVendorFormState extends State<AddVendorForm> {
     }
   }
 
+  void removeImage(File image) {
+    images.remove(image);
+  }
+
   @override
   void dispose() {
     businessName.dispose();
@@ -175,10 +179,32 @@ class _AddVendorFormState extends State<AddVendorForm> {
                               viewportFraction: 1),
                           items: images.map((i) {
                             return Builder(
-                                builder: (BuildContext context) => Image.file(
-                                      i,
-                                      height: 200,
-                                      fit: BoxFit.cover,
+                                builder: (BuildContext context) => Stack(
+                                      children: [
+                                        Image.file(
+                                          i,
+                                          height: 200,
+                                          fit: BoxFit.cover,
+                                        ),
+                                        Positioned(
+                                          top: 0,
+                                          right: 0,
+                                          child: IconButton(
+                                            iconSize: 35,
+                                            color: Colors.black,
+                                            icon: const Icon(Icons.delete),
+                                            onPressed: () {
+                                              setState(() {
+                                                if (images.isNotEmpty) {
+                                                  File imageToDelete =
+                                                      images[0];
+                                                  removeImage(imageToDelete);
+                                                }
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                      ],
                                     ));
                           }).toList(),
                         )

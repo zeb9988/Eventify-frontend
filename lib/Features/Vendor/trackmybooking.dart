@@ -72,7 +72,7 @@ class _TrackMyOrderState extends State<TrackMyOrder> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: const Text(
-          'Track Your Booking',
+          'Track User Booking',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,
@@ -272,7 +272,7 @@ class _TrackMyOrderState extends State<TrackMyOrder> {
                 ),
               ),
             ),
-            if (currentStep >= 3) const Text('User rating is pending'),
+            // if (currentStep >= 3) const Text('User rating is pending'),
             // if (Provider.of<UserProvider>(context).user.type == 'user' &&
             //     currentStep >= 3)
             //   Padding(

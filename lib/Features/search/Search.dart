@@ -41,6 +41,7 @@ class _SearchState extends State<Search> {
 
   void Navigatetosearchscreen(String query) {
     Navigator.pushNamed(context, Search.id, arguments: query);
+    searchController.clear();
   }
 
   TextEditingController searchController = TextEditingController();

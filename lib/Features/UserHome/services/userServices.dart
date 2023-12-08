@@ -72,7 +72,8 @@ class UserServices {
             onsuccess();
           });
     } catch (e) {
-      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
   }
 
@@ -103,10 +104,15 @@ class UserServices {
               address: jsonDecode(response.body)['address'],
             );
             userProvider.setUserFromModel(user);
-            showCustomSnackBar(context: context, text: "User name added successfully!", label: 'ok', onPressed: (){});
+            showCustomSnackBar(
+                context: context,
+                text: "Your name edit successfully!",
+                label: 'ok',
+                onPressed: () {});
           });
     } catch (e) {
-      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
   }
 
@@ -131,7 +137,8 @@ class UserServices {
       httpErrorHandle(
           response: response, context: context, onSuccess: onsuccess);
     } catch (e) {
-      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
   }
 }

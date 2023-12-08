@@ -1,3 +1,4 @@
+import 'package:eventify/Features/Booking/BookingScreen.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/checklist/Checklist.dart';
@@ -55,10 +56,10 @@ class dashcard extends StatelessWidget {
                 children: [
                   SubCard(
                     onPressed: () {
-                      // Navigator.pushNamed(context, Messages.id);
+                      Navigator.pushNamed(context, OrderScreen.id);
                     },
-                    image: 'assets/images/message.png',
-                    text: 'Messages',
+                    image: 'assets/images/booking.png',
+                    text: 'MyBookings',
                   ),
                   SubCard(
                     onPressed: () {

@@ -58,7 +58,11 @@ class _AddressScreenState extends State<AddressScreen> {
     } else if (addressFromProvider.isNotEmpty) {
       addressToBeUsed = addressFromProvider;
     } else {
-      return showCustomSnackBar(context: context, text: 'ERROR', label: 'OK', onPressed: (){});
+      return showCustomSnackBar(
+          context: context,
+          text: 'Plz Fill All Feilds',
+          label: 'OK',
+          onPressed: () {});
     }
     saveAdress();
   }
@@ -539,7 +543,10 @@ class _AddressScreenState extends State<AddressScreen> {
                     backgroundColor:
                         COLOR_ACCENT, // Set your desired background color
                   ),
-                  child: const Text('Proceed to Payment'),
+                  child: const Text(
+                    'Proceed to Payment',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),
