@@ -1,12 +1,10 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/order.dart';
-import '../cart/cartlist.dart';
 import 'Services/Booking_services.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -41,7 +39,7 @@ class _OrderScreenState extends State<OrderScreen> {
         orders.removeAt(index);
         showCustomSnackBar(
             context: context,
-            text: 'Order has beed deleted successfully',
+            text: 'Booking has beed deleted successfully',
             label: 'ok',
             onPressed: () {});
 
@@ -139,7 +137,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                   Row(
                                     children: [
                                       Text(
-                                        'Order ${orderIndex + 1} - ',
+                                        'Booking ${orderIndex + 1} - ',
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16,
@@ -239,7 +237,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     ),
                                                     const SizedBox(height: 15),
                                                     Text(
-                                                      '\$${product.price}',
+                                                      '\$PKR: ${product.price}',
                                                       // Replace with your product price
                                                       style: TextStyle(
                                                         fontSize: 20,

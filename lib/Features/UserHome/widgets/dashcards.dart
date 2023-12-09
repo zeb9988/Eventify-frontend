@@ -1,4 +1,5 @@
 import 'package:eventify/Features/Booking/BookingScreen.dart';
+import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/checklist/Checklist.dart';
@@ -59,21 +60,21 @@ class dashcard extends StatelessWidget {
                       Navigator.pushNamed(context, OrderScreen.id);
                     },
                     image: 'assets/images/booking.png',
-                    text: 'MyBookings',
+                    text: translation(context).booking,
                   ),
                   SubCard(
                     onPressed: () {
                       Navigator.pushNamed(context, AllCatagory.id);
                     },
                     image: 'assets/images/vendor1.png',
-                    text: 'Vendors',
+                    text: translation(context).vendor,
                   ),
                   SubCard(
                     onPressed: () {
                       Navigator.pushNamed(context, ChecklistScreen.id);
                     },
                     image: 'assets/images/checklist.png',
-                    text: 'Checklist',
+                    text: translation(context).checklist,
                   ),
                 ],
               ),
@@ -85,21 +86,21 @@ class dashcard extends StatelessWidget {
                       Navigator.pushNamed(context, Favourite.id);
                     },
                     image: 'assets/images/hearttt.png',
-                    text: 'Favourite',
+                    text: translation(context).favorite,
                   ),
                   SubCard(
                     onPressed: () {
                       Navigator.pushNamed(context, FeedbackScreen.id);
                     },
                     image: 'assets/images/feedback.png',
-                    text: 'Feedback',
+                    text: translation(context).feedback,
                   ),
                   SubCard(
                     onPressed: () {
                       Navigator.pushNamed(context, PolicyScreen.id);
                     },
                     image: 'assets/images/about.png',
-                    text: 'About',
+                    text: translation(context).about,
                   ),
                 ],
               ),

@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'regisster.dart';
-import '../../UserHome/widgets/globle_widgets.dart';
-import '../../UserHome/widgets/language_menu.dart';
+import '../widget/SocialButton.dart';
+import '../../../Language/language_menu.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);

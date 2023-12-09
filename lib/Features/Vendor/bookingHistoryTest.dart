@@ -115,11 +115,11 @@ class _BokinghistoryTestState extends State<BokinghistoryTest> {
                       ),
                       child: Column(
                         children: [
-                          Text('Order ${orderIndex + 1}'),
+                          Text('Booking ${orderIndex + 1}'),
                           SizedBox(
                             height: 5,
                           ),
-                          Text('Order Id: ${order.id}'),
+                          Text('Booking Id: ${order.id}'),
                           SizedBox(
                             height: 5,
                           ),

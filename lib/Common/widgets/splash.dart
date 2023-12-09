@@ -1,12 +1,10 @@
 import 'dart:async';
-
-import 'package:eventify/common/widgets/Loader.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../Features/authentication/screens/Landing_page.dart';
 import '../../Features/UserHome/screens/home_screen.dart';
 import '../../features/Notification/msgservicee.dart';
@@ -64,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [COLOR_ACCENT, Colors.black],
+            colors: [COLOR_ACCENT, Colors.white],
           ),
         ),
         child: Center(
@@ -75,9 +73,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 'assets/images/logo2.png',
                 width: 150,
                 height: 150,
-              ),
+              ).animate().fade(duration: 2000.ms)
+              .scale(delay: 100.ms).move(delay: 300.ms, duration: 3000.ms),
               SizedBox(height: 20),
-              Loader(), // Optional: Add a progress indicator
             ],
           ),
         ),

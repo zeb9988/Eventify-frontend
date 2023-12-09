@@ -1,3 +1,4 @@
+import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/Models/todoList.dart';
 import 'package:eventify/common/widgets/custombutton.dart';
 import 'package:eventify/constant/Theme_constant.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChecklistScreen extends StatefulWidget {
   static const id = "/Checklist";
@@ -59,8 +61,8 @@ class _DashboardState extends State<ChecklistScreen> {
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
-        title: const Text(
-          'My Checklist',
+        title: Text(
+          translation(context).checklist,
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,

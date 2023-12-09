@@ -1,10 +1,10 @@
 // ignore: file_names
+import 'package:eventify/Constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/SearchBar.dart';
-import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/constant/constant.dart';
 import 'package:eventify/features/product_details/Vendor_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../constant/constant.dart';
 import '../../../prooviders/provider.dart';
 import '../widgets/finalcategorycard.dart';
 
@@ -51,7 +51,7 @@ class _MainEventState extends State<MainEvent> {
       pic = 'assets/images/party.jpg';
     } else if (widget.category == 'Eid Celebration') {
       finalcard = EidCelebration;
-      pic = 'assets/images/eidcele.jpg';
+      pic = 'assets/images/eidcele.jpeg';
     } else if (widget.category == 'Cultural Festival') {
       finalcard = CulturalFestival;
       pic = 'assets/images/culture.jpg';

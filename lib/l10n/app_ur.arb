@@ -32,7 +32,6 @@
     "vendor": "وینڈر",
     "checklist": "چیک لسٹ",
     "feedback": "فیڈبیک",
-    "about": "کے بارے میں",
     "topevent": "شاندار تقریبات",
     "bestseller": "بہترین فروخت",
     "profile": "میری پروفائل",
@@ -44,5 +43,7 @@
     "helpcenter": "مدد کنٹر",
     "languagesupport": "زبانیں",
     "about" : "کے بارے میں",
-    "password" : "پاسورڈ"
+    "password" : "پاسورڈ",
+    "editt": "ترتيب ديں",
+    "Personal Balance": "ذاتی توازن"
 }

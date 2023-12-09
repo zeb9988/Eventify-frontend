@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // import '../../../common/widgets/Loader.dart';
 import '../../../models/Product.dart';
 
-import '../../UserHome/widgets/card.dart';
+import '../Widgets/card.dart';
 import '../services/admin_services.dart';
 
 class Florist extends StatefulWidget {

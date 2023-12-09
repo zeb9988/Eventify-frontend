@@ -1,13 +1,9 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/Features/Booking/Services/Booking_services.dart';
-import 'package:eventify/common/widgets/Loader.dart';
-import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:eventify/features/Vendor/trackmybooking.dart';
 import 'package:flutter/material.dart';
 import '../../models/order.dart';
-import '../cart/cartlist.dart';
 
 class NewBookingTest extends StatefulWidget {
   static const String id = '/NewBooking';
@@ -139,7 +135,7 @@ class _NewBookingTestState extends State<NewBookingTest> {
                                   Row(
                                     children: [
                                       Text(
-                                        'Order ${orderIndex + 1} - ',
+                                        'Booking ${orderIndex + 1} - ',
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16,
@@ -239,7 +235,7 @@ class _NewBookingTestState extends State<NewBookingTest> {
                                                     ),
                                                     const SizedBox(height: 15),
                                                     Text(
-                                                      '\$${product.price}',
+                                                      '\PKR: ${product.price.toStringAsFixed(0)}',
                                                       // Replace with your product price
                                                       style: TextStyle(
                                                         fontSize: 20,

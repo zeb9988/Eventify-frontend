@@ -41,7 +41,7 @@ class _DeclineBookingTestState extends State<DeclineBookingTest> {
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
         title: const Text(
-          'Booking History',
+          'Canceled Bookings',
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,
@@ -91,91 +91,85 @@ class _DeclineBookingTestState extends State<DeclineBookingTest> {
               itemCount: orderHistory.length,
               itemBuilder: (context, orderIndex) {
                 final order = orderHistory[orderIndex];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, TrackUserOrder.id,
-                        arguments: order);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade200,
-                            offset: const Offset(0, 2),
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Text('Order ${order.totalPrice}'),
-                          ListView.builder(
-                            itemCount: order.products.length,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, productIndex) {
-                              final product = order.products[productIndex];
-                              return Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 10),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        product.images[
-                                            0], // Replace with your image URL
-                                        fit: BoxFit.cover,
-                                        height: 100,
-                                        width: 100,
+                return Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade200,
+                          offset: const Offset(0, 2),
+                          blurRadius: 6,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Text('Booking ${order.id}'),
+                        ListView.builder(
+                          itemCount: order.products.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, productIndex) {
+                            final product = order.products[productIndex];
+                            return Row(
+                              children: <Widget>[
+                                Container(
+                                  margin: const EdgeInsets.only(right: 10),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.network(
+                                      product.images[
+                                          0], // Replace with your image URL
+                                      fit: BoxFit.cover,
+                                      height: 100,
+                                      width: 100,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(
+                                        product.businessName,
+                                        // Replace with your product name
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 18,
+                                        ),
                                       ),
-                                    ),
+                                      const SizedBox(height: 5),
+                                      Text(
+                                        product.category,
+                                        // Replace with your product category
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 15),
+                                      Text(
+                                        '\PKR: ${product.price.toStringAsFixed(0)}',
+                                        // Replace with your product price
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.grey.shade800,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                    ],
                                   ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          product.businessName,
-                                          // Replace with your product name
-                                          style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 18,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 5),
-                                        Text(
-                                          product.category,
-                                          // Replace with your product category
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 15),
-                                        Text(
-                                          '\$${product.price}',
-                                          // Replace with your product price
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.grey.shade800,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 10),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ],
-                      ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 );

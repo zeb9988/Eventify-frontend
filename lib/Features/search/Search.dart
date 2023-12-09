@@ -1,8 +1,11 @@
+import 'package:eventify/Constant/constant.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/cart/cart_screen.dart';
 import 'package:eventify/features/search/Searchservices.dart';
 import 'package:eventify/features/product_details/Product_detail_screen.dart';
+import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../common/widgets/Loader.dart';
 import '../../common/widgets/MainSearchBar.dart';
 import '../../models/Product.dart';
@@ -47,6 +50,7 @@ class _SearchState extends State<Search> {
   TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final usercartLen = context.watch<UserProvider>().user.cart.length;
     return SafeArea(
       child: Scaffold(
         backgroundColor: COLOR_PRIMARY,
@@ -71,44 +75,7 @@ class _SearchState extends State<Search> {
                 ],
               ),
               actions: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20.0, top: 15),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, CartScreen.id);
-                    },
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/cart.png'),
-                        ),
-                        Positioned(
-                          top: 0,
-                          right: 0,
-                          child: Container(
-                            width: 15,
-                            height: 15,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.red, // Customize the cart dot color
-                            ),
-                            child: Center(
-                              child: Text(
-                                '2',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10, // Customize the font size
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                CartButton(context, usercartLen, Colors.black),
               ],
             ),
           ),

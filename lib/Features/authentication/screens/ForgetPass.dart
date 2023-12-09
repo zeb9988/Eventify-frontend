@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../common/widgets/customtextfeild.dart';
-import '../../UserHome/widgets/button.dart';
+import '../../../Common/widgets/button.dart';
 
 class ForgetPass extends StatefulWidget {
   static const String id = '/ForgetPass';

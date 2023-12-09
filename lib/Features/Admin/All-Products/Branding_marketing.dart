@@ -2,9 +2,8 @@ import 'package:eventify/features/admin/services/admin_services.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
 
-import '../../UserHome/widgets/card.dart';
+import '../Widgets/card.dart';
 
-// import '../../../common/Loader.dart';
 
 class Branding extends StatefulWidget {
   @override

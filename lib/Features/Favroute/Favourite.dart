@@ -1,10 +1,9 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/cart/cartlist.dart';
 import 'package:eventify/features/product_details/Product_detail_screen.dart';
 import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/Product.dart';
@@ -31,8 +30,8 @@ class _FavouriteState extends State<Favourite> {
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
-        title: const Text(
-          'My Favorites',
+        title: Text(
+          translation(context).favorite,
           style: TextStyle(
             fontFamily: 'Merriweather',
             fontSize: 22,

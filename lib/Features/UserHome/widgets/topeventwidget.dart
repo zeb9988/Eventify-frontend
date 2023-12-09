@@ -1,9 +1,9 @@
 import 'package:eventify/Features/UserHome/screens/mainEventscreen.dart';
+import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'TopEventCard.dart';
 
 class topeventcards extends StatelessWidget {
@@ -22,7 +22,7 @@ class topeventcards extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Top Events',
+                translation(context).topevent,
                 style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight

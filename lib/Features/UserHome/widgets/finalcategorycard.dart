@@ -60,6 +60,7 @@ class Finalcat extends StatelessWidget {
                       ),
                       Text(
                         description,
+                        maxLines: 3,
                         style: TextStyle(
                           overflow: TextOverflow.ellipsis,
                           fontSize: 10,
@@ -73,10 +74,9 @@ class Finalcat extends StatelessWidget {
             ),
             if (isHotDeal) // Display "Hot Deal" label if it's a hot deal
               Positioned(
-                top: 180,
+                top: 70,
                 right: 5,
                 child: Container(
-
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.red,

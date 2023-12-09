@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sized_box_for_whitespace, non_constant_identifier_names, library_private_types_in_public_api
 import 'package:eventify/Features/UserHome/screens/MenuScreen.dart';
+import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/common/widgets/Loader.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/MainSearchBar.dart';
@@ -362,9 +363,9 @@ class _DashPageState extends State<DashPage> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
-                          'Best Sellers',
+                          translation(context).bestseller,
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
@@ -400,7 +401,7 @@ class _DashPageState extends State<DashPage> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'Quick Checklist',
+                        translation(context).checklist,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

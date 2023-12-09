@@ -44,5 +44,7 @@
     "helpcenter": "Help Center",
     "languagesupport": "Language",
     "about" : "About",
-    "password" : "Password"
+    "password" : "Password",
+    "editt" : "Edit",
+    "editt": "Personal Balance"
 }

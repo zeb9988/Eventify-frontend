@@ -127,8 +127,7 @@ class _Vendor_ScreenState extends State<Vendor_Screen> {
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: const Color.fromARGB(
-                                255, 102, 32, 32), // Border color
+                            color: Colors.white, // Border color
                             width: 1.0, // Border width
                           ),
                           borderRadius:

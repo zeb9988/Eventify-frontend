@@ -7,13 +7,9 @@ import 'package:eventify/features/cart/cartservices.dart';
 import 'package:eventify/features/search/Search.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
-import 'cartlist.dart';
-import '../../common/widgets/custombutton.dart';
 import '../../models/Product.dart';
 import '../../prooviders/provider.dart';
-import 'package:http/http.dart' as http;
 
 class CartScreen extends StatefulWidget {
   static const String id = '/Cart';

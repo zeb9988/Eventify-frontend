@@ -46,7 +46,6 @@ dependencies:
   animated_text_kit: ^4.2.2
   intl: ^0.18.1
   firebase_messaging: ^14.6.7
-  simple_animations: ^5.0.2
   font_awesome_flutter: ^10.4.0
   flutter_slidable: ^3.0.0
   velocity_x: ^4.1.1
@@ -76,6 +75,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   flutter_local_notifications: ^15.1.1
   loading_animation_widget: ^1.2.0+4
+  flutter_animate: ^4.3.0
   smooth_star_rating_null_safety: ^1.0.4+2
   country_pickers: ^2.0.0
   geolocator: ^10.1.0

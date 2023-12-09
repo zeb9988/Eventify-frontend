@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // import '../../../common/Loader.dart';
 import '../../../models/Product.dart';
-import '../../UserHome/widgets/card.dart';
+import '../Widgets/card.dart';
 import '../services/admin_services.dart';
 
 class Mehndi extends StatefulWidget {
