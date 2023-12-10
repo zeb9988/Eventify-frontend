@@ -1,6 +1,8 @@
+// ignore_for_file: file_names, avoid_print
+
 import 'package:dotted_border/dotted_border.dart';
-import 'package:eventify/Features/UserHome/screens/pendingapproval.dart';
-import 'package:eventify/Features/UserHome/screens/vendor_register.dart';
+import 'package:eventify/Features/Vendor/pendingapproval.dart';
+import 'package:eventify/Features/Vendor/vendor_register.dart';
 import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/common/widgets/customtextfeild.dart';
@@ -20,7 +22,7 @@ import '../services/userServices.dart';
 import '../../../Language/language_menu.dart';
 import 'About.dart';
 import '../../Favroute/Favourite.dart';
-import 'approvalscreen.dart';
+import '../../Vendor/approvalscreen.dart';
 
 class MenuScreen extends StatefulWidget {
   static const String id = '/MenuScreen';
@@ -44,9 +46,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<ProfileCompletionCard> profileCompletionCards =
-        initializeProfileCompletionCards(context);
-
     final user = Provider.of<UserProvider>(context).user;
     nameController.text = user.name;
     addressController.text = user.address;
@@ -73,7 +72,7 @@ class _MenuScreenState extends State<MenuScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Text(translation(context).languagesupport,
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 10),
@@ -116,7 +115,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             user.name.isNotEmpty
                                 ? user.name[0].toUpperCase()
                                 : 'Empty',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 40,
@@ -165,7 +164,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text('Edit'),
+                    child: const Text('Edit'),
                     onPressed: () {
                       showDialog(
                         context: context,
@@ -208,7 +207,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                       ),
                                     ),
                                     const SizedBox(height: 10),
-                                    Text(
+                                    const Text(
                                       'Name',
                                       style: TextStyle(
                                         fontSize: 15,
@@ -224,7 +223,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                       is_pass: false,
                                       controller: nameController,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     const SizedBox(height: 20),
@@ -267,7 +266,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black54, // Color of the shadow
                       blurRadius: 10, // Spread of the shadow
@@ -278,7 +277,8 @@ class _MenuScreenState extends State<MenuScreen> {
                 child: Center(
                   child: Text(
                     translation(context).becomeavendor,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 25),
                   ),
                 ),
               ),
@@ -414,7 +414,6 @@ List<CustomListTile> customListTiles(BuildContext context) {
       title: translation(context).favorite,
       onPress: (context) {
         Navigator.pushNamed(context, Favourite.id);
-        print("My fav pressed");
       },
     ),
     CustomListTile(

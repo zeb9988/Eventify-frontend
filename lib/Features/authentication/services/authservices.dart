@@ -50,7 +50,12 @@ class AuthService {
         response: res,
         context: context,
         onSuccess: () {
-          showCustomSnackBar(context: context, text: 'Account created! We send your password on your typed email', label: 'ok', onPressed: (){});
+          showCustomSnackBar(
+              context: context,
+              text:
+                  'Account created! We send your password on your typed email',
+              label: 'ok',
+              onPressed: () {});
           // showSnackBar(
           //   context,
           //   'Account created! Login with the same credentials!',
@@ -58,14 +63,14 @@ class AuthService {
         },
       );
     } catch (e) {
-      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
       // showSnackBar(context, e.toString());
     }
   }
 
   void Forgetpassword(
       {required BuildContext context, required String email}) async {
-
     try {
       http.Response res = await http.post(
         Uri.parse('$uri/api/reset'),
@@ -78,12 +83,15 @@ class AuthService {
           response: res,
           context: context,
           onSuccess: () async {
-            showCustomSnackBar(context: context, text: "Password is sent to email successfully!", label: 'ok', onPressed: (){});
+            showCustomSnackBar(
+                context: context,
+                text: "Password is sent to email successfully!",
+                label: 'ok',
+                onPressed: () {});
           });
-
-
     } catch (e) {
-      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
   }
 
@@ -129,10 +137,9 @@ class AuthService {
               );
             }
           });
-
-
     } catch (e) {
-      showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
+      showCustomSnackBar(
+          context: context, text: e.toString(), label: 'ok', onPressed: () {});
     }
   }
 
@@ -152,7 +159,6 @@ class AuthService {
           'x-auth-token': token!
         },
       );
-
 
       var response = jsonDecode(tokenRes.body);
 

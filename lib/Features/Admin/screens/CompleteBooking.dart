@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +9,7 @@ import '../../../models/order.dart';
 class AdminCompleteBookings extends StatefulWidget {
   static const String id = '/SoldBooking';
   final List<Order> orderHistory;
-  AdminCompleteBookings({Key? key, required this.orderHistory})
+  const AdminCompleteBookings({Key? key, required this.orderHistory})
       : super(key: key);
   @override
   State<AdminCompleteBookings> createState() => _AdminCompleteBookingsState();

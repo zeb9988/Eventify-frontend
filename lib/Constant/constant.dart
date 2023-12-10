@@ -1,4 +1,6 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore: duplicate_ignore
+// ignore: duplicate_ignore
+// ignore_for_file: non_constant_identifier_names, duplicate_ignore
 
 import 'dart:io';
 
@@ -675,7 +677,7 @@ IconButton CartButton(BuildContext context, int cartItemCount, Color color) {
           child: Container(
             width: 15,
             height: 15,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.red, // Customize the cart dot color
             ),
@@ -731,10 +733,10 @@ void showCustomDialog(BuildContext context, String text, IconData icon) {
               ),
               Center(
                 child: Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Text(
                     text,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.bold,

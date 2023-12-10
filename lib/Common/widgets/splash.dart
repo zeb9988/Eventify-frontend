@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, use_key_in_widget_constructors, library_private_types_in_public_api
+
 import 'dart:async';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:eventify/constant/Theme_constant.dart';
@@ -21,6 +23,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final AuthService auth = AuthService();
   MessagingService messagingService = MessagingService();
+
   @override
   void initState() {
     super.initState();
@@ -58,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -73,9 +76,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 'assets/images/logo2.png',
                 width: 150,
                 height: 150,
-              ).animate().fade(duration: 2000.ms)
-              .scale(delay: 100.ms).move(delay: 300.ms, duration: 3000.ms),
-              SizedBox(height: 20),
+              )
+                  .animate()
+                  .fade(duration: 2000.ms)
+                  .scale(delay: 100.ms)
+                  .move(delay: 300.ms, duration: 3000.ms),
+              const SizedBox(height: 20),
             ],
           ),
         ),

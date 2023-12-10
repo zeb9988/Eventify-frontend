@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, empty_catches, file_names
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:eventify/common/widgets/custombutton.dart';
@@ -38,7 +38,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
   void fetchcatagory() async {
     relatedproduct = await home.fetchsearchproduct(
         context: context, catagory: widget.product.category);
-    print(relatedproduct.length);
     setState(() {});
   }
 
@@ -60,7 +59,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     fetchcatagory();
     double totalRating = 0;
     for (int i = 0; i < widget.product.rating!.length; i++) {
-      print(widget.product.rating![i].rating);
       totalRating += widget.product.rating![i].rating;
       if (widget.product.rating![i].userId ==
           Provider.of<UserProvider>(context, listen: false).user.id) {
@@ -84,9 +82,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
       setState(() {
         isFavorite = !isFavorite;
       });
-    } catch (e) {
-      print('Error toggling favorite: $e');
-    }
+    } catch (e) {}
   }
 
   void addToCart() {
@@ -601,9 +597,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                         height: 330,
                         child: Column(
                           children: [
-                            Row(
+                            const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
+                              children: [
                                 Text(
                                   'Related Project',
                                   style: TextStyle(
@@ -631,7 +627,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 60,
                       ),
                     ],
@@ -660,39 +656,3 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     );
   }
 }
-
-// class ReviewItem extends StatelessWidget {
-//   // final String imagePath;
-//   // final String name;
-//   final double rating;
-//   final String review;
-
-//   ReviewItem({
-//     // required this.imagePath,
-//     // required this.name,
-//     required this.rating,
-//     required this.review,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         ListTile(
-//           // leading: CircleAvatar(
-//           //   backgroundImage: NetworkImage(imagePath),
-//           // ),
-//           title: Text(
-//             review,
-//             style: TextStyle(
-//               fontWeight: FontWeight.bold,
-//               fontSize: 16,
-//             ),
-//           ),
-//           subtitle:
-//         ),
-//         const Divider(),
-//       ],
-//     );
-//   }
-// }

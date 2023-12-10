@@ -1,7 +1,7 @@
+// ignore_for_file: camel_case_types
 
 import 'package:eventify/features/product_details/Product_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/widgets/star.dart';
@@ -40,9 +40,8 @@ class _productCard2State extends State<productCard2> {
       setState(() {
         isFavorite = !isFavorite;
       });
-    } catch (e) {
-      print('Error toggling favorite: $e');
-    }
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   @override
@@ -50,7 +49,6 @@ class _productCard2State extends State<productCard2> {
     super.initState();
     double totalRating = 0;
     for (int i = 0; i < widget.product.rating!.length; i++) {
-      print(widget.product.rating![i].rating);
       totalRating += widget.product.rating![i].rating;
       if (widget.product.rating![i].userId ==
           Provider.of<UserProvider>(context, listen: false).user.id) {
@@ -70,7 +68,6 @@ class _productCard2State extends State<productCard2> {
     void press() {
       Navigator.pushNamed(context, ProductDetailsScreen.id,
           arguments: widget.product);
-      print(widget.product.address);
     }
 
     return GestureDetector(
@@ -83,7 +80,7 @@ class _productCard2State extends State<productCard2> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               offset: Offset(5, 10),
               // blurRadius: 15,
@@ -95,11 +92,11 @@ class _productCard2State extends State<productCard2> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: 100,
               child: Stack(
                 children: [
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
@@ -155,7 +152,7 @@ class _productCard2State extends State<productCard2> {
                   ),
                 ),
                 Text(
-                  '\Rs ${widget.product.price.toStringAsFixed(0)}',
+                  'Rs ${widget.product.price.toStringAsFixed(0)}',
                   style: const TextStyle(
                       overflow: TextOverflow.ellipsis,
                       color: Colors.black,

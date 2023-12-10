@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sized_box_for_whitespace, non_constant_identifier_names, library_private_types_in_public_api
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, sized_box_for_whitespace, non_constant_identifier_names, library_private_types_in_public_api, empty_catches
 import 'package:eventify/Features/UserHome/screens/MenuScreen.dart';
 import 'package:eventify/Language/language_constants.dart';
 import 'package:eventify/common/widgets/Loader.dart';
@@ -41,8 +41,9 @@ class _DashPageState extends State<DashPage> {
   Weather? _weather;
 
   String getWeatherAnimation(String? mainCondition) {
-    if (mainCondition == null)
+    if (mainCondition == null) {
       return 'assets/animation/sunny.json'; //default to sunny
+    }
     switch (mainCondition.toLowerCase()) {
       case 'clouds':
       case 'mist':
@@ -67,7 +68,6 @@ class _DashPageState extends State<DashPage> {
   _fetchWeather() async {
     //get current city
     String? cityName = await _weatherService.getCurrentCity();
-    print('${cityName}wffsff');
     //get weather for city
     try {
       final weather = await _weatherService.getWeather(cityName!);
@@ -76,9 +76,7 @@ class _DashPageState extends State<DashPage> {
       });
     }
     //any error
-    catch (e) {
-      print(e);
-    }
+    catch (e) {}
   }
 
   List<Product> product = [];
@@ -286,7 +284,7 @@ class _DashPageState extends State<DashPage> {
                         left: 70,
                         top: 80,
                         child: Text(
-                          '${DateFormat('EEEE, MMMM d').format(DateTime.now())}',
+                          DateFormat('EEEE, MMMM d').format(DateTime.now()),
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey,
@@ -343,11 +341,11 @@ class _DashPageState extends State<DashPage> {
                 padding: const EdgeInsets.only(top: 20, left: 20),
                 height: 220,
                 child: Column(
-                  children: [
-                    const SizedBox(
+                  children: const [
+                    SizedBox(
                       height: 15,
                     ),
-                    const ProductSlider(),
+                    ProductSlider(),
                   ],
                 ),
               ),
@@ -468,8 +466,8 @@ class _DashPageState extends State<DashPage> {
                               child: Card(
                                 borderOnForeground: false,
                                 child: ListTile(
-                                  title: Text('${todo.desc}'),
-                                  subtitle: Text('${todo.desc}'),
+                                  title: Text(todo.desc),
+                                  subtitle: Text(todo.desc),
                                   trailing: const Icon(Icons.arrow_back),
                                 ),
                               ),

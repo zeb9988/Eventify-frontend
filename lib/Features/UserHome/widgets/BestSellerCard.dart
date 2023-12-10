@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+
 import 'package:eventify/common/widgets/star.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/models/Product.dart';
@@ -88,7 +90,7 @@ class _BestSellerCardState extends State<BestSellerCard> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 offset: Offset(5, 10),
                 // blurRadius: 15,

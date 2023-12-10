@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/common/widgets/customSnackbar.dart';
 import 'package:eventify/constant/Theme_constant.dart';
@@ -240,7 +242,7 @@ class PendingReqCard extends StatelessWidget {
                         Navigator.pushNamed(context, DetailScreen.id,
                             arguments: product);
                       },
-                      child: Row(
+                      child: const Row(
                         children: [
                           Text(
                             'Details',
@@ -277,7 +279,7 @@ class PendingReqCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  '\Rs${product.price}',
+                  'Rs${product.price}',
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.grey.shade800,

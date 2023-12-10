@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/Theme_constant.dart';
@@ -6,7 +8,8 @@ import '../../../models/Product.dart';
 class ApprovedProducts extends StatefulWidget {
   static const String id = '/allapprovedproducts';
   final List<Product> approvedRequests;
-  ApprovedProducts({required this.approvedRequests});
+  const ApprovedProducts({Key? key, required this.approvedRequests})
+      : super(key: key);
 
   @override
   _ApprovedProductsState createState() => _ApprovedProductsState();
@@ -19,10 +22,10 @@ class _ApprovedProductsState extends State<ApprovedProducts> {
       backgroundColor: COLOR_PRIMARY,
       appBar: AppBar(
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: COLOR_PRIMARY,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Approved Products',
           style: TextStyle(
             fontFamily: 'Merriweather',
@@ -35,7 +38,7 @@ class _ApprovedProductsState extends State<ApprovedProducts> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           if (widget.approvedRequests.isEmpty)
             Padding(
               padding: const EdgeInsets.all(50.0),
@@ -45,12 +48,12 @@ class _ApprovedProductsState extends State<ApprovedProducts> {
                 borderType: BorderType.RRect,
                 strokeCap: StrokeCap.round,
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "No Approved Products",
                       style: TextStyle(
@@ -93,27 +96,28 @@ class ApprovedReqCard extends StatelessWidget {
   final String description;
   final double price;
 
-  ApprovedReqCard({
+  const ApprovedReqCard({
+    Key? key,
     required this.image,
     required this.name,
     required this.description,
     required this.price,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {},
         child: Container(
-          margin: EdgeInsets.only(bottom: 20),
-          padding: EdgeInsets.all(16),
+          margin: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.shade300,
-                offset: Offset(0, 2),
+                offset: const Offset(0, 2),
                 blurRadius: 6,
               ),
             ],
@@ -121,7 +125,7 @@ class ApprovedReqCard extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(right: 10),
+                margin: const EdgeInsets.only(right: 10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
@@ -139,7 +143,7 @@ class ApprovedReqCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -151,7 +155,7 @@ class ApprovedReqCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
@@ -172,30 +176,30 @@ class ApprovedReqCard extends StatelessWidget {
                     ),
                     Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       description,
-                      style: TextStyle(
+                      style: const TextStyle(
                         overflow: TextOverflow.ellipsis,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Text(
-                      '\Rs$price',
+                      'Rs$price',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.grey.shade800,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),

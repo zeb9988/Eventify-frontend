@@ -5,12 +5,12 @@ import 'package:eventify/common/widgets/custombutton.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:el_tooltip/el_tooltip.dart';
+import 'package:eventify/features/Vendor/Services/vendor_services.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:provider/provider.dart';
 import '../../../constant/constant.dart';
 import '../../../prooviders/provider.dart';
-import '../../Vendor/Services/vendor_services.dart';
 
 class AddVendors extends StatefulWidget {
   static const String id = '/addVendor';

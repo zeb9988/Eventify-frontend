@@ -1,3 +1,4 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 
@@ -5,9 +6,10 @@ class TCheckbox extends StatefulWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
 
-  TCheckbox({required this.value, required this.onChanged});
+  const TCheckbox({required this.value, required this.onChanged});
 
   @override
+  // ignore: library_private_types_in_public_api
   _TCheckboxState createState() => _TCheckboxState();
 }
 
@@ -34,8 +36,8 @@ class _TCheckboxState extends State<TCheckbox> {
         height: 16,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
-          border:
-              Border.all(width: 2, color: _value ? Color(0xFFD6A95C) : Colors.grey),
+          border: Border.all(
+              width: 2, color: _value ? Color(0xFFD6A95C) : Colors.grey),
         ),
         child: _value
             ? Icon(

@@ -18,9 +18,20 @@ class AllCatagory extends StatefulWidget {
 }
 
 class _AllCatagoryState extends State<AllCatagory> {
+  List filteredCategories = [];
+
   @override
   void initState() {
     super.initState();
+    filteredCategories = AllCategoryList;
+  }
+
+  void filterCategories(String query) {
+    setState(() {
+      filteredCategories = AllCategoryList.where((category) =>
+              category['name']!.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
   }
 
   TextEditingController searchController = TextEditingController();
@@ -112,13 +123,17 @@ class _AllCatagoryState extends State<AllCatagory> {
                 ),
               ),
               Positioned(
-                  bottom: 10,
-                  left: 0,
-                  right: 0,
-                  child: CustomSearchBar(
-                    hintText: 'Search...',
-                    controller: searchController,
-                  )),
+                bottom: 10,
+                left: 0,
+                right: 0,
+                child: CustomSearchBar(
+                  hintText: 'Search...',
+                  controller: searchController,
+                  onChanged: (query) {
+                    filterCategories(query);
+                  },
+                ),
+              ),
             ],
           ),
           const SizedBox(
@@ -133,9 +148,9 @@ class _AllCatagoryState extends State<AllCatagory> {
                 childAspectRatio:
                     0.75, // Adjust this value to maintain the height of Finalcat
               ),
-              itemCount: AllCategoryList.length,
+              itemCount: filteredCategories.length,
               itemBuilder: (context, index) {
-                final item = AllCategoryList[index];
+                final item = filteredCategories[index];
 
                 return Container(
                   margin: EdgeInsets.only(

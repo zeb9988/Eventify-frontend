@@ -1,3 +1,4 @@
+import 'package:eventify/Features/Vendor/vendor_register.dart';
 import 'package:eventify/features/Feedback/Feedback.dart';
 import 'package:eventify/features/Vendor/Vendor_Page.dart';
 import 'package:eventify/features/Vendor/bookingHistoryTest.dart';
@@ -30,12 +31,11 @@ import '../Features/UserHome/screens/Allcatagory.dart';
 import '../Features/UserHome/screens/DashPage.dart';
 import '../Features/Favroute/Favourite.dart';
 import '../Features/UserHome/screens/MenuScreen.dart';
-import '../Features/UserHome/screens/approvalscreen.dart';
-import '../Features/UserHome/screens/edit.dart';
+import '../Features/Vendor/approvalscreen.dart';
+import '../Features/Vendor/edit.dart';
 import '../Features/UserHome/screens/home_screen.dart';
 import '../Features/UserHome/screens/mainEventscreen.dart';
-import '../Features/UserHome/screens/pendingapproval.dart';
-import '../Features/UserHome/screens/vendor_register.dart';
+import '../Features/Vendor/pendingapproval.dart';
 import '../features/Booking/BookingHistory.dart';
 import '../features/Booking/BookingScreen.dart';
 import '../features/Booking/TrackBooking.dart';
@@ -61,17 +61,17 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case ApprovedRequest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => ApprovedRequest(),
+        builder: (_) => const ApprovedRequest(),
       );
     case MenuScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => MenuScreen(),
+        builder: (_) => const MenuScreen(),
       );
     case VendorPage.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => VendorPage(),
+        builder: (_) => const VendorPage(),
       );
     case Favourite.id:
       return MaterialPageRoute(
@@ -87,12 +87,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case NewBookingTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => NewBookingTest(),
+        builder: (_) => const NewBookingTest(),
       );
     case SendNotifications.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => SendNotifications(),
+        builder: (_) => const SendNotifications(),
       );
     case SplashScreen.id:
       return MaterialPageRoute(
@@ -102,44 +102,36 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case OrderHistory.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => OrderHistory(),
+        builder: (_) => const OrderHistory(),
       );
 
     case PendingRequest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => PendingRequest(),
+        builder: (_) => const PendingRequest(),
       );
     case Homepage.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => Homepage(),
+        builder: (_) => const Homepage(),
       );
     case DashPage.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => DashPage(),
+        builder: (_) => const DashPage(),
       );
     case CartScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => CartScreen(),
+        builder: (_) => const CartScreen(),
       );
 
     case PolicyScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => PolicyScreen(),
+        builder: (_) => const PolicyScreen(),
       );
 
-    case EditProduct.id:
-      var approvedProducts = routeSettings.arguments as Product;
-      return MaterialPageRoute(
-        settings: routeSettings,
-        builder: (_) => EditProduct(
-          approvedVendors: approvedProducts,
-        ),
-      );
     case EditProduct.id:
       var approvedProducts = routeSettings.arguments as Product;
       return MaterialPageRoute(
@@ -165,35 +157,35 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case FeedbackScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => FeedbackScreen(),
+        builder: (_) => const FeedbackScreen(),
       );
 
     case ForgetPass.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => ForgetPass(),
+        builder: (_) => const ForgetPass(),
       );
     case AnalyticsScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AnalyticsScreen(),
+        builder: (_) => const AnalyticsScreen(),
       );
     case Users.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => Users(),
+        builder: (_) => const Users(),
       );
 
     case DeclineBookingTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => DeclineBookingTest(),
+        builder: (_) => const DeclineBookingTest(),
       );
 
     case BokinghistoryTest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => BokinghistoryTest(),
+        builder: (_) => const BokinghistoryTest(),
       );
     case ApprovedProducts.id:
       var products = routeSettings.arguments as List<Product>;
@@ -206,7 +198,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case AllCatagory.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AllCatagory(),
+        builder: (_) => const AllCatagory(),
       );
     // case Manage_Product.id:
     //   return MaterialPageRoute(
@@ -235,7 +227,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case AddVendorForm.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AddVendorForm(),
+        builder: (_) => const AddVendorForm(),
       );
     case Search.id:
       var search = routeSettings.arguments as String;
@@ -250,7 +242,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case AdminHomeScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AdminHomeScreen(),
+        builder: (_) => const AdminHomeScreen(),
       );
 
     // case Dashboard.id:
@@ -261,12 +253,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case Manage_Product.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => Manage_Product(),
+        builder: (_) => const Manage_Product(),
       );
     case OrderScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => OrderScreen(),
+        builder: (_) => const OrderScreen(),
       );
 
     case ChecklistScreen.id:
@@ -289,17 +281,17 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case AdminBookingScreen.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AdminBookingScreen(),
+        builder: (_) => const AdminBookingScreen(),
       );
     case VendorProductRequest.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => VendorProductRequest(),
+        builder: (_) => const VendorProductRequest(),
       );
     case AddVendors.id:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => AddVendors(),
+        builder: (_) => const AddVendors(),
       );
     default:
       return MaterialPageRoute(

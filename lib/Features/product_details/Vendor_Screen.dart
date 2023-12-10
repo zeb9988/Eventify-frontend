@@ -4,7 +4,6 @@ import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../common/widgets/SearchBar.dart';
 import '../../constant/constant.dart';
 import '../../prooviders/provider.dart';
 import '../UserHome/services/HomeServices.dart';
@@ -145,13 +144,6 @@ class _Vendor_ScreenState extends State<Vendor_Screen> {
                             fontSize: 20,
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomSearchBar(
-                        hintText: 'Search...',
-                        controller: searchController,
                       ),
                     ]),
                   ),

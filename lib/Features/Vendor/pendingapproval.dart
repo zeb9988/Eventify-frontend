@@ -1,18 +1,21 @@
+// ignore_for_file: avoid_print
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:flutter/foundation.dart';
+import 'package:eventify/features/Vendor/Services/vendor_services.dart';
 import 'package:flutter/material.dart';
-
 import '../../../models/Product.dart';
-import '../../Vendor/Services/vendor_services.dart';
 
 class PendingRequest extends StatefulWidget {
   static const String id = '/pendingapproval';
+
+  const PendingRequest({Key? key}) : super(key: key);
   @override
   State<PendingRequest> createState() => _PendingRequestState();
 }
 
 class _PendingRequestState extends State<PendingRequest> {
+  // ignore: non_constant_identifier_names
   List<Product> pending_request = [];
 
   VendorServices vendorServices = VendorServices();
@@ -113,13 +116,14 @@ class PendingReqCard extends StatelessWidget {
   final double price;
   final String category;
 
-  PendingReqCard({
+  const PendingReqCard({
+    Key? key,
     required this.image,
     required this.name,
     required this.description,
     required this.price,
     required this.category,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -218,7 +222,7 @@ class PendingReqCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 15),
                     Text(
-                      '\Rs$price',
+                      'Rs$price',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.grey.shade800,

@@ -1,15 +1,22 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
 
-  CustomSearchBar({required this.hintText, required this.controller});
+  const CustomSearchBar({
+    Key? key,
+    required this.hintText,
+    required this.controller,
+    this.onChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.0),
+      margin: const EdgeInsets.symmetric(horizontal: 20.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(25.0),
@@ -18,18 +25,19 @@ class CustomSearchBar extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: TextField(
           controller: controller,
+          onChanged: onChanged, // Add the onChanged callback here
           decoration: InputDecoration(
             hintText: hintText,
             border: InputBorder.none,
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
           ),
         ),
       ),

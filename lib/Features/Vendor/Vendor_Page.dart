@@ -7,9 +7,9 @@ import 'package:eventify/prooviders/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../UserHome/screens/approvalscreen.dart';
-import '../UserHome/screens/pendingapproval.dart';
-import '../UserHome/screens/vendor_register.dart';
+import 'approvalscreen.dart';
+import 'pendingapproval.dart';
+import 'vendor_register.dart';
 
 class VendorPage extends StatefulWidget {
   static const String id = '/Vendorpage';

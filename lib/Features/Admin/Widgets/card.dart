@@ -1,9 +1,10 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
+
 import 'package:eventify/common/widgets/star.dart';
 import 'package:eventify/constant/Theme_constant.dart';
 import 'package:eventify/features/product_details/Product_detail_screen.dart';
 import 'package:eventify/models/Product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../../../prooviders/provider.dart';
@@ -34,7 +35,6 @@ class _CardssState extends State<Cardss> {
   void initState() {
     double totalRating = 0;
     for (int i = 0; i < widget.product.rating!.length; i++) {
-      print(widget.product.rating![i].rating);
       totalRating += widget.product.rating![i].rating;
       if (widget.product.rating![i].userId ==
           Provider.of<UserProvider>(context, listen: false).user.id) {
@@ -53,7 +53,6 @@ class _CardssState extends State<Cardss> {
     void press() {
       Navigator.pushNamed(context, ProductDetailsScreen.id,
           arguments: widget.product);
-      print(widget.product.address);
     }
 
     return GestureDetector(
@@ -77,11 +76,11 @@ class _CardssState extends State<Cardss> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: 100,
               child: Stack(
                 children: [
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
@@ -108,7 +107,7 @@ class _CardssState extends State<Cardss> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '\Rs ${widget.price}',
+                  'Rs ${widget.price}',
                   style: const TextStyle(
                     overflow: TextOverflow.ellipsis,
                     color: Colors.black,

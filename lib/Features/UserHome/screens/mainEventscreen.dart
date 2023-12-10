@@ -19,44 +19,80 @@ class MainEvent extends StatefulWidget {
 }
 
 class _MainEventState extends State<MainEvent> {
-  // ignore: non_constant_identifier_names
+  List<Map<String, dynamic>> finalList = [];
+  List<Map<String, dynamic>> filteredEvents = [];
 
   TextEditingController searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.category == 'Wedding') {
+      finalList = Wedding;
+    } else if (widget.category == 'Birthday Party') {
+      finalList = Birthdayparty;
+    } else if (widget.category == 'Corporate Event') {
+      finalList = CorporateEvent;
+    } else if (widget.category == 'Concert') {
+      finalList = Concert;
+    } else if (widget.category == 'Private Party') {
+      finalList = PrivateParty;
+    } else if (widget.category == 'Eid Celebration') {
+      finalList = EidCelebration;
+    } else if (widget.category == 'Cultural Festival') {
+      finalList = CulturalFestival;
+    } else {
+      finalList = Wedding; // Default case
+    }
+
+    filteredEvents = finalList;
+  }
+
   @override
   void dispose() {
     searchController.dispose();
     super.dispose();
   }
 
+  void filterEvents(String query) {
+    setState(() {
+      filteredEvents = finalList
+          .where((event) =>
+              event['text']!.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final cartlen = context.watch<UserProvider>().user.cart.length;
 
-    List<Map<String, dynamic>> finalcard = [];
     String pic = '';
     if (widget.category == 'Wedding') {
-      finalcard = Wedding;
+      finalList = Wedding;
       pic = 'assets/images/wedding.jpg';
     } else if (widget.category == 'Birthday Party') {
-      finalcard = Birthdayparty;
+      finalList = Birthdayparty;
       pic = 'assets/images/party.jpg';
     } else if (widget.category == 'Corporate Event') {
-      finalcard = CorporateEvent;
+      finalList = CorporateEvent;
       pic = 'assets/images/corevent.jpg';
     } else if (widget.category == 'Concert') {
-      finalcard = Concert;
+      finalList = Concert;
       pic = 'assets/images/concert1.jpg';
     } else if (widget.category == 'Private Party') {
-      finalcard = PrivateParty;
+      finalList = PrivateParty;
       pic = 'assets/images/party.jpg';
     } else if (widget.category == 'Eid Celebration') {
-      finalcard = EidCelebration;
+      finalList = EidCelebration;
       pic = 'assets/images/eidcele.jpeg';
     } else if (widget.category == 'Cultural Festival') {
-      finalcard = CulturalFestival;
+      finalList = CulturalFestival;
       pic = 'assets/images/culture.jpg';
     } else {
-      finalcard = Wedding;
+      // Default case: Set finalcard to a default list (you can adjust this based on your requirements)
+      finalList = Wedding;
+      pic = 'assets/images/wedding.jpg';
     }
     return SafeArea(
       child: Scaffold(
@@ -115,6 +151,7 @@ class _MainEventState extends State<MainEvent> {
                       height: 20,
                     ),
                     CustomSearchBar(
+                      onChanged: filterEvents,
                       hintText: 'Search...',
                       controller: searchController,
                     )
@@ -134,9 +171,9 @@ class _MainEventState extends State<MainEvent> {
                 childAspectRatio:
                     0.75, // Adjust this value to maintain the height of Finalcat
               ),
-              itemCount: finalcard.length,
+              itemCount: filteredEvents.length,
               itemBuilder: (context, index) {
-                final item = finalcard[index];
+                final item = filteredEvents[index];
 
                 return Container(
                   margin: EdgeInsets.only(
