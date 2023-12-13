@@ -305,7 +305,7 @@ class _AddVendorsState extends State<AddVendors> {
                         ),
                       ),
                       const ElTooltip(
-                        content: Text('Enter your product name'),
+                        content: Text('Enter your Business name'),
                         child: Icon(
                           Icons.info_outline,
                           color: COLOR_ACCENT,
@@ -349,7 +349,7 @@ class _AddVendorsState extends State<AddVendors> {
                       ),
                       const ElTooltip(
                         // position: ElTooltipPosition.leftStart,
-                        content: Text('Enter your Company name'),
+                        content: Text('shop# --- sadiqabad'),
                         // position: ElTooltipPosition.leftStart,
                         child: Icon(
                           Icons.info_outline,
@@ -940,7 +940,7 @@ class _AddVendorsState extends State<AddVendors> {
                               keyboardType: TextInputType.number,
                               controller: price,
                               decoration: const InputDecoration(
-                                hintText: 'Enter the numerical price',
+                                hintText: 'In Rupees',
                                 icon: Icon(
                                   Icons.attach_money,
                                   color: COLOR_ACCENT,

@@ -49,39 +49,7 @@ class FavoriteServices {
       showCustomSnackBar(context: context, text: e.toString(), label: 'ok', onPressed: (){});
     }
   }
-  // Future addToFav(
-  //     {required BuildContext context, required String productid}) async {
-  //   final userProvider = Provider.of<UserProvider>(context, listen: false);
 
-  //   try {
-  //     http.Response res = await http.post(
-  //       Uri.parse('$uri/api/add-to-favorites'),
-  //       headers: {
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //         'x-auth-token': userProvider.user.token,
-  //       },
-  //       body: jsonEncode({
-  //         'id': productid,
-  //       }),
-  //     );
-
-  //     httpErrorHandle(
-  //       response: res,
-  //       context: context,
-  //       onSuccess: () {
-  //         User user =
-  //             userProvider.user.copyWith(cart: jsonDecode(res.body)['cart']);
-  //         userProvider.setUserFromModel(user);
-  //         showCustomDialog(
-  //             context, 'Product Added To Favorites', Icons.heart_broken);
-  //         // showSnackBar(context,
-  //         //     'Product Added Successfully if u have previous product it will be removed');
-  //       },
-  //     );
-  //   } catch (e) {
-  //     showSnackBar(context, e.toString());
-  //   }
-  // }
   void removeFav(
       {required BuildContext context, required Product product}) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
@@ -112,32 +80,5 @@ class FavoriteServices {
     }
   }
 
-  // Future getFav({required BuildContext context}) async {
-  //   final userProvider = Provider.of<UserProvider>(context, listen: false);
 
-  //   try {
-  //     http.Response res = await http.get(
-  //       Uri.parse('$uri/api/get-favorites'),
-  //       headers: {
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //         'x-auth-token': userProvider.user.token,
-  //       },
-  //     );
-
-  //     httpErrorHandle(
-  //       response: res,
-  //       context: context,
-  //       onSuccess: () {
-  //         // User user =
-  //         //     userProvider.user.copyWith(favorites: jsonDecode(res.body)['favorites']);
-  //         // userProvider.setUserFromModel(user);
-  //         showCustomDialog(context, 'Product fetched', Icons.heart_broken);
-  //         // showSnackBar(context,
-  //         //     'Product Added Successfully if u have previous product it will be removed');
-  //       },
-  //     );
-  //   } catch (e) {
-  //     showSnackBar(context, e.toString());
-  //   }
-  // }
 }

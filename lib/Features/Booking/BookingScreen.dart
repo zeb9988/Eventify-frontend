@@ -274,6 +274,6 @@ String getStatusText(int status) {
   } else if (status == 1) {
     return 'Received';
   } else {
-    return 'Dilivered';
+    return 'Delivered';
   }
 }

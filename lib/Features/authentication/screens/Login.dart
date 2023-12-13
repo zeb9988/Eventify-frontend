@@ -1,4 +1,6 @@
 // ignore: file_names
+// ignore_for_file: file_names, duplicate_ignore
+
 import 'package:eventify/features/authentication/screens/ForgetPass.dart';
 import 'package:eventify/features/authentication/screens/regisster.dart';
 import 'package:eventify/features/authentication/services/authservices.dart';
@@ -12,6 +14,8 @@ import '../../../Common/widgets/button.dart';
 // Replace HomeScreen with your actual home screen widget
 class Login extends StatefulWidget {
   static const String id = '/Login';
+
+  const Login({Key? key}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();

@@ -1,7 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:eventify/Features/Vendor/trackmybooking.dart';
 import 'package:eventify/constant/Theme_constant.dart';
-import 'package:eventify/features/Booking/TrackBooking.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/order.dart';
@@ -29,7 +30,6 @@ class _OrderHistoryState extends State<OrderHistory> {
   void fetchOrders() async {
     orderHistory = await orderservices.fetchOrderHistory(context: context);
     setState(() {});
-    print(orderHistory.length);
   }
 
   @override
@@ -115,11 +115,11 @@ class _OrderHistoryState extends State<OrderHistory> {
                       child: Column(
                         children: [
                           Text('Booking ${orderIndex + 1}'),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Text('Booking Id: ${order.id}'),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           ListView.builder(
@@ -167,7 +167,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                                         ),
                                         const SizedBox(height: 15),
                                         Text(
-                                          '\PKR: ${product.price}',
+                                          'PKR: ${product.price}',
                                           // Replace with your product price
                                           style: TextStyle(
                                             fontSize: 20,

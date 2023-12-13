@@ -16,24 +16,7 @@ class HomeServices {
   Future<List<Product>> bestSeller({required BuildContext context}) async {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
     List<Product> products = [];
-    //  Product(
-    //         businessName: '',
-    //         address: '',
-    //         city: '',
-    //         state: '',
-    //         zipcode: 0,
-    //         images: [],
-    //         country: '',
-    //         phonenumber: 0,
-    //         email: '',
-    //         generalDetail: '',
-    //         insureValue: '',
-    //         licensedValue: '',
-    //         bankName: '',
-    //         benificiaryName: '',
-    //         accountNumber: 0,
-    //         price: 0,
-    //         category: '');
+
     try {
       http.Response res =
           await http.get(Uri.parse("$uri/api/deal-of-day"), headers: {
@@ -125,61 +108,7 @@ class HomeServices {
     return product;
   }
 
-  // Future<Map<String, dynamic>> fetchFilterVendor(
-  //     {required BuildContext context, required String catagory}) async {
-  //   final userprovider = Provider.of<UserProvider>(context, listen: false);
-  //   print(userprovider.user.token);
-  //
-  //   // List product = [];
-  //   List photo = [];
-  //   int rent = 7;
-  //   // List<Product> rent = [];
-  //   try {
-  //     http.Response res = await http
-  //         .get(Uri.parse("$uri/api/filter?catagory=$catagory"), headers: {
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //       'x-auth-token': userprovider.user.token
-  //     });
-  //
-  //     httpErrorHandle(
-  //       response: res,
-  //       context: context,
-  //       onSuccess: () {
-  //         var response = jsonDecode(res.body);
-  //         // print(response['photographer']);
-  //
-  //         // rent = response['rentCar'];
-  //         // print(response['rentCar']);
-  //         // print(photo);
-  //         // print(rent);
-  //         // sales = [
-  //         //   Sales('Mobiles', response['mobileEarnings']),
-  //         //   Sales('Essentials', response['essentialEarnings']),
-  //         //   Sales('Books', response['booksEarnings']),
-  //         //   Sales('Appliances', response['applianceEarnings']),
-  //         //   Sales('Fashion', response['fashionEarnings']),
-  //         // ];
-  //
-  //         for (int i = 0; i < response.length; i++) {
-  //           photo.add(response['photographer']);
-  //           // ven.add(
-  //           //   Product.fromJson(
-  //           //     jsonEncode(
-  //           //       jsonDecode(res.body)[0],
-  //           //     ),
-  //           //   ),
-  //           // );
-  //         }
-  //       },
-  //     );
-  //
-  //     // print(photo);
-  //   } catch (e) {
-  //     showSnackBar(context, e.toString());
-  //   }
-  //   // print(ven);
-  //   return {'photo': photo};
-  // }
+
 
   Future<Map<String, dynamic>> fetchFilterVendor(
       {required BuildContext context, required String catagory}) async {
