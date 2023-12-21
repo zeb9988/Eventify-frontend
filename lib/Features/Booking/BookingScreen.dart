@@ -237,7 +237,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                                     ),
                                                     const SizedBox(height: 15),
                                                     Text(
-                                                      '\$PKR: ${product.price}',
+                                                      'PKR: ${product.price.toStringAsFixed(0)}',
                                                       // Replace with your product price
                                                       style: TextStyle(
                                                         fontSize: 20,

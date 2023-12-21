@@ -63,8 +63,9 @@ class User {
           (x) => Map<String, dynamic>.from(x),
         ),
       ),
-      wallet: map['wallet']?.toDouble() ??
-          0.0, // Retrieve wallet balance from the map
+      wallet: map['wallet']?.toDouble() ?? 0,
+      // orderedAt: map['orderedAt']?.toInt() ?? 0,
+      // Retrieve wallet balance from the map
     );
   }
 

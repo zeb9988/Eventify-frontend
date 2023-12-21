@@ -47,16 +47,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
           errorStyle: TextStyle(color: Colors.black),
           suffixIcon: widget.is_pass
               ? IconButton(
-            icon: Icon(
-              _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              setState(() {
-                _isPasswordVisible = !_isPasswordVisible;
-              });
-            },
-          )
+                  icon: Icon(
+                    _isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    color: Colors.grey,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                )
               : null,
         ),
         validator: (value) {
@@ -70,4 +72,3 @@ class _CustomTextFieldState extends State<CustomTextField> {
     );
   }
 }
-

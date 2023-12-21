@@ -241,11 +241,11 @@ class BookingServices {
       httpErrorHandle(
         response: res,
         context: context,
-        onSuccess: () {
+        onSuccess: () async {
           User user = userProvider.user
               .copyWith(wallet: jsonDecode(res.body)['wallet']);
           userProvider.setUserFromModel(user);
-          Navigator.pushNamedAndRemoveUntil(
+          await Navigator.pushNamedAndRemoveUntil(
               context, Homepage.id, (route) => false);
           showCustomSnackBar(
               context: context,
@@ -256,7 +256,7 @@ class BookingServices {
       );
     } catch (e) {
       showCustomSnackBar(
-          context: context, text: e.toString(), label: 'ok', onPressed: () {});
+          context: context, text: 'asdsa', label: 'ok', onPressed: () {});
     }
   }
 }

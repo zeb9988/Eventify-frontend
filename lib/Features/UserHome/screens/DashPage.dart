@@ -466,7 +466,7 @@ class _DashPageState extends State<DashPage> {
                               child: Card(
                                 borderOnForeground: false,
                                 child: ListTile(
-                                  title: Text(todo.desc),
+                                  title: Text(todo.title),
                                   subtitle: Text(todo.desc),
                                   trailing: const Icon(Icons.arrow_back),
                                 ),
